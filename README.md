@@ -28,6 +28,15 @@ To install this collection, use the following command:
 ansible-galaxy collection install plopoyop.kubernetes_databases
 ```
 
+## Collection content
+### List of Roles and Helm Chart Versions
+
+| Role Name       | Helm Chart Version | README Link                                 |
+| ---------       | ------------------ | ------------------------------------        |
+| MongoDb for Kubernetes | v1.7.0            | [View README](roles/mongodb_instance/README.md) |
+| MongoDb Instance | v0.2.3            | [View README](roles/mongodb_instance/README.md) |
+
+
 ## Usage
 
 You can call the roles from this collection in your Ansible playbooks as follows:

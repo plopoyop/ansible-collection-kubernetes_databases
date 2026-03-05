@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    mongodb_operator_enabled: false
+  tasks:
+    - name: "Install mongodb operator"
+      ansible.builtin.import_role:
+        name: "mongodb_operator"

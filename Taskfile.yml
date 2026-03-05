@@ -2,7 +2,7 @@
 version: '3'
 
 vars:
-  ROLES_LIST: ["argocd", "atlantis", "gatus", "mailcrab", "mongodb_operator", "mongodb_instance", "zammad"]
+  ROLES_LIST: ["mongodb_operator", "mongodb_instance"]
 
 tasks:
   default:

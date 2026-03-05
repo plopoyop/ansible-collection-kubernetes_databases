@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Install mongodb"
+      ansible.builtin.import_role:
+        name: "mongodb_instance"
+      vars:
+        mongodb_instance_admin_password: "password"
+        mongodb_instance_members: 1
