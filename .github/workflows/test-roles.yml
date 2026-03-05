@@ -1,0 +1,33 @@
+---
+name: Test roles
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'roles/**'
+      - '.github/**'
+      - devbox.json
+      - devbox.lock
+      - flake.nix
+      - flake.lock
+  pull_request:
+    branches: [main]
+    paths:
+      - 'roles/**'
+      - '.github/**'
+      - devbox.json
+      - devbox.lock
+      - flake.nix
+      - flake.lock
+
+jobs:
+  mongodb_instance:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "mongodb_instance"
+  mongodb_operator:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "mongodb_operator"
