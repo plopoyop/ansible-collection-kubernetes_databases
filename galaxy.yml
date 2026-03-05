@@ -1,0 +1,19 @@
+namespace: plopoyop
+name: kubernetes_databases
+version: 0.0.0
+readme: README.md
+authors:
+  - Clément Hubert <clement@plopoyop.me>
+description: Ansible collection to configure various databases on a Kubernetes cluster
+license_file: LICENSE
+tags:
+  - cloud
+  - kubernetes
+  - cluster
+  - infrastructure
+  - database
+dependencies:
+  kubernetes.core: '>=5.1.0'
+repository: 'https://github.com/plopoyop/ansible-collection-kubernetes_databases'
+issues: 'https://github.com/plopoyop/ansible-collection-kubernetes_databases/issues'
+build_ignore: []
