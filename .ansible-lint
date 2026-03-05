@@ -1,0 +1,9 @@
+---
+skip_list:
+  - yaml
+  - var-naming[no-role-prefix]
+
+offline: true
+
+exclude_paths:
+  - ".devbox/"
