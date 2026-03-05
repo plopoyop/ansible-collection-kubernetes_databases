@@ -1,0 +1,23 @@
+---
+- name: "Uninstall MongoDb Instance helm package"
+  kubernetes.core.helm:
+    name: "{{ mongodb_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ mongodb_instance_crd_helm_chart_ref }}"
+    chart_version: "{{ mongodb_instance_crd_helm_version }}"
+    namespace: "{{ mongodb_instance_namespace }}"
+    state: "absent"
+    wait: true
+
+- name: "Remove MongoDb Instance helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ mongodb_instance_crd_helm_repo_name }}"
+    repo_url: "{{ mongodb_instance_crd_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove MongoDb Instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ mongodb_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

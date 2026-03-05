@@ -1,0 +1,22 @@
+---
+- name: "Create MongoDB operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ mongodb_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Add MongoDB Helm repository"
+  kubernetes.core.helm_repository:
+    name: "{{ mongodb_operator_helm_repo_name }}"
+    repo_url: "{{ mongodb_operator_helm_repo_url }}"
+    state: "present"
+
+- name: "Install MongoDB Operator"
+  kubernetes.core.helm:
+    name: "{{ mongodb_operator_deployment_name }}"
+    chart_ref: "{{ mongodb_operator_helm_chart_ref }}"
+    chart_version: "{{ mongodb_operator_helm_version }}"
+    namespace: "{{ mongodb_operator_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'mongodb_operator_helm_values.yml.j2') | from_yaml }}"
+    state: "present"

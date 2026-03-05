@@ -1,0 +1,83 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>plopoyop/renovate-config",
+    "github>plopoyop/renovate-config:kubernetes-ansible-collection",
+    "github>plopoyop/renovate-config:automerge-devbox"
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mongodb-kubernetes"
+      ],
+      "registryUrls": [
+        "https://mongodb.github.io/helm-charts"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mongodb-instance"
+      ],
+      "registryUrls": [
+        "https://plopoyop.github.io/charts"
+      ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mongodb_operator/defaults/main.yml$/",
+        "/roles/mongodb_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "mongodb_operator_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mongodb-kubernetes",
+      "autoReplaceStringTemplate": "mongodb_operator_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "MongoDb for Kubernetes\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "mongodb-kubernetes",
+      "autoReplaceStringTemplate": "MongoDb for Kubernetes | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mongodb_instance/defaults/main.yml$/",
+        "/roles/mongodb_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "mongodb_instance_crd_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mongodb-instance",
+      "autoReplaceStringTemplate": "mongodb_instance_crd_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "MongoDb Instance\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "mongodb-instance",
+      "autoReplaceStringTemplate": "MongoDb Instance | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    }
+  ]
+}

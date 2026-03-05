@@ -1,0 +1,4 @@
+---
+mongodb_instance_crd_helm_repo_name: "plopoyop"
+mongodb_instance_crd_helm_repo_url: "https://plopoyop.github.io/charts"
+mongodb_instance_crd_helm_chart_ref: "{{ mongodb_instance_crd_helm_repo_name }}/mongodb-instance"

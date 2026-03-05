@@ -1,0 +1,8 @@
+---
+- name: "Setup MongoDB instance"
+  ansible.builtin.include_tasks: setup.yml
+  when: mongodb_instance_enabled
+
+- name: "Cleanup MongoDB instance"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not mongodb_instance_enabled

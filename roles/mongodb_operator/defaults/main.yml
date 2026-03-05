@@ -1,0 +1,91 @@
+---
+# @var mongodb_operator_enabled
+# @var mongodb_operator_enabled:type: boolean
+# @var mongodb_operator_enabled:description: >
+# Should MongoDb for Kubernetes Operator helm chart be installed
+mongodb_operator_enabled: true
+
+# @var mongodb_operator_namespace
+# @var mongodb_operator_namespace:type: string
+# @var mongodb_operator_namespace:description: >
+# K8s namespace to install the mongodb community operator chart
+mongodb_operator_namespace: "mongodb"
+
+# @var mongodb_operator_helm_version
+# @var mongodb_operator_helm_version:type: string
+# @var mongodb_operator_helm_version:description: >
+# Helm chart version to install
+mongodb_operator_helm_version: 1.7.0
+
+# @var mongodb_operator_deployment_name
+# @var mongodb_operator_deployment_name:type: string
+# @var mongodb_operator_deployment_name:description: >
+# Deployment name for mongodb community operator chart
+mongodb_operator_deployment_name: "mongodb-operator"
+
+# @var mongodb_operator_replicas
+# @var mongodb_operator_replicas:type: int
+# @var mongodb_operator_replicas:description: >
+# Number of replicat for mongodb operator
+mongodb_operator_replicas: 1
+
+# @var mongodb_operator_extra_envs
+# @var mongodb_operator_extra_envs:type: list
+# @var mongodb_operator_extra_envs:description: >
+# Additional environment variables
+# @var mongodb_operator_extra_envs:example: >
+#  mongodb_operator_extra_envs:
+#   - name: CLUSTER_DOMAIN
+#     value: my-cluster.domain
+mongodb_operator_extra_envs: []
+
+# @var mongodb_operator_watch_namespace
+# @var mongodb_operator_watch_namespace:type: string
+# @var mongodb_operator_watch_namespace:description: >
+# To configure the Operator to watch resources in another namespace
+mongodb_operator_watch_namespace: "*"
+
+# @var mongodb_operator_cpu_limit
+# @var mongodb_operator_cpu_limit:type: string
+# @var mongodb_operator_cpu_limit:description: >
+# CPU limit for operator pod
+mongodb_operator_cpu_limit: "1100m"
+
+# @var mongodb_operator_memory_limit
+# @var mongodb_operator_memory_limit:type: string
+# @var mongodb_operator_memory_limit:description: >
+# Memory limit for operator pod
+mongodb_operator_memory_limit: "1Gi"
+
+# @var mongodb_operator_cpu_request
+# @var mongodb_operator_cpu_request:type: string
+# @var mongodb_operator_cpu_request:description: >
+# CPU request for operator pod
+mongodb_operator_cpu_request: "500m"
+
+# @var mongodb_operator_memory_request
+# @var mongodb_operator_memory_request:type: string
+# @var mongodb_operator_memory_request:description: >
+# Memory request for operator pod
+mongodb_operator_memory_request: "200Mi"
+
+# @var mongodb_operator_priority_class
+# @var mongodb_operator_priority_class:type: string
+# @var mongodb_operator_priority_class:description: >
+# PriorityClass configuration for operator
+# ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass
+mongodb_operator_priority_class: ""
+
+# @var mongodb_operator_pod_security_context
+# @var mongodb_operator_pod_security_context:type: dict
+# @var mongodb_operator_pod_security_context:description: >
+# security context for operator pod
+mongodb_operator_pod_security_context:
+  runAsNonRoot: true
+  runAsUser: 2000
+
+# @var mongodb_operator_security_context
+# @var mongodb_operator_security_context:type: dict
+# @var mongodb_operator_security_context:description: >
+# security context for operator
+mongodb_operator_security_context: {}

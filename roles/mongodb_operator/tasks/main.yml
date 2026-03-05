@@ -1,0 +1,8 @@
+---
+- name: "Setup MongoDB operator"
+  ansible.builtin.include_tasks: setup.yml
+  when: mongodb_operator_enabled
+
+- name: "Setup MongoDB operator"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not mongodb_operator_enabled
