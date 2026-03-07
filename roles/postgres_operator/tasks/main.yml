@@ -1,0 +1,8 @@
+---
+- name: "Setup Postgres Operator"
+  ansible.builtin.include_tasks: setup.yml
+  when: postgres_operator_enabled
+
+- name: "Cleanup Postgres Operator"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not postgres_operator_enabled

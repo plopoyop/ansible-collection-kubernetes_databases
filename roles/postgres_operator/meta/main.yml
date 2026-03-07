@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to install the Zalando Postgres Operator on a Kubernetes cluster.
+# It installs the operator via its helm chart to manage PostgreSQL clusters.
+# @end
+galaxy_info:
+  description: Install Zalando Postgres Operator
+  role_name: postgres_operator
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - postgresql
+    - operator
+
+dependencies: []
