@@ -26,6 +26,26 @@
       "registryUrls": [
         "https://plopoyop.github.io/charts"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "postgres-operator"
+      ],
+      "registryUrls": [
+        "https://opensource.zalando.com/postgres-operator/charts/postgres-operator"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "postgres-operator-ui"
+      ],
+      "registryUrls": [
+        "https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui"
+      ]
     }
   ],
   "customManagers": [
@@ -77,6 +97,44 @@
       ],
       "depNameTemplate": "mongodb-instance",
       "autoReplaceStringTemplate": "MongoDb Instance | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/postgres_operator/defaults/main.yml$/",
+        "/roles/postgres_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "postgres_operator_helm_chart_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "postgres-operator",
+      "autoReplaceStringTemplate": "postgres_operator_helm_chart_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Postgres Operator\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "postgres-operator",
+      "autoReplaceStringTemplate": "Postgres Operator | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/postgres_operator/defaults/main.yml$/",
+        "/roles/postgres_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "postgres_operator_ui_helm_chart_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "postgres-operator-ui",
+      "autoReplaceStringTemplate": "postgres_operator_ui_helm_chart_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
       "datasourceTemplate": "helm"
     }
   ]
