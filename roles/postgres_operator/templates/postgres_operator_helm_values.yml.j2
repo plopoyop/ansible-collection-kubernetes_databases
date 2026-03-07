@@ -1,0 +1,31 @@
+---
+configGeneral:
+  enable_crd_registration: {{ postgres_operator_enable_crd_registration | lower }}
+  docker_image: "{{ postgres_operator_docker_image }}"
+  workers: {{ postgres_operator_workers }}
+
+configKubernetes:
+  cluster_domain: "{{ postgres_operator_cluster_domain }}"
+  enable_pod_disruption_budget: {{ postgres_operator_enable_pod_disruption_budget | lower }}
+  enable_persistent_volume_claim_deletion: {{ postgres_operator_enable_pvc_deletion | lower }}
+  watched_namespace: "{{ postgres_operator_watched_namespace }}"
+
+resources:
+  limits:
+    cpu: "{{ postgres_operator_cpu_limit }}"
+    memory: "{{ postgres_operator_memory_limit }}"
+  requests:
+    cpu: "{{ postgres_operator_cpu_request }}"
+    memory: "{{ postgres_operator_memory_request }}"
+
+securityContext: {{ postgres_operator_pod_security_context }}
+
+{% if postgres_operator_priority_class | length > 0 %}
+priorityClassName: "{{ postgres_operator_priority_class }}"
+{% endif %}
+
+extraEnvs: {{ postgres_operator_extra_envs }}
+
+{% for key, value in postgres_operator_additional_helm_values.items() %}
+{{ key }}: {{ value | to_yaml }}
+{% endfor %}

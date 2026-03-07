@@ -1,0 +1,39 @@
+---
+- name: "Uninstall Postgres Operator UI helm package"
+  kubernetes.core.helm:
+    name: "{{ postgres_operator_ui_deployment_name }}"
+    namespace: "{{ postgres_operator_namespace }}"
+    state: "absent"
+    chart_ref: "{{ postgres_operator_ui_helm_chart_ref }}"
+    chart_version: "{{ postgres_operator_ui_helm_chart_version }}"
+    wait: true
+  when: postgres_operator_ui_enabled
+
+- name: "Remove Postgres Operator UI helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ postgres_operator_ui_helm_repo_name }}"
+    repo_url: "{{ postgres_operator_ui_helm_repo_url }}"
+    state: "absent"
+  when: postgres_operator_ui_enabled
+
+- name: "Uninstall Postgres Operator helm package"
+  kubernetes.core.helm:
+    name: "{{ postgres_operator_deployment_name }}"
+    namespace: "{{ postgres_operator_namespace }}"
+    state: "absent"
+    chart_ref: "{{ postgres_operator_helm_chart_ref }}"
+    chart_version: "{{ postgres_operator_helm_chart_version }}"
+    wait: true
+
+- name: "Remove Postgres Operator helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ postgres_operator_helm_repo_name }}"
+    repo_url: "{{ postgres_operator_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove Postgres Operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ postgres_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

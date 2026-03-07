@@ -1,0 +1,8 @@
+---
+postgres_operator_helm_repo_name: "postgres-operator-charts"
+postgres_operator_helm_repo_url: "https://opensource.zalando.com/postgres-operator/charts/postgres-operator"
+postgres_operator_helm_chart_ref: "{{ postgres_operator_helm_repo_name }}/postgres-operator"
+
+postgres_operator_ui_helm_repo_name: "postgres-operator-ui-charts"
+postgres_operator_ui_helm_repo_url: "https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui"
+postgres_operator_ui_helm_chart_ref: "{{ postgres_operator_ui_helm_repo_name }}/postgres-operator-ui"

@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    postgres_operator_ui_enabled: true
+  tasks:
+    - name: "Install postgres operator"
+      ansible.builtin.import_role:
+        name: "postgres_operator"

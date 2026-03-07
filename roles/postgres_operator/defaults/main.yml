@@ -1,0 +1,236 @@
+---
+# @var postgres_operator_enabled
+# @var postgres_operator_enabled:type: boolean
+# @var postgres_operator_enabled:description: >
+# Should Zalando Postgres Operator helm chart be installed
+postgres_operator_enabled: true
+
+# @var postgres_operator_namespace
+# @var postgres_operator_namespace:type: string
+# @var postgres_operator_namespace:description: >
+# K8s namespace to install the postgres operator chart
+postgres_operator_namespace: "postgres-operator"
+
+# @var postgres_operator_helm_chart_version
+# @var postgres_operator_helm_chart_version:type: string
+# @var postgres_operator_helm_chart_version:description: >
+# Helm chart version to install
+postgres_operator_helm_chart_version: "1.15.1"
+
+# @var postgres_operator_deployment_name
+# @var postgres_operator_deployment_name:type: string
+# @var postgres_operator_deployment_name:description: >
+# Deployment name for postgres operator chart
+postgres_operator_deployment_name: "postgres-operator"
+
+# @var postgres_operator_watched_namespace
+# @var postgres_operator_watched_namespace:type: string
+# @var postgres_operator_watched_namespace:description: >
+# Namespace to watch for PostgreSQL resources. Use "*" to watch all namespaces
+postgres_operator_watched_namespace: "*"
+
+# @var postgres_operator_workers
+# @var postgres_operator_workers:type: int
+# @var postgres_operator_workers:description: >
+# Number of worker routines the operator uses to process events
+postgres_operator_workers: 8
+
+# @var postgres_operator_docker_image
+# @var postgres_operator_docker_image:type: string
+# @var postgres_operator_docker_image:description: >
+# Spilo docker image used for PostgreSQL instances
+postgres_operator_docker_image: "ghcr.io/zalando/spilo-18:4.1-p1"
+
+# @var postgres_operator_enable_crd_registration
+# @var postgres_operator_enable_crd_registration:type: boolean
+# @var postgres_operator_enable_crd_registration:description: >
+# Enable automatic CRD registration by the operator
+postgres_operator_enable_crd_registration: true
+
+# @var postgres_operator_cluster_domain
+# @var postgres_operator_cluster_domain:type: string
+# @var postgres_operator_cluster_domain:description: >
+# Kubernetes cluster domain
+postgres_operator_cluster_domain: "cluster.local"
+
+# @var postgres_operator_enable_pod_disruption_budget
+# @var postgres_operator_enable_pod_disruption_budget:type: boolean
+# @var postgres_operator_enable_pod_disruption_budget:description: >
+# Enable pod disruption budgets for PostgreSQL clusters
+postgres_operator_enable_pod_disruption_budget: true
+
+# @var postgres_operator_enable_pvc_deletion
+# @var postgres_operator_enable_pvc_deletion:type: boolean
+# @var postgres_operator_enable_pvc_deletion:description: >
+# Enable deletion of persistent volume claims when clusters are deleted
+postgres_operator_enable_pvc_deletion: true
+
+# @var postgres_operator_cpu_limit
+# @var postgres_operator_cpu_limit:type: string
+# @var postgres_operator_cpu_limit:description: >
+# CPU limit for operator pod
+postgres_operator_cpu_limit: "500m"
+
+# @var postgres_operator_memory_limit
+# @var postgres_operator_memory_limit:type: string
+# @var postgres_operator_memory_limit:description: >
+# Memory limit for operator pod
+postgres_operator_memory_limit: "500Mi"
+
+# @var postgres_operator_cpu_request
+# @var postgres_operator_cpu_request:type: string
+# @var postgres_operator_cpu_request:description: >
+# CPU request for operator pod
+postgres_operator_cpu_request: "100m"
+
+# @var postgres_operator_memory_request
+# @var postgres_operator_memory_request:type: string
+# @var postgres_operator_memory_request:description: >
+# Memory request for operator pod
+postgres_operator_memory_request: "250Mi"
+
+# @var postgres_operator_priority_class
+# @var postgres_operator_priority_class:type: string
+# @var postgres_operator_priority_class:description: >
+# PriorityClass configuration for operator
+# ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass
+postgres_operator_priority_class: ""
+
+# @var postgres_operator_pod_security_context
+# @var postgres_operator_pod_security_context:type: dict
+# @var postgres_operator_pod_security_context:description: >
+# Security context for operator pod
+postgres_operator_pod_security_context:
+  runAsUser: 1000
+  runAsNonRoot: true
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+# @var postgres_operator_extra_envs
+# @var postgres_operator_extra_envs:type: list
+# @var postgres_operator_extra_envs:description: >
+# Additional environment variables for the operator pod
+# @var postgres_operator_extra_envs:example: >
+#  postgres_operator_extra_envs:
+#   - name: MY_ENV_VAR
+#     value: my-value
+postgres_operator_extra_envs: []
+
+# @var postgres_operator_additional_helm_values
+# @var postgres_operator_additional_helm_values:type: dict
+# @var postgres_operator_additional_helm_values:description: >
+# Additional Helm chart values to merge with the generated values.
+# Use this to configure any chart option not exposed as a dedicated variable.
+# ref: https://github.com/zalando/postgres-operator/blob/master/charts/postgres-operator/values.yaml
+postgres_operator_additional_helm_values: {}
+
+# --- Postgres Operator UI ---
+
+# @var postgres_operator_ui_enabled
+# @var postgres_operator_ui_enabled:type: boolean
+# @var postgres_operator_ui_enabled:description: >
+# Should Zalando Postgres Operator UI helm chart be installed
+postgres_operator_ui_enabled: false
+
+# @var postgres_operator_ui_helm_chart_version
+# @var postgres_operator_ui_helm_chart_version:type: string
+# @var postgres_operator_ui_helm_chart_version:description: >
+# Helm chart version to install for the operator UI
+postgres_operator_ui_helm_chart_version: "1.15.1"
+
+# @var postgres_operator_ui_deployment_name
+# @var postgres_operator_ui_deployment_name:type: string
+# @var postgres_operator_ui_deployment_name:description: >
+# Deployment name for postgres operator UI chart
+postgres_operator_ui_deployment_name: "postgres-operator-ui"
+
+# @var postgres_operator_ui_target_namespace
+# @var postgres_operator_ui_target_namespace:type: string
+# @var postgres_operator_ui_target_namespace:description: >
+# Target namespace for viewing/creating clusters in the UI. Use "*" for all namespaces
+postgres_operator_ui_target_namespace: "*"
+
+# @var postgres_operator_ui_teams
+# @var postgres_operator_ui_teams:type: list
+# @var postgres_operator_ui_teams:description: >
+# List of teams displayed in the UI
+postgres_operator_ui_teams:
+  - "acid"
+
+# @var postgres_operator_ui_resources_visible
+# @var postgres_operator_ui_resources_visible:type: boolean
+# @var postgres_operator_ui_resources_visible:description: >
+# Show resources configuration in the UI
+postgres_operator_ui_resources_visible: false
+
+# @var postgres_operator_ui_cpu_limit
+# @var postgres_operator_ui_cpu_limit:type: string
+# @var postgres_operator_ui_cpu_limit:description: >
+# CPU limit for operator UI pod
+postgres_operator_ui_cpu_limit: "200m"
+
+# @var postgres_operator_ui_memory_limit
+# @var postgres_operator_ui_memory_limit:type: string
+# @var postgres_operator_ui_memory_limit:description: >
+# Memory limit for operator UI pod
+postgres_operator_ui_memory_limit: "200Mi"
+
+# @var postgres_operator_ui_cpu_request
+# @var postgres_operator_ui_cpu_request:type: string
+# @var postgres_operator_ui_cpu_request:description: >
+# CPU request for operator UI pod
+postgres_operator_ui_cpu_request: "100m"
+
+# @var postgres_operator_ui_memory_request
+# @var postgres_operator_ui_memory_request:type: string
+# @var postgres_operator_ui_memory_request:description: >
+# Memory request for operator UI pod
+postgres_operator_ui_memory_request: "100Mi"
+
+# @var postgres_operator_ui_ingress_enabled
+# @var postgres_operator_ui_ingress_enabled:type: boolean
+# @var postgres_operator_ui_ingress_enabled:description: >
+# Enable ingress for operator UI
+postgres_operator_ui_ingress_enabled: false
+
+# @var postgres_operator_ui_ingress_annotations
+# @var postgres_operator_ui_ingress_annotations:type: dict
+# @var postgres_operator_ui_ingress_annotations:description: >
+# Ingress annotations for operator UI
+postgres_operator_ui_ingress_annotations: {}
+
+# @var postgres_operator_ui_ingress_hosts
+# @var postgres_operator_ui_ingress_hosts:type: list
+# @var postgres_operator_ui_ingress_hosts:description: >
+# Ingress hosts configuration for operator UI
+# @var postgres_operator_ui_ingress_hosts:example: >
+#  postgres_operator_ui_ingress_hosts:
+#   - host: ui.example.org
+#     paths: ["/"]
+postgres_operator_ui_ingress_hosts: []
+
+# @var postgres_operator_ui_ingress_class_name
+# @var postgres_operator_ui_ingress_class_name:type: string
+# @var postgres_operator_ui_ingress_class_name:description: >
+# Ingress class name for operator UI
+postgres_operator_ui_ingress_class_name: ""
+
+# @var postgres_operator_ui_ingress_tls
+# @var postgres_operator_ui_ingress_tls:type: list
+# @var postgres_operator_ui_ingress_tls:description: >
+# Ingress TLS configuration for operator UI
+postgres_operator_ui_ingress_tls: []
+
+# @var postgres_operator_ui_extra_envs
+# @var postgres_operator_ui_extra_envs:type: list
+# @var postgres_operator_ui_extra_envs:description: >
+# Additional environment variables for the operator UI pod
+postgres_operator_ui_extra_envs: []
+
+# @var postgres_operator_ui_additional_helm_values
+# @var postgres_operator_ui_additional_helm_values:type: dict
+# @var postgres_operator_ui_additional_helm_values:description: >
+# Additional Helm chart values to merge with the generated UI values.
+# Use this to configure any chart option not exposed as a dedicated variable.
+# ref: https://github.com/zalando/postgres-operator/blob/master/charts/postgres-operator-ui/values.yaml
+postgres_operator_ui_additional_helm_values: {}

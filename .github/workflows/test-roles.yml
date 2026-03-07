@@ -31,3 +31,7 @@ jobs:
     uses: ./.github/workflows/test-role.yaml
     with:
       role_name: "mongodb_operator"
+  postgres_operator:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "postgres_operator"
