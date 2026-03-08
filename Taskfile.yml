@@ -2,7 +2,7 @@
 version: '3'
 
 vars:
-  ROLES_LIST: ["mongodb_operator", "mongodb_instance", "postgres_operator", "postgres_instance"]
+  ROLES_LIST: ["mariadb_operator", "mongodb_operator", "mongodb_instance", "postgres_operator", "postgres_instance",]
 
 tasks:
   default:
