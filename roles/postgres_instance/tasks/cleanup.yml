@@ -1,0 +1,23 @@
+---
+- name: "Uninstall PostgreSQL Instance helm package"
+  kubernetes.core.helm:
+    name: "{{ postgres_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ postgres_instance_crd_helm_chart_ref }}"
+    chart_version: "{{ postgres_instance_crd_helm_version }}"
+    namespace: "{{ postgres_instance_namespace }}"
+    state: "absent"
+    wait: true
+
+- name: "Remove PostgreSQL Instance helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ postgres_instance_crd_helm_repo_name }}"
+    repo_url: "{{ postgres_instance_crd_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove PostgreSQL Instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ postgres_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

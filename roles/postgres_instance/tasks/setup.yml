@@ -1,0 +1,35 @@
+---
+- name: "Install PostgreSQL Instance Helm Chart"
+  kubernetes.core.helm_repository:
+    name: "{{ postgres_instance_crd_helm_repo_name }}"
+    repo_url: "{{ postgres_instance_crd_helm_repo_url }}"
+    state: "present"
+
+- name: "Init postgres_instance"
+  ansible.builtin.set_fact:
+    postgres_instance: "{{ postgres_default_instance }}"
+  when: not postgres_instance is defined or postgres_instance.updated
+
+- name: "Call updating postgres_instance task"
+  ansible.builtin.include_tasks: update_instance_values.yml
+  loop: "{{ postgres_instance_values_override | dict2items }}"
+  loop_control:
+    loop_var: value_to_update
+
+- name: "Create PostgreSQL instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ postgres_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Create PostgreSQL instance from helm chart"
+  kubernetes.core.helm:
+    name: "{{ postgres_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ postgres_instance_crd_helm_chart_ref }}"
+    chart_version: "{{ postgres_instance_crd_helm_version }}"
+    namespace: "{{ postgres_instance_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'postgres_instance_helm_values.yml.j2') | from_yaml }}"
+    state: "{{ postgres_instance_state | default('present') }}"
+    force: "{{ postgres_instance_force_install | default(false) }}"

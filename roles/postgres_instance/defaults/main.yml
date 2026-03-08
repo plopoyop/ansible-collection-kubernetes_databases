@@ -1,0 +1,146 @@
+---
+# @var postgres_instance_enabled
+# @var postgres_instance_enabled:type: boolean
+# @var postgres_instance_enabled:description: >
+# Should PostgreSQL instance helm chart be installed
+postgres_instance_enabled: true
+
+# @var postgres_instance_crd_helm_version
+# @var postgres_instance_crd_helm_version:type: string
+# @var postgres_instance_crd_helm_version:description: >
+# PostgreSQL instance helm chart version
+postgres_instance_crd_helm_version: "0.1.0"
+
+# @var postgres_instance_name
+# @var postgres_instance_name:type: string
+# @var postgres_instance_name:description: >
+# PostgreSQL instance name
+postgres_instance_name: "postgres-database"
+
+# @var postgres_instance_namespace
+# @var postgres_instance_namespace:type: string
+# @var postgres_instance_namespace:description: >
+# K8s namespace to deploy PostgreSQL instance
+postgres_instance_namespace: "postgres"
+
+# @var postgres_instance_team_id
+# @var postgres_instance_team_id:type: string
+# @var postgres_instance_team_id:description: >
+# Team ID for the PostgreSQL instance (used by Zalando operator)
+postgres_instance_team_id: "acid"
+
+# @var postgres_instance_number_of_instances
+# @var postgres_instance_number_of_instances:type: integer
+# @var postgres_instance_number_of_instances:description: >
+# Number of PostgreSQL instances (replicas)
+postgres_instance_number_of_instances: 2
+
+# @var postgres_instance_version
+# @var postgres_instance_version:type: string
+# @var postgres_instance_version:description: >
+# PostgreSQL version
+postgres_instance_version: "17"
+
+# @var postgres_default_instance
+# @var postgres_default_instance:type: dict
+# @var postgres_default_instance:description: >
+# Default values for helm chart deployment
+postgres_default_instance:
+  name: "{{ postgres_instance_name }}"
+  namespace: "{{ postgres_instance_namespace }}"
+  teamId: "{{ postgres_instance_team_id }}"
+  numberOfInstances: "{{ postgres_instance_number_of_instances }}"
+  version: "{{ postgres_instance_version }}"
+
+  users:
+    admin:
+      - superuser
+      - createdb
+
+  databases:
+    app: admin
+
+  preparedDatabases: {}
+
+  postgresql:
+    parameters: {}
+
+  volume:
+    size: 1Gi
+
+  additionalVolumes: []
+
+  enableShmVolume: true
+
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      cpu: 500m
+      memory: 500Mi
+
+  patroni:
+    failsafe_mode: false
+    initdb:
+      encoding: "UTF8"
+      locale: "en_US.UTF-8"
+      data-checksums: "true"
+    ttl: 30
+    loop_wait: 10
+    retry_timeout: 10
+    synchronous_mode: false
+    synchronous_mode_strict: false
+    synchronous_node_count: 1
+    maximum_lag_on_failover: 33554432
+
+  enableMasterLoadBalancer: false
+  enableReplicaLoadBalancer: false
+
+  enableConnectionPooler: false
+  enableReplicaConnectionPooler: false
+  enableMasterPoolerLoadBalancer: false
+  enableReplicaPoolerLoadBalancer: false
+  connectionPooler: {}
+
+  allowedSourceRanges: []
+
+  tls:
+    secretName: ""
+    certificateFile: "tls.crt"
+    privateKeyFile: "tls.key"
+    caFile: ""
+    caSecretName: ""
+
+  enableLogicalBackup: false
+  logicalBackupSchedule: "30 00 * * *"
+
+  initContainers: []
+  sidecars: []
+
+  podAnnotations: {}
+  serviceAnnotations: {}
+  podPriorityClassName: ""
+  tolerations: []
+  nodeAffinity: {}
+
+  env: []
+
+  postgresTeams: []
+
+# @var postgres_instance_values_override
+# @var postgres_instance_values_override:type: dict
+# @var postgres_instance_values_override:description: >
+# Overrides for default values
+# @var postgres_instance_values_override:example: >
+#  postgres_instance_values_override:
+#    numberOfInstances: 3
+#    users:
+#      app_user:
+#        - createdb
+#    databases:
+#      mydb: app_user
+#    volume:
+#      size: 10Gi
+#      storageClass: fast-ssd
+postgres_instance_values_override: {}

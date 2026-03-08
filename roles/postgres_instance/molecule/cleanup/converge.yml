@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    postgres_instance_enabled: false
+    postgres_instance_namespace: "postgres-instance"
+  tasks:
+    - name: "Cleanup PostgreSQL instance"
+      ansible.builtin.import_role:
+        name: "postgres_instance"

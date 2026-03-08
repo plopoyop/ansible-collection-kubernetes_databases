@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Install PostgreSQL instance"
+      ansible.builtin.import_role:
+        name: "postgres_instance"
