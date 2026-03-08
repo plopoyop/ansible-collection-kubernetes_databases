@@ -1,0 +1,106 @@
+---
+name: "{{ postgres_instance.name }}"
+teamId: "{{ postgres_instance.teamId }}"
+numberOfInstances: {{ postgres_instance.numberOfInstances }}
+version: "{{ postgres_instance.version }}"
+
+users: {{ postgres_instance.users | to_json }}
+
+databases: {{ postgres_instance.databases | to_json }}
+
+{% if postgres_instance.preparedDatabases != {} %}
+preparedDatabases: {{ postgres_instance.preparedDatabases | to_json }}
+{% endif %}
+
+postgresql:
+  parameters: {{ postgres_instance.postgresql.parameters | to_json }}
+
+volume:
+  size: {{ postgres_instance.volume.size }}
+{% if postgres_instance.volume.storageClass is defined %}
+  storageClass: "{{ postgres_instance.volume.storageClass }}"
+{% endif %}
+{% if postgres_instance.volume.iops is defined %}
+  iops: {{ postgres_instance.volume.iops }}
+{% endif %}
+{% if postgres_instance.volume.throughput is defined %}
+  throughput: {{ postgres_instance.volume.throughput }}
+{% endif %}
+
+{% if postgres_instance.additionalVolumes | length > 0 %}
+additionalVolumes: {{ postgres_instance.additionalVolumes | to_json }}
+{% endif %}
+
+enableShmVolume: {{ postgres_instance.enableShmVolume | lower }}
+
+resources: {{ postgres_instance.resources | to_json }}
+
+patroni: {{ postgres_instance.patroni | to_json }}
+
+enableMasterLoadBalancer: {{ postgres_instance.enableMasterLoadBalancer | lower }}
+enableReplicaLoadBalancer: {{ postgres_instance.enableReplicaLoadBalancer | lower }}
+
+enableConnectionPooler: {{ postgres_instance.enableConnectionPooler | lower }}
+enableReplicaConnectionPooler: {{ postgres_instance.enableReplicaConnectionPooler | lower }}
+enableMasterPoolerLoadBalancer: {{ postgres_instance.enableMasterPoolerLoadBalancer | lower }}
+enableReplicaPoolerLoadBalancer: {{ postgres_instance.enableReplicaPoolerLoadBalancer | lower }}
+
+{% if postgres_instance.connectionPooler != {} %}
+connectionPooler: {{ postgres_instance.connectionPooler | to_json }}
+{% endif %}
+
+{% if postgres_instance.allowedSourceRanges | length > 0 %}
+allowedSourceRanges: {{ postgres_instance.allowedSourceRanges | to_json }}
+{% endif %}
+
+{% if postgres_instance.tls.secretName != "" %}
+tls: {{ postgres_instance.tls | to_json }}
+{% endif %}
+
+{% if postgres_instance.enableLogicalBackup %}
+enableLogicalBackup: true
+logicalBackupSchedule: "{{ postgres_instance.logicalBackupSchedule }}"
+{% if postgres_instance.logicalBackupRetention is defined %}
+logicalBackupRetention: "{{ postgres_instance.logicalBackupRetention }}"
+{% endif %}
+{% endif %}
+
+{% if postgres_instance.dockerImage is defined %}
+dockerImage: "{{ postgres_instance.dockerImage }}"
+{% endif %}
+
+{% if postgres_instance.initContainers | length > 0 %}
+initContainers: {{ postgres_instance.initContainers | to_json }}
+{% endif %}
+
+{% if postgres_instance.sidecars | length > 0 %}
+sidecars: {{ postgres_instance.sidecars | to_json }}
+{% endif %}
+
+{% if postgres_instance.podAnnotations != {} %}
+podAnnotations: {{ postgres_instance.podAnnotations | to_json }}
+{% endif %}
+
+{% if postgres_instance.serviceAnnotations != {} %}
+serviceAnnotations: {{ postgres_instance.serviceAnnotations | to_json }}
+{% endif %}
+
+{% if postgres_instance.podPriorityClassName != "" %}
+podPriorityClassName: "{{ postgres_instance.podPriorityClassName }}"
+{% endif %}
+
+{% if postgres_instance.tolerations | length > 0 %}
+tolerations: {{ postgres_instance.tolerations | to_json }}
+{% endif %}
+
+{% if postgres_instance.nodeAffinity != {} %}
+nodeAffinity: {{ postgres_instance.nodeAffinity | to_json }}
+{% endif %}
+
+{% if postgres_instance.env | length > 0 %}
+env: {{ postgres_instance.env | to_json }}
+{% endif %}
+
+{% if postgres_instance.postgresTeams | length > 0 %}
+postgresTeams: {{ postgres_instance.postgresTeams | to_json }}
+{% endif %}

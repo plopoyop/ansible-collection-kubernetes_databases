@@ -1,0 +1,31 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'postgres' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "postgres"
+      register: namespace_postgres
+
+    - name: "Assert that 'postgres' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_postgres['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'postgres-database' postgresql resource info."
+      kubernetes.core.k8s_info:
+        kind: "StatefulSet"
+        name: "postgres-database"
+        namespace: "postgres"
+      register: stateful_set
+
+    - name: "Assert that 'postgres-database' statefulset is deployed"
+      ansible.builtin.assert:
+        that: stateful_set['resources'] | length > 0

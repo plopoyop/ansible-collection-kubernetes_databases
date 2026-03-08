@@ -1,0 +1,15 @@
+---
+- name: "Create updated value"
+  ansible.utils.update_fact:
+    updates:
+      - path: postgres_instance["{{ value_to_update.key }}"]
+        value: "{{ value_to_update.value }}"
+      - path: postgres_instance["updated"]
+        value: true
+  register: postgres_updated_instance
+  changed_when: false
+
+- name: "Update instance"
+  ansible.builtin.set_fact:
+    postgres_instance: "{{ postgres_updated_instance.postgres_instance }}"
+  changed_when: false

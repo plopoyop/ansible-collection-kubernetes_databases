@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to install PostgreSQL instances on kubernetes cluster.
+# It deploys PostgreSQL instances using the Zalando Postgres Operator CRDs via a helm chart.
+# @end
+galaxy_info:
+  description: Install PostgreSQL instance
+  role_name: postgres_instance
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - postgresql
+    - postgres
+
+dependencies: []

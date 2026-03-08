@@ -1,0 +1,8 @@
+---
+- name: "Setup PostgreSQL instance"
+  ansible.builtin.include_tasks: setup.yml
+  when: postgres_instance_enabled
+
+- name: "Cleanup PostgreSQL instance"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not postgres_instance_enabled

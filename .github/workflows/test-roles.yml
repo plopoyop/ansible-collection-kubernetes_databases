@@ -35,3 +35,7 @@ jobs:
     uses: ./.github/workflows/test-role.yaml
     with:
       role_name: "postgres_operator"
+  postgres_instance:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "postgres_instance"

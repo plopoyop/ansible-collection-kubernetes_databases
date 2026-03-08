@@ -36,6 +36,7 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 | MongoDb for Kubernetes | v1.7.0            | [View README](roles/mongodb_instance/README.md) |
 | MongoDb Instance | v0.2.3            | [View README](roles/mongodb_instance/README.md) |
 | Postgres Operator | v1.15.1            | [View README](roles/postgres_operator/README.md) |
+| Postgres Instance | v0.1.0             | [View README](roles/postgres_instance/README.md) |
 
 
 ## Usage

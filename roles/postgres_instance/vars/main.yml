@@ -1,0 +1,4 @@
+---
+postgres_instance_crd_helm_repo_name: "plopoyop"
+postgres_instance_crd_helm_repo_url: "https://plopoyop.github.io/charts"
+postgres_instance_crd_helm_chart_ref: "{{ postgres_instance_crd_helm_repo_name }}/postgresql-instance"
