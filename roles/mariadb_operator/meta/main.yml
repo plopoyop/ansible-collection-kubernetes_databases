@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to install the MariaDB Operator on a Kubernetes cluster.
+# It installs the operator CRDs and operator via their helm charts.
+# @end
+galaxy_info:
+  description: Install MariaDB Operator
+  role_name: mariadb_operator
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - mariadb
+    - operator
+
+dependencies: []

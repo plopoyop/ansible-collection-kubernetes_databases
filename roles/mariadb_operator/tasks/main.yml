@@ -1,0 +1,8 @@
+---
+- name: "Setup MariaDB Operator"
+  ansible.builtin.include_tasks: setup.yml
+  when: mariadb_operator_crds_enabled or mariadb_operator_enabled
+
+- name: "Cleanup MariaDB Operator"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not mariadb_operator_crds_enabled and not mariadb_operator_enabled

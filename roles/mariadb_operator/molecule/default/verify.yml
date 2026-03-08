@@ -1,0 +1,31 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'mariadb-operator' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "mariadb-operator"
+      register: namespace_mariadb_operator
+
+    - name: "Assert that 'mariadb-operator' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_mariadb_operator['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'mariadb-operator' deployment info."
+      kubernetes.core.k8s_info:
+        kind: "Deployment"
+        name: "mariadb-operator"
+        namespace: "mariadb-operator"
+      register: operator_deployment
+
+    - name: "Assert that 'mariadb-operator' is deployed"
+      ansible.builtin.assert:
+        that: operator_deployment['resources'][0]['status']['availableReplicas'] == 1

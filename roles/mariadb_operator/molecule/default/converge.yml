@@ -1,0 +1,15 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    mariadb_operator_resources:
+      requests:
+        cpu: 10m
+        memory: 32Mi
+
+  tasks:
+    - name: "Install MariaDB operator"
+      ansible.builtin.import_role:
+        name: "mariadb_operator"

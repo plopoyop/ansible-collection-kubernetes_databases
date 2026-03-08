@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    mariadb_operator_enabled: false
+  tasks:
+    - name: "Cleanup MariaDB operator"
+      ansible.builtin.import_role:
+        name: "mariadb_operator"
