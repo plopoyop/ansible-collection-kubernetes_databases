@@ -31,6 +31,16 @@
         "helm"
       ],
       "matchPackageNames": [
+        "postgresql-instance"
+      ],
+      "registryUrls": [
+        "https://plopoyop.github.io/charts"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
         "postgres-operator"
       ],
       "registryUrls": [
@@ -135,6 +145,31 @@
       ],
       "depNameTemplate": "postgres-operator-ui",
       "autoReplaceStringTemplate": "postgres_operator_ui_helm_chart_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/postgres_instance/defaults/main.yml$/",
+        "/roles/postgres_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "postgres_instance_crd_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "postgresql-instance",
+      "autoReplaceStringTemplate": "postgres_instance_crd_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Postgres Instance\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "postgresql-instance",
+      "autoReplaceStringTemplate": "Postgres Instance | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]
