@@ -1,12 +1,16 @@
 # Changelog
 
-## [1.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.1.0) (2026-03-07)
+## [1.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.1.0) (2026-03-08)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...1.1.0)
 
 ## 🚀 New Features
 
 - Add Postgres Operator [\#3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/3) ([plopoyop](https://github.com/plopoyop))
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.1.2 → v46.1.3\) [\#4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/4) ([plopoyop](https://github.com/plopoyop))
 
 ## [1.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.0.0) (2026-03-05)
 
