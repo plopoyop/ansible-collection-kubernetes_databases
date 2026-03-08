@@ -16,6 +16,10 @@
       ansible.builtin.import_role:
         name: "mariadb_operator"
 
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 60
+
     - name: "Install MariaDB instance"
       ansible.builtin.import_role:
         name: "mariadb_instance"

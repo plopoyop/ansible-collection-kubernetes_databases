@@ -13,3 +13,12 @@ provisioner:
   env:
     KUBECONFIG: ~/.kube/config-molecule-test
     K8S_AUTH_KUBECONFIG: ~/.kube/config-molecule-test
+
+scenario:
+  name: cleanup
+  test_sequence:
+    - destroy
+    - create
+    - converge
+    - verify
+    - destroy
