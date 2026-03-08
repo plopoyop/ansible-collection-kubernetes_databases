@@ -6,6 +6,7 @@
 
 ## 🚀 New Features
 
+- Add Postgresql instance role [\#6](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/6) ([plopoyop](https://github.com/plopoyop))
 - Add Postgres Operator [\#3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/3) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
