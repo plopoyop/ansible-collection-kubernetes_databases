@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Install MariaDB instance"
+      ansible.builtin.import_role:
+        name: "mariadb_instance"
+      vars:
+        mariadb_instance_values_override:
+          replicas: 1
+          galera_enabled: false

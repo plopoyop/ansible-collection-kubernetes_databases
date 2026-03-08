@@ -1,0 +1,19 @@
+---
+# @meta description: >
+# Role to deploy MariaDB instances on a kubernetes cluster.
+# It deploys MariaDB cluster instances via the mariadb-cluster helm chart using the MariaDB operator.
+# @end
+galaxy_info:
+  description: Deploy MariaDB instances
+  role_name: mariadb_instance
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - mariadb
+
+dependencies: []
