@@ -76,6 +76,16 @@
       "registryUrls": [
         "https://helm.mariadb.com/mariadb-operator"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mariadb-cluster"
+      ],
+      "registryUrls": [
+        "https://helm.mariadb.com/mariadb-operator"
+      ]
     }
   ],
   "customManagers": [
@@ -228,6 +238,31 @@
       ],
       "depNameTemplate": "mariadb-operator",
       "autoReplaceStringTemplate": "MariaDB Operator  | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mariadb_instance/defaults/main.yml$/",
+        "/roles/mariadb_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "mariadb_instance_crd_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mariadb-cluster",
+      "autoReplaceStringTemplate": "mariadb_instance_crd_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "MariaDB Instance\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "mariadb-cluster",
+      "autoReplaceStringTemplate": "MariaDB Instance  | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

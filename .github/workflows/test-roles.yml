@@ -23,6 +23,10 @@ on:
       - flake.lock
 
 jobs:
+  mariadb_instance:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "mariadb_instance"
   mariadb_operator:
     uses: ./.github/workflows/test-role.yaml
     with:
