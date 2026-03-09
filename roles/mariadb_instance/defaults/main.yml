@@ -1,0 +1,77 @@
+---
+# @var mariadb_instance_enabled
+# @var mariadb_instance_enabled:type: boolean
+# @var mariadb_instance_enabled:description: >
+# Should MariaDB Instance helm chart be installed
+mariadb_instance_enabled: true
+
+# @var mariadb_instance_crd_helm_version
+# @var mariadb_instance_crd_helm_version:type: string
+# @var mariadb_instance_crd_helm_version:description: >
+# mariadb instance helm chart version
+mariadb_instance_crd_helm_version: "25.10.4"
+
+# @var mariadb_instance_name
+# @var mariadb_instance_name:type: string
+# @var mariadb_instance_name:description: >
+# mariadb instance helm release name
+mariadb_instance_name: "mariadb-database"
+
+# @var mariadb_instance_namespace
+# @var mariadb_instance_namespace:type: string
+# @var mariadb_instance_namespace:description: >
+# K8s namespace to deploy mariadb instance
+mariadb_instance_namespace: "mariadb"
+
+# @var mariadb_default_instance
+# @var mariadb_default_instance:type: dict
+# @var mariadb_default_instance:description: >
+# default values for helm chart deployment
+mariadb_default_instance:
+  name: "{{ mariadb_instance_name }}"
+  namespace: "{{ mariadb_instance_namespace }}"
+
+  root_password_secret_name: ""
+  root_password_secret_key: "root"
+  root_password_generate: true
+
+  storage_size: "1Gi"
+  replicas: 3
+
+  galera_enabled: true
+
+  databases: []
+  users: []
+  grants: []
+  backups: []
+  physical_backups: []
+
+# @var mariadb_instance_values_override
+# @var mariadb_instance_values_override:type: dict
+# @var mariadb_instance_values_override:description: >
+# Overrides for default values
+# @var mariadb_instance_values_override:example: >
+#  mariadb_instance_values_override:
+#    replicas: 1
+#    galera_enabled: false
+#    databases:
+#      - name: mydb
+#        characterSet: utf8
+#        collate: utf8_general_ci
+#    users:
+#      - name: myuser
+#        passwordSecretKeyRef:
+#          name: myuser-password
+#          key: password
+#          generate: true
+#        maxUserConnections: 20
+#        host: "%"
+#    grants:
+#      - name: myuser-mydb-grant
+#        username: myuser
+#        database: mydb
+#        table: "*"
+#        privileges:
+#          - ALL
+#        grantOption: true
+mariadb_instance_values_override: {}

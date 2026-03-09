@@ -1,0 +1,30 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'mariadb' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "mariadb"
+      register: namespace_mariadb
+
+    - name: "Assert that 'mariadb' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_mariadb['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'mariadb-database' helm release info."
+      kubernetes.core.helm_info:
+        name: "mariadb-database"
+        release_namespace: "mariadb"
+      register: mariadb_release
+
+    - name: "Assert that 'mariadb-database' helm release is deployed"
+      ansible.builtin.assert:
+        that: mariadb_release['status'] is defined

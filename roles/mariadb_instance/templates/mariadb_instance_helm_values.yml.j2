@@ -1,0 +1,36 @@
+---
+mariadb:
+  rootPasswordSecretKeyRef:
+{% if mariadb_instance.root_password_secret_name != "" %}
+    name: "{{ mariadb_instance.root_password_secret_name }}"
+{% endif %}
+    key: "{{ mariadb_instance.root_password_secret_key }}"
+    generate: {{ mariadb_instance.root_password_generate | lower }}
+
+  storage:
+    size: "{{ mariadb_instance.storage_size }}"
+
+  replicas: {{ mariadb_instance.replicas }}
+
+  galera:
+    enabled: {{ mariadb_instance.galera_enabled | lower }}
+
+{% if mariadb_instance.databases | length > 0 %}
+databases: {{ mariadb_instance.databases | to_json }}
+{% endif %}
+
+{% if mariadb_instance.users | length > 0 %}
+users: {{ mariadb_instance.users | to_json }}
+{% endif %}
+
+{% if mariadb_instance.grants | length > 0 %}
+grants: {{ mariadb_instance.grants | to_json }}
+{% endif %}
+
+{% if mariadb_instance.backups | length > 0 %}
+backups: {{ mariadb_instance.backups | to_json }}
+{% endif %}
+
+{% if mariadb_instance.physical_backups | length > 0 %}
+physicalBackups: {{ mariadb_instance.physical_backups | to_json }}
+{% endif %}

@@ -1,0 +1,4 @@
+---
+mariadb_instance_crd_helm_repo_name: "mariadb-operator"
+mariadb_instance_crd_helm_repo_url: "https://helm.mariadb.com/mariadb-operator"
+mariadb_instance_crd_helm_chart_ref: "{{ mariadb_instance_crd_helm_repo_name }}/mariadb-cluster"

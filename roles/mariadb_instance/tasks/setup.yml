@@ -1,0 +1,35 @@
+---
+- name: "Install MariaDB Instance Helm Chart"
+  kubernetes.core.helm_repository:
+    name: "{{ mariadb_instance_crd_helm_repo_name }}"
+    repo_url: "{{ mariadb_instance_crd_helm_repo_url }}"
+    state: "present"
+
+- name: "Init mariadb_instance"
+  ansible.builtin.set_fact:
+    mariadb_instance: "{{ mariadb_default_instance }}"
+  when: not mariadb_instance is defined or mariadb_instance.updated
+
+- name: "Call updating mariadb_instance task"
+  ansible.builtin.include_tasks: update_instance_values.yml
+  loop: "{{ mariadb_instance_values_override | dict2items }}"
+  loop_control:
+    loop_var: value_to_update
+
+- name: "Create MariaDB instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ mariadb_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Create MariaDB instance from helm chart"
+  kubernetes.core.helm:
+    name: "{{ mariadb_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ mariadb_instance_crd_helm_chart_ref }}"
+    chart_version: "{{ mariadb_instance_crd_helm_version }}"
+    namespace: "{{ mariadb_instance_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'mariadb_instance_helm_values.yml.j2') | from_yaml }}"
+    state: "{{ mariadb_instance_state | default('present') }}"
+    force: "{{ mariadb_instance_force_install | default(false) }}"

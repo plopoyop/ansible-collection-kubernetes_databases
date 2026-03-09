@@ -1,0 +1,210 @@
+---
+# @var mariadb_operator_crds_enabled
+# @var mariadb_operator_crds_enabled:type: boolean
+# @var mariadb_operator_crds_enabled:description: >
+# Should MariaDB Operator CRDs helm chart be installed
+mariadb_operator_crds_enabled: true
+
+# @var mariadb_operator_enabled
+# @var mariadb_operator_enabled:type: boolean
+# @var mariadb_operator_enabled:description: >
+# Should MariaDB Operator helm chart be installed
+mariadb_operator_enabled: true
+
+# @var mariadb_operator_namespace
+# @var mariadb_operator_namespace:type: string
+# @var mariadb_operator_namespace:description: >
+# K8s namespace to install the mariadb operator charts
+mariadb_operator_namespace: "mariadb-operator"
+
+# @var mariadb_operator_helm_chart_version
+# @var mariadb_operator_helm_chart_version:type: string
+# @var mariadb_operator_helm_chart_version:description: >
+# Helm chart version to install for the operator
+mariadb_operator_helm_chart_version: "25.10.4"
+
+# @var mariadb_operator_crds_helm_chart_version
+# @var mariadb_operator_crds_helm_chart_version:type: string
+# @var mariadb_operator_crds_helm_chart_version:description: >
+# Helm chart version to install for the CRDs
+mariadb_operator_crds_helm_chart_version: "25.10.4"
+
+# @var mariadb_operator_deployment_name
+# @var mariadb_operator_deployment_name:type: string
+# @var mariadb_operator_deployment_name:description: >
+# Deployment name for mariadb operator chart
+mariadb_operator_deployment_name: "mariadb-operator"
+
+# @var mariadb_operator_crds_deployment_name
+# @var mariadb_operator_crds_deployment_name:type: string
+# @var mariadb_operator_crds_deployment_name:description: >
+# Deployment name for mariadb operator CRDs chart
+mariadb_operator_crds_deployment_name: "mariadb-operator-crds"
+
+# @var mariadb_operator_log_level
+# @var mariadb_operator_log_level:type: string
+# @var mariadb_operator_log_level:description: >
+# Controller log level
+mariadb_operator_log_level: "INFO"
+
+# @var mariadb_operator_cluster_name
+# @var mariadb_operator_cluster_name:type: string
+# @var mariadb_operator_cluster_name:description: >
+# Kubernetes cluster DNS name
+mariadb_operator_cluster_name: "cluster.local"
+
+# @var mariadb_operator_current_namespace_only
+# @var mariadb_operator_current_namespace_only:type: boolean
+# @var mariadb_operator_current_namespace_only:description: >
+# Whether the operator should watch CRDs only in its own namespace
+mariadb_operator_current_namespace_only: false
+
+# @var mariadb_operator_ha_enabled
+# @var mariadb_operator_ha_enabled:type: boolean
+# @var mariadb_operator_ha_enabled:description: >
+# Enable high availability of the controller
+mariadb_operator_ha_enabled: false
+
+# @var mariadb_operator_ha_replicas
+# @var mariadb_operator_ha_replicas:type: int
+# @var mariadb_operator_ha_replicas:description: >
+# Number of replicas for HA mode
+mariadb_operator_ha_replicas: 3
+
+# @var mariadb_operator_metrics_enabled
+# @var mariadb_operator_metrics_enabled:type: boolean
+# @var mariadb_operator_metrics_enabled:description: >
+# Enable operator internal metrics (requires Prometheus)
+mariadb_operator_metrics_enabled: false
+
+# @var mariadb_operator_webhook_enabled
+# @var mariadb_operator_webhook_enabled:type: boolean
+# @var mariadb_operator_webhook_enabled:description: >
+# Enable the webhook server for CRD validation
+mariadb_operator_webhook_enabled: true
+
+# @var mariadb_operator_webhook_cert_manager_enabled
+# @var mariadb_operator_webhook_cert_manager_enabled:type: boolean
+# @var mariadb_operator_webhook_cert_manager_enabled:description: >
+# Use cert-manager to issue and rotate webhook certificates.
+# If false, mariadb-operator cert-controller will be used instead
+mariadb_operator_webhook_cert_manager_enabled: false
+
+# @var mariadb_operator_webhook_ha_enabled
+# @var mariadb_operator_webhook_ha_enabled:type: boolean
+# @var mariadb_operator_webhook_ha_enabled:description: >
+# Enable high availability for the webhook
+mariadb_operator_webhook_ha_enabled: false
+
+# @var mariadb_operator_webhook_ha_replicas
+# @var mariadb_operator_webhook_ha_replicas:type: int
+# @var mariadb_operator_webhook_ha_replicas:description: >
+# Number of webhook replicas for HA mode
+mariadb_operator_webhook_ha_replicas: 3
+
+# @var mariadb_operator_webhook_resources
+# @var mariadb_operator_webhook_resources:type: dict
+# @var mariadb_operator_webhook_resources:description: >
+# Resources for webhook container
+# @var mariadb_operator_webhook_resources:example: >
+# mariadb_operator_webhook_resources:
+#   requests:
+#     cpu: 10m
+#     memory: 32Mi
+mariadb_operator_webhook_resources: {}
+
+# @var mariadb_operator_cert_controller_enabled
+# @var mariadb_operator_cert_controller_enabled:type: boolean
+# @var mariadb_operator_cert_controller_enabled:description: >
+# Enable the cert-controller for TLS certificate provisioning
+mariadb_operator_cert_controller_enabled: true
+
+# @var mariadb_operator_cert_controller_ha_enabled
+# @var mariadb_operator_cert_controller_ha_enabled:type: boolean
+# @var mariadb_operator_cert_controller_ha_enabled:description: >
+# Enable high availability for the cert-controller
+mariadb_operator_cert_controller_ha_enabled: false
+
+# @var mariadb_operator_cert_controller_ha_replicas
+# @var mariadb_operator_cert_controller_ha_replicas:type: int
+# @var mariadb_operator_cert_controller_ha_replicas:description: >
+# Number of cert-controller replicas for HA mode
+mariadb_operator_cert_controller_ha_replicas: 3
+
+# @var mariadb_operator_cert_controller_resources
+# @var mariadb_operator_cert_controller_resources:type: dict
+# @var mariadb_operator_cert_controller_resources:description: >
+# Resources for cert-controller container
+# @var mariadb_operator_cert_controller_resources:example: >
+# mariadb_operator_cert_controller_resources:
+#   requests:
+#     cpu: 10m
+#     memory: 32Mi
+mariadb_operator_cert_controller_resources: {}
+
+# @var mariadb_operator_resources
+# @var mariadb_operator_resources:type: dict
+# @var mariadb_operator_resources:description: >
+# Resources for operator controller container
+# @var mariadb_operator_resources:example: >
+# mariadb_operator_resources:
+#   requests:
+#     cpu: 10m
+#     memory: 32Mi
+mariadb_operator_resources: {}
+
+# @var mariadb_operator_pod_security_context
+# @var mariadb_operator_pod_security_context:type: dict
+# @var mariadb_operator_pod_security_context:description: >
+# Security context for operator pod
+mariadb_operator_pod_security_context: {}
+
+# @var mariadb_operator_security_context
+# @var mariadb_operator_security_context:type: dict
+# @var mariadb_operator_security_context:description: >
+# Security context for operator container
+mariadb_operator_security_context: {}
+
+# @var mariadb_operator_node_selector
+# @var mariadb_operator_node_selector:type: dict
+# @var mariadb_operator_node_selector:description: >
+# Node selectors for operator pod
+mariadb_operator_node_selector: {}
+
+# @var mariadb_operator_tolerations
+# @var mariadb_operator_tolerations:type: list
+# @var mariadb_operator_tolerations:description: >
+# Tolerations for operator pod
+mariadb_operator_tolerations: []
+
+# @var mariadb_operator_affinity
+# @var mariadb_operator_affinity:type: dict
+# @var mariadb_operator_affinity:description: >
+# Affinity for operator pod
+mariadb_operator_affinity: {}
+
+# @var mariadb_operator_pdb_enabled
+# @var mariadb_operator_pdb_enabled:type: boolean
+# @var mariadb_operator_pdb_enabled:description: >
+# Enable PodDisruptionBudget for the controller
+mariadb_operator_pdb_enabled: false
+
+# @var mariadb_operator_pdb_max_unavailable
+# @var mariadb_operator_pdb_max_unavailable:type: int
+# @var mariadb_operator_pdb_max_unavailable:description: >
+# Maximum number of unavailable pods
+mariadb_operator_pdb_max_unavailable: 1
+
+# @var mariadb_operator_extra_envs
+# @var mariadb_operator_extra_envs:type: list
+# @var mariadb_operator_extra_envs:description: >
+# Additional environment variables for the operator pod
+mariadb_operator_extra_envs: []
+
+# @var mariadb_operator_additional_helm_values
+# @var mariadb_operator_additional_helm_values:type: dict
+# @var mariadb_operator_additional_helm_values:description: >
+# Additional Helm chart values to merge with the generated values.
+# Use this to configure any chart option not exposed as a dedicated variable.
+# ref: https://github.com/mariadb-operator/mariadb-operator/blob/main/deploy/charts/mariadb-operator/values.yaml
+mariadb_operator_additional_helm_values: {}

@@ -1,0 +1,23 @@
+---
+- name: "Uninstall MariaDB Instance helm package"
+  kubernetes.core.helm:
+    name: "{{ mariadb_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ mariadb_instance_crd_helm_chart_ref }}"
+    chart_version: "{{ mariadb_instance_crd_helm_version }}"
+    namespace: "{{ mariadb_instance_namespace }}"
+    state: "absent"
+    wait: true
+
+- name: "Remove MariaDB Instance helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ mariadb_instance_crd_helm_repo_name }}"
+    repo_url: "{{ mariadb_instance_crd_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove MariaDB Instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ mariadb_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

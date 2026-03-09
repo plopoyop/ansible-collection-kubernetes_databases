@@ -1,0 +1,15 @@
+---
+- name: "Create updated value"
+  ansible.utils.update_fact:
+    updates:
+      - path: mariadb_instance["{{ value_to_update.key }}"]
+        value: "{{ value_to_update.value }}"
+      - path: mariadb_instance["updated"]
+        value: true
+  register: mariadb_updated_instance
+  changed_when: false
+
+- name: "Update instance"
+  ansible.builtin.set_fact:
+    mariadb_instance: "{{ mariadb_updated_instance.mariadb_instance }}"
+  changed_when: false

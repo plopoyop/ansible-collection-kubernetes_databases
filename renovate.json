@@ -56,6 +56,36 @@
       "registryUrls": [
         "https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mariadb-operator"
+      ],
+      "registryUrls": [
+        "https://helm.mariadb.com/mariadb-operator"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mariadb-operator-crds"
+      ],
+      "registryUrls": [
+        "https://helm.mariadb.com/mariadb-operator"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "mariadb-cluster"
+      ],
+      "registryUrls": [
+        "https://helm.mariadb.com/mariadb-operator"
+      ]
     }
   ],
   "customManagers": [
@@ -170,6 +200,69 @@
       ],
       "depNameTemplate": "postgresql-instance",
       "autoReplaceStringTemplate": "Postgres Instance | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mariadb_operator/defaults/main.yml$/",
+        "/roles/mariadb_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "mariadb_operator_helm_chart_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mariadb-operator",
+      "autoReplaceStringTemplate": "mariadb_operator_helm_chart_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mariadb_operator/defaults/main.yml$/",
+        "/roles/mariadb_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "mariadb_operator_crds_helm_chart_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mariadb-operator-crds",
+      "autoReplaceStringTemplate": "mariadb_operator_crds_helm_chart_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "MariaDB Operator\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "mariadb-operator",
+      "autoReplaceStringTemplate": "MariaDB Operator  | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/mariadb_instance/defaults/main.yml$/",
+        "/roles/mariadb_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "mariadb_instance_crd_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "mariadb-cluster",
+      "autoReplaceStringTemplate": "mariadb_instance_crd_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "MariaDB Instance\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "mariadb-cluster",
+      "autoReplaceStringTemplate": "MariaDB Instance  | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

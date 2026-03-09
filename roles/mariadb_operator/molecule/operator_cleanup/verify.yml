@@ -1,0 +1,51 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 60
+
+    - name: "Get 'mariadb-operator' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "mariadb-operator"
+      register: namespace_mariadb_operator
+
+    - name: "Assert that 'mariadb-operator' namespace still exists"
+      ansible.builtin.assert:
+        that: namespace_mariadb_operator['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'mariadb-operator' deployment info."
+      kubernetes.core.k8s_info:
+        kind: "Deployment"
+        name: "mariadb-operator"
+        namespace: "mariadb-operator"
+      register: operator_deployment
+
+    - name: "Assert that 'mariadb-operator' deployment is removed"
+      ansible.builtin.assert:
+        that: operator_deployment['resources'] | length == 0
+
+    - name: "Check that MariaDB CRDs still exist"
+      kubernetes.core.k8s_info:
+        kind: "CustomResourceDefinition"
+        name: "mariadbs.k8s.mariadb.com"
+      register: mariadb_crd
+
+    - name: "Assert that MariaDB CRD is preserved"
+      ansible.builtin.assert:
+        that: mariadb_crd['resources'] | length > 0
+
+    - name: "Get CRDs helm release info."
+      kubernetes.core.helm_info:
+        name: "mariadb-operator-crds"
+        release_namespace: "mariadb-operator"
+      register: crds_release
+
+    - name: "Assert that CRDs helm release is still present"
+      ansible.builtin.assert:
+        that: crds_release['status'] is defined

@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    mariadb_instance_enabled: false
+    mariadb_instance_namespace: "mariadb"
+  tasks:
+    - name: "Uninstall MariaDB instance"
+      ansible.builtin.import_role:
+        name: "mariadb_instance"

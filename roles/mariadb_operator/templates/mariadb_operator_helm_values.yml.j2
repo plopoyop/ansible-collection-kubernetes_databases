@@ -1,0 +1,67 @@
+---
+crds:
+  enabled: false
+
+logLevel: "{{ mariadb_operator_log_level }}"
+clusterName: "{{ mariadb_operator_cluster_name }}"
+currentNamespaceOnly: {{ mariadb_operator_current_namespace_only | lower }}
+
+ha:
+  enabled: {{ mariadb_operator_ha_enabled | lower }}
+{% if mariadb_operator_ha_enabled %}
+  replicas: {{ mariadb_operator_ha_replicas }}
+{% endif %}
+
+metrics:
+  enabled: {{ mariadb_operator_metrics_enabled | lower }}
+
+resources: {{ mariadb_operator_resources | ansible.builtin.to_json }}
+
+{% if mariadb_operator_pod_security_context != {} %}
+podSecurityContext: {{ mariadb_operator_pod_security_context | ansible.builtin.to_json }}
+{% endif %}
+
+{% if mariadb_operator_security_context != {} %}
+securityContext: {{ mariadb_operator_security_context | ansible.builtin.to_json }}
+{% endif %}
+
+{% if mariadb_operator_node_selector != {} %}
+nodeSelector: {{ mariadb_operator_node_selector | ansible.builtin.to_json }}
+{% endif %}
+
+{% if mariadb_operator_tolerations | length > 0 %}
+tolerations: {{ mariadb_operator_tolerations | ansible.builtin.to_json }}
+{% endif %}
+
+{% if mariadb_operator_affinity != {} %}
+affinity: {{ mariadb_operator_affinity | ansible.builtin.to_json }}
+{% endif %}
+
+pdb:
+  enabled: {{ mariadb_operator_pdb_enabled | lower }}
+  maxUnavailable: {{ mariadb_operator_pdb_max_unavailable }}
+
+webhook:
+  enabled: {{ mariadb_operator_webhook_enabled | lower }}
+  ha:
+    enabled: {{ mariadb_operator_webhook_ha_enabled | lower }}
+    replicas: {{ mariadb_operator_webhook_ha_replicas }}
+  cert:
+    certManager:
+      enabled: {{ mariadb_operator_webhook_cert_manager_enabled | lower }}
+  resources: {{ mariadb_operator_webhook_resources | ansible.builtin.to_json }}
+
+certController:
+  enabled: {{ mariadb_operator_cert_controller_enabled | lower }}
+  ha:
+    enabled: {{ mariadb_operator_cert_controller_ha_enabled | lower }}
+    replicas: {{ mariadb_operator_cert_controller_ha_replicas }}
+  resources: {{ mariadb_operator_cert_controller_resources | ansible.builtin.to_json }}
+
+{% if mariadb_operator_extra_envs | length > 0 %}
+extraEnv: {{ mariadb_operator_extra_envs | ansible.builtin.to_json }}
+{% endif %}
+
+{% for key, value in mariadb_operator_additional_helm_values.items() %}
+{{ key }}: {{ value | to_yaml }}
+{% endfor %}

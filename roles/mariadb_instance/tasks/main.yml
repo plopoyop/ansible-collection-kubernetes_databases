@@ -1,0 +1,8 @@
+---
+- name: "Setup MariaDB instance"
+  ansible.builtin.include_tasks: setup.yml
+  when: mariadb_instance_enabled
+
+- name: "Cleanup MariaDB instance"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not mariadb_instance_enabled
