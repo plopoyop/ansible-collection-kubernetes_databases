@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.1.0) (2026-03-09)
+## [Unreleased](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/HEAD)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...1.1.0)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...HEAD)
 
 ## 🚀 New Features
 
+- add MariaDB roles [\#7](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/7) ([plopoyop](https://github.com/plopoyop))
 - Add Postgresql instance role [\#6](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/6) ([plopoyop](https://github.com/plopoyop))
 - Add Postgres Operator [\#3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/3) ([plopoyop](https://github.com/plopoyop))
 
@@ -13,10 +14,6 @@
 
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.2.0 → v26.3.0\) [\#5](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/5) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.2 → v46.1.3\) [\#4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/4) ([plopoyop](https://github.com/plopoyop))
-
-**Merged pull requests:**
-
-- add MariaDB roles [\#7](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/7) ([plopoyop](https://github.com/plopoyop))
 
 ## [1.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.0.0) (2026-03-05)
 
