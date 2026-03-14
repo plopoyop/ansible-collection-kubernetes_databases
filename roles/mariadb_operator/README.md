@@ -283,7 +283,7 @@ Helm chart version to install for the operator
 #### Default value
 
 ```YAML
-mariadb_operator_helm_chart_version: 25.10.4
+mariadb_operator_helm_chart_version: 26.3.0
 ```
 
 ### mariadb_operator_helm_repo_name
