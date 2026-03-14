@@ -9,7 +9,7 @@ mariadb_instance_enabled: true
 # @var mariadb_instance_crd_helm_version:type: string
 # @var mariadb_instance_crd_helm_version:description: >
 # mariadb instance helm chart version
-mariadb_instance_crd_helm_version: "25.10.4"
+mariadb_instance_crd_helm_version: 26.3.0
 
 # @var mariadb_instance_name
 # @var mariadb_instance_name:type: string
