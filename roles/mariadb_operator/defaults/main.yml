@@ -27,7 +27,7 @@ mariadb_operator_helm_chart_version: "25.10.4"
 # @var mariadb_operator_crds_helm_chart_version:type: string
 # @var mariadb_operator_crds_helm_chart_version:description: >
 # Helm chart version to install for the CRDs
-mariadb_operator_crds_helm_chart_version: "25.10.4"
+mariadb_operator_crds_helm_chart_version: 26.3.0
 
 # @var mariadb_operator_deployment_name
 # @var mariadb_operator_deployment_name:type: string
