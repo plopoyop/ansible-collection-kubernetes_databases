@@ -1,8 +1,8 @@
 # Changelog
 
-## [1.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.1.0) (2026-03-12)
+## [2.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.0) (2026-03-15)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...1.1.0)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...2.0.0)
 
 ## 🚀 New Features
 
@@ -12,6 +12,7 @@
 
 ## ⚙️ Dependencies
 
+- feat\(helm\)!: Update chart mariadb-operator-crds \(25.10.4 → 26.3.0\) [\#11](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/11) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.3 → v46.1.4\) [\#8](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/8) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.2.0 → v26.3.0\) [\#5](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/5) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.2 → v46.1.3\) [\#4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/4) ([plopoyop](https://github.com/plopoyop))
