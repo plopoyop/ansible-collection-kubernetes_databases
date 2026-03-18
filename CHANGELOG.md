@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.0) (2026-03-15)
+## [2.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.0) (2026-03-18)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/1.0.0...2.0.0)
 
@@ -18,6 +18,10 @@
 - fix\(ci\): update renovatebot/github-action action \(v46.1.3 → v46.1.4\) [\#8](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/8) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update pre-commit hook ansible/ansible-lint \(v26.2.0 → v26.3.0\) [\#5](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/5) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.2 → v46.1.3\) [\#4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/4) ([plopoyop](https://github.com/plopoyop))
+
+**Merged pull requests:**
+
+- fix\(deps\): update kubectl \(1.35.0 → 1.35.2\) [\#12](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/12) ([plopoyop](https://github.com/plopoyop))
 
 ## [1.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/1.0.0) (2026-03-05)
 
