@@ -1,12 +1,16 @@
 # Changelog
 
-## [2.0.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.1) (2026-03-26)
+## [2.0.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.1) (2026-03-27)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/2.0.0...2.0.1)
 
 ## ⚙️ Dependencies
 
 - fix\(ci\): update renovatebot/github-action action \(v46.1.5 → v46.1.6\) [\#15](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/15) ([plopoyop](https://github.com/plopoyop))
+
+**Merged pull requests:**
+
+- fix\(deps\): update kubectl \(1.35.2 → 1.35.3\) [\#16](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/16) ([plopoyop](https://github.com/plopoyop))
 
 ## [2.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.0.0) (2026-03-24)
 
