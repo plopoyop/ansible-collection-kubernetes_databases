@@ -137,7 +137,7 @@ Helm chart version to install
 #### Default value
 
 ```YAML
-mongodb_operator_helm_version: 1.7.0
+mongodb_operator_helm_version: 1.8.0
 ```
 
 ### mongodb_operator_memory_limit
