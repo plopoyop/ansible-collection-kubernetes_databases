@@ -1,0 +1,30 @@
+---
+- name: "Validate redis_instance_mode"
+  ansible.builtin.assert:
+    that:
+      - redis_instance_mode in redis_instance_chart_map
+    fail_msg: "redis_instance_mode must be one of: standalone, replication, cluster, sentinel. Got: {{ redis_instance_mode }}"
+
+- name: "Add Redis Helm repository"
+  kubernetes.core.helm_repository:
+    name: "{{ redis_instance_helm_repo_name }}"
+    repo_url: "{{ redis_instance_helm_repo_url }}"
+    state: "present"
+
+- name: "Create Redis instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ redis_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Install Redis instance from helm chart"
+  kubernetes.core.helm:
+    name: "{{ redis_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ redis_instance_chart_map[redis_instance_mode].chart_ref }}"
+    chart_version: "{{ redis_instance_chart_map[redis_instance_mode].chart_version }}"
+    namespace: "{{ redis_instance_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', redis_instance_chart_map[redis_instance_mode].template) | from_yaml }}"
+    state: "{{ redis_instance_state | default('present') }}"
+    force: "{{ redis_instance_force_install | default(false) }}"

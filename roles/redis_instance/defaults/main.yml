@@ -1,0 +1,358 @@
+---
+# @var redis_instance_enabled
+# @var redis_instance_enabled:type: boolean
+# @var redis_instance_enabled:description: >
+# Should Redis instance helm chart be installed
+redis_instance_enabled: true
+
+# @var redis_instance_name
+# @var redis_instance_name:type: string
+# @var redis_instance_name:description: >
+# Redis instance helm release name
+redis_instance_name: "redis"
+
+# @var redis_instance_namespace
+# @var redis_instance_namespace:type: string
+# @var redis_instance_namespace:description: >
+# K8s namespace to deploy Redis instance
+redis_instance_namespace: "redis"
+
+# @var redis_instance_mode
+# @var redis_instance_mode:type: string
+# @var redis_instance_mode:description: >
+# Redis deployment mode. Must be one of: standalone, replication, cluster, sentinel
+redis_instance_mode: "standalone"
+
+# Chart versions per mode
+# @var redis_instance_standalone_helm_version
+# @var redis_instance_standalone_helm_version:type: string
+# @var redis_instance_standalone_helm_version:description: >
+# Helm chart version for standalone mode
+redis_instance_standalone_helm_version: "0.16.9"
+
+# @var redis_instance_replication_helm_version
+# @var redis_instance_replication_helm_version:type: string
+# @var redis_instance_replication_helm_version:description: >
+# Helm chart version for replication mode
+redis_instance_replication_helm_version: "0.17.0"
+
+# @var redis_instance_cluster_helm_version
+# @var redis_instance_cluster_helm_version:type: string
+# @var redis_instance_cluster_helm_version:description: >
+# Helm chart version for cluster mode
+redis_instance_cluster_helm_version: "0.17.4"
+
+# @var redis_instance_sentinel_helm_version
+# @var redis_instance_sentinel_helm_version:type: string
+# @var redis_instance_sentinel_helm_version:description: >
+# Helm chart version for sentinel mode
+redis_instance_sentinel_helm_version: "0.16.12"
+
+# Common configuration (shared across all modes)
+# @var redis_instance_image
+# @var redis_instance_image:type: string
+# @var redis_instance_image:description: >
+# Redis image repository
+redis_instance_image: "quay.io/opstree/redis"
+
+# @var redis_instance_tag
+# @var redis_instance_tag:type: string
+# @var redis_instance_tag:description: >
+# Redis image tag
+redis_instance_tag: "v7.0.15"
+
+# @var redis_instance_image_pull_policy
+# @var redis_instance_image_pull_policy:type: string
+# @var redis_instance_image_pull_policy:description: >
+# Image pull policy
+redis_instance_image_pull_policy: "IfNotPresent"
+
+# @var redis_instance_secret_name
+# @var redis_instance_secret_name:type: string
+# @var redis_instance_secret_name:description: >
+# Secret name for Redis password
+redis_instance_secret_name: ""
+
+# @var redis_instance_secret_key
+# @var redis_instance_secret_key:type: string
+# @var redis_instance_secret_key:description: >
+# Secret key for Redis password
+redis_instance_secret_key: ""
+
+# @var redis_instance_service_type
+# @var redis_instance_service_type:type: string
+# @var redis_instance_service_type:description: >
+# Kubernetes service type (ClusterIP, NodePort, LoadBalancer)
+redis_instance_service_type: "ClusterIP"
+
+# @var redis_instance_resources
+# @var redis_instance_resources:type: dict
+# @var redis_instance_resources:description: >
+# Resource requests and limits
+redis_instance_resources: {}
+
+# @var redis_instance_cluster_size
+# @var redis_instance_cluster_size:type: int
+# @var redis_instance_cluster_size:description: >
+# Number of replicas (used in replication, cluster, sentinel modes)
+redis_instance_cluster_size: 3
+
+# @var redis_instance_labels
+# @var redis_instance_labels:type: dict
+# @var redis_instance_labels:description: >
+# Additional labels
+redis_instance_labels: {}
+
+# @var redis_instance_annotations
+# @var redis_instance_annotations:type: dict
+# @var redis_instance_annotations:description: >
+# Additional annotations
+redis_instance_annotations: {}
+
+# Storage configuration
+# @var redis_instance_storage_class
+# @var redis_instance_storage_class:type: string
+# @var redis_instance_storage_class:description: >
+# Storage class for persistent volume
+redis_instance_storage_class: ""
+
+# @var redis_instance_storage_size
+# @var redis_instance_storage_size:type: string
+# @var redis_instance_storage_size:description: >
+# Storage size for persistent volume
+redis_instance_storage_size: "1Gi"
+
+# @var redis_instance_storage_access_modes
+# @var redis_instance_storage_access_modes:type: list
+# @var redis_instance_storage_access_modes:description: >
+# Access modes for persistent volume
+redis_instance_storage_access_modes:
+  - "ReadWriteOnce"
+
+# External config
+# @var redis_instance_external_config_enabled
+# @var redis_instance_external_config_enabled:type: boolean
+# @var redis_instance_external_config_enabled:description: >
+# Enable external Redis configuration
+redis_instance_external_config_enabled: false
+
+# @var redis_instance_external_config_data
+# @var redis_instance_external_config_data:type: string
+# @var redis_instance_external_config_data:description: >
+# External Redis configuration data
+redis_instance_external_config_data: ""
+
+# External service
+# @var redis_instance_external_service_enabled
+# @var redis_instance_external_service_enabled:type: boolean
+# @var redis_instance_external_service_enabled:description: >
+# Enable external service
+redis_instance_external_service_enabled: false
+
+# @var redis_instance_external_service_type
+# @var redis_instance_external_service_type:type: string
+# @var redis_instance_external_service_type:description: >
+# Service type for external service
+redis_instance_external_service_type: "NodePort"
+
+# @var redis_instance_external_service_port
+# @var redis_instance_external_service_port:type: int
+# @var redis_instance_external_service_port:description: >
+# Port for external service
+redis_instance_external_service_port: 6379
+
+# Service monitor
+# @var redis_instance_service_monitor_enabled
+# @var redis_instance_service_monitor_enabled:type: boolean
+# @var redis_instance_service_monitor_enabled:description: >
+# Enable ServiceMonitor
+redis_instance_service_monitor_enabled: false
+
+# @var redis_instance_service_monitor_interval
+# @var redis_instance_service_monitor_interval:type: string
+# @var redis_instance_service_monitor_interval:description: >
+# Scrape interval for ServiceMonitor
+redis_instance_service_monitor_interval: "30s"
+
+# @var redis_instance_service_monitor_scrape_timeout
+# @var redis_instance_service_monitor_scrape_timeout:type: string
+# @var redis_instance_service_monitor_scrape_timeout:description: >
+# Scrape timeout for ServiceMonitor
+redis_instance_service_monitor_scrape_timeout: "10s"
+
+# Redis exporter
+# @var redis_instance_exporter_enabled
+# @var redis_instance_exporter_enabled:type: boolean
+# @var redis_instance_exporter_enabled:description: >
+# Enable Redis exporter sidecar
+redis_instance_exporter_enabled: false
+
+# @var redis_instance_exporter_image
+# @var redis_instance_exporter_image:type: string
+# @var redis_instance_exporter_image:description: >
+# Redis exporter image
+redis_instance_exporter_image: "quay.io/opstree/redis-exporter"
+
+# @var redis_instance_exporter_tag
+# @var redis_instance_exporter_tag:type: string
+# @var redis_instance_exporter_tag:description: >
+# Redis exporter image tag
+redis_instance_exporter_tag: "v1.44.0"
+
+# @var redis_instance_exporter_resources
+# @var redis_instance_exporter_resources:type: dict
+# @var redis_instance_exporter_resources:description: >
+# Redis exporter resources
+redis_instance_exporter_resources: {}
+
+# TLS configuration
+# @var redis_instance_tls_secret_name
+# @var redis_instance_tls_secret_name:type: string
+# @var redis_instance_tls_secret_name:description: >
+# Secret name for TLS certificates
+redis_instance_tls_secret_name: ""
+
+# ACL configuration
+# @var redis_instance_acl_secret_name
+# @var redis_instance_acl_secret_name:type: string
+# @var redis_instance_acl_secret_name:description: >
+# Secret name for ACL configuration
+redis_instance_acl_secret_name: ""
+
+# Scheduling
+# @var redis_instance_priority_class
+# @var redis_instance_priority_class:type: string
+# @var redis_instance_priority_class:description: >
+# PriorityClass for the pods
+redis_instance_priority_class: ""
+
+# @var redis_instance_node_selector
+# @var redis_instance_node_selector:type: dict
+# @var redis_instance_node_selector:description: >
+# Node selector for the pods
+redis_instance_node_selector: {}
+
+# @var redis_instance_tolerations
+# @var redis_instance_tolerations:type: list
+# @var redis_instance_tolerations:description: >
+# Tolerations for the pods
+redis_instance_tolerations: []
+
+# @var redis_instance_affinity
+# @var redis_instance_affinity:type: dict
+# @var redis_instance_affinity:description: >
+# Affinity for the pods
+redis_instance_affinity: {}
+
+# @var redis_instance_pod_security_context
+# @var redis_instance_pod_security_context:type: dict
+# @var redis_instance_pod_security_context:description: >
+# Pod security context
+redis_instance_pod_security_context:
+  runAsUser: 1000
+  fsGroup: 1000
+
+# @var redis_instance_security_context
+# @var redis_instance_security_context:type: dict
+# @var redis_instance_security_context:description: >
+# Container security context
+redis_instance_security_context: {}
+
+# @var redis_instance_env
+# @var redis_instance_env:type: list
+# @var redis_instance_env:description: >
+# Additional environment variables
+redis_instance_env: []
+
+# @var redis_instance_sidecars
+# @var redis_instance_sidecars:type: list
+# @var redis_instance_sidecars:description: >
+# Additional sidecar containers
+redis_instance_sidecars: []
+
+# @var redis_instance_init_container_enabled
+# @var redis_instance_init_container_enabled:type: boolean
+# @var redis_instance_init_container_enabled:description: >
+# Enable init container
+redis_instance_init_container_enabled: false
+
+# @var redis_instance_service_account_name
+# @var redis_instance_service_account_name:type: string
+# @var redis_instance_service_account_name:description: >
+# Service account name
+redis_instance_service_account_name: ""
+
+# Cluster mode specific
+# @var redis_instance_cluster_version
+# @var redis_instance_cluster_version:type: string
+# @var redis_instance_cluster_version:description: >
+# Redis cluster version (cluster mode only)
+redis_instance_cluster_version: "v7"
+
+# @var redis_instance_cluster_persistence_enabled
+# @var redis_instance_cluster_persistence_enabled:type: boolean
+# @var redis_instance_cluster_persistence_enabled:description: >
+# Enable persistence (cluster mode only)
+redis_instance_cluster_persistence_enabled: true
+
+# @var redis_instance_cluster_leader_replicas
+# @var redis_instance_cluster_leader_replicas:type: int
+# @var redis_instance_cluster_leader_replicas:description: >
+# Number of leader replicas (cluster mode only)
+redis_instance_cluster_leader_replicas: 3
+
+# @var redis_instance_cluster_follower_replicas
+# @var redis_instance_cluster_follower_replicas:type: int
+# @var redis_instance_cluster_follower_replicas:description: >
+# Number of follower replicas (cluster mode only)
+redis_instance_cluster_follower_replicas: 3
+
+# Sentinel mode specific
+# @var redis_instance_sentinel_replication_name
+# @var redis_instance_sentinel_replication_name:type: string
+# @var redis_instance_sentinel_replication_name:description: >
+# Name of the Redis replication to monitor (sentinel mode only)
+redis_instance_sentinel_replication_name: "redis-replication"
+
+# @var redis_instance_sentinel_master_group_name
+# @var redis_instance_sentinel_master_group_name:type: string
+# @var redis_instance_sentinel_master_group_name:description: >
+# Sentinel master group name (sentinel mode only)
+redis_instance_sentinel_master_group_name: ""
+
+# @var redis_instance_sentinel_quorum
+# @var redis_instance_sentinel_quorum:type: string
+# @var redis_instance_sentinel_quorum:description: >
+# Sentinel quorum (sentinel mode only)
+redis_instance_sentinel_quorum: ""
+
+# @var redis_instance_sentinel_parallel_syncs
+# @var redis_instance_sentinel_parallel_syncs:type: string
+# @var redis_instance_sentinel_parallel_syncs:description: >
+# Number of replicas to reconfigure in parallel (sentinel mode only)
+redis_instance_sentinel_parallel_syncs: ""
+
+# @var redis_instance_sentinel_failover_timeout
+# @var redis_instance_sentinel_failover_timeout:type: string
+# @var redis_instance_sentinel_failover_timeout:description: >
+# Failover timeout in ms (sentinel mode only)
+redis_instance_sentinel_failover_timeout: ""
+
+# @var redis_instance_sentinel_down_after_milliseconds
+# @var redis_instance_sentinel_down_after_milliseconds:type: string
+# @var redis_instance_sentinel_down_after_milliseconds:description: >
+# Time before master is considered down in ms (sentinel mode only)
+redis_instance_sentinel_down_after_milliseconds: ""
+
+# PDB configuration (replication and sentinel modes)
+# @var redis_instance_pdb_enabled
+# @var redis_instance_pdb_enabled:type: boolean
+# @var redis_instance_pdb_enabled:description: >
+# Enable PodDisruptionBudget (replication and sentinel modes)
+redis_instance_pdb_enabled: false
+
+# @var redis_instance_pdb_min_available
+# @var redis_instance_pdb_min_available:type: int
+# @var redis_instance_pdb_min_available:description: >
+# Minimum available pods for PDB
+redis_instance_pdb_min_available: 1

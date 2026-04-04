@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to deploy Redis instances on a Kubernetes cluster.
+# It supports standalone, replication, cluster and sentinel modes
+# using the OpsTree Redis Operator helm charts.
+# @end
+galaxy_info:
+  description: Deploy Redis instances
+  role_name: redis_instance
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - redis
+
+dependencies: []

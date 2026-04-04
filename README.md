@@ -39,6 +39,10 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 | MongoDb Instance | v0.2.3            | [View README](roles/mongodb_instance/README.md) |
 | Postgres Operator | v1.15.1            | [View README](roles/postgres_operator/README.md) |
 | Postgres Instance | v0.1.0             | [View README](roles/postgres_instance/README.md) |
+| Redis Standalone  | v0.16.9            | [View README](roles/redis_instance/README.md)    |
+| Redis Replication | v0.17.0            | [View README](roles/redis_instance/README.md)    |
+| Redis Cluster     | v0.17.4            | [View README](roles/redis_instance/README.md)    |
+| Redis Sentinel    | v0.16.12           | [View README](roles/redis_instance/README.md)    |
 | Redis Operator    | v0.24.0            | [View README](roles/redis_operator/README.md)    |
 
 

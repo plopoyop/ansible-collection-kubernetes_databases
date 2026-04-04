@@ -1,0 +1,23 @@
+---
+- name: "Uninstall Redis instance helm package"
+  kubernetes.core.helm:
+    name: "{{ redis_instance_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ redis_instance_chart_map[redis_instance_mode].chart_ref }}"
+    chart_version: "{{ redis_instance_chart_map[redis_instance_mode].chart_version }}"
+    namespace: "{{ redis_instance_namespace }}"
+    state: "absent"
+    wait: true
+
+- name: "Remove Redis instance helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ redis_instance_helm_repo_name }}"
+    repo_url: "{{ redis_instance_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove Redis instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ redis_instance_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

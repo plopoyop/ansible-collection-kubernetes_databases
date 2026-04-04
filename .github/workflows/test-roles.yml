@@ -51,3 +51,7 @@ jobs:
     uses: ./.github/workflows/test-role.yaml
     with:
       role_name: "redis_operator"
+  redis_instance:
+    uses: ./.github/workflows/test-role.yaml
+    with:
+      role_name: "redis_instance"

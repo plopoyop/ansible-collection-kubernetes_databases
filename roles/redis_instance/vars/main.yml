@@ -1,0 +1,21 @@
+---
+redis_instance_helm_repo_name: "ot-helm"
+redis_instance_helm_repo_url: "https://ot-container-kit.github.io/helm-charts/"
+
+redis_instance_chart_map:
+  standalone:
+    chart_ref: "{{ redis_instance_helm_repo_name }}/redis"
+    chart_version: "{{ redis_instance_standalone_helm_version }}"
+    template: "redis_instance_standalone_helm_values.yml.j2"
+  replication:
+    chart_ref: "{{ redis_instance_helm_repo_name }}/redis-replication"
+    chart_version: "{{ redis_instance_replication_helm_version }}"
+    template: "redis_instance_replication_helm_values.yml.j2"
+  cluster:
+    chart_ref: "{{ redis_instance_helm_repo_name }}/redis-cluster"
+    chart_version: "{{ redis_instance_cluster_helm_version }}"
+    template: "redis_instance_cluster_helm_values.yml.j2"
+  sentinel:
+    chart_ref: "{{ redis_instance_helm_repo_name }}/redis-sentinel"
+    chart_version: "{{ redis_instance_sentinel_helm_version }}"
+    template: "redis_instance_sentinel_helm_values.yml.j2"
