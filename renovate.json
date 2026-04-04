@@ -86,6 +86,16 @@
       "registryUrls": [
         "https://helm.mariadb.com/mariadb-operator"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "redis-operator"
+      ],
+      "registryUrls": [
+        "https://ot-container-kit.github.io/helm-charts/"
+      ]
     }
   ],
   "customManagers": [
@@ -263,6 +273,31 @@
       ],
       "depNameTemplate": "mariadb-cluster",
       "autoReplaceStringTemplate": "MariaDB Instance  | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_operator/defaults/main.yml$/",
+        "/roles/redis_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_operator_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis-operator",
+      "autoReplaceStringTemplate": "redis_operator_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Operator\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis-operator",
+      "autoReplaceStringTemplate": "Redis Operator    | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

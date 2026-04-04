@@ -1,0 +1,4 @@
+---
+redis_operator_helm_repo_name: "ot-helm"
+redis_operator_helm_repo_url: "https://ot-container-kit.github.io/helm-charts/"
+redis_operator_helm_chart_ref: "{{ redis_operator_helm_repo_name }}/redis-operator"

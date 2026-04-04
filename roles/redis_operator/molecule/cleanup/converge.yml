@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    redis_operator_enabled: false
+  tasks:
+    - name: "Remove Redis operator"
+      ansible.builtin.import_role:
+        name: "redis_operator"

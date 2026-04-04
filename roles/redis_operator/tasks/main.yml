@@ -1,0 +1,8 @@
+---
+- name: "Setup Redis Operator"
+  ansible.builtin.include_tasks: setup.yml
+  when: redis_operator_enabled
+
+- name: "Cleanup Redis Operator"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not redis_operator_enabled

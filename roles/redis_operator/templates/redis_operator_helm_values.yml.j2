@@ -1,0 +1,72 @@
+---
+redisOperator:
+  name: "{{ redis_operator_deployment_name }}"
+  imageName: "{{ redis_operator_image_name }}"
+{% if redis_operator_image_tag != "" %}
+  imageTag: "{{ redis_operator_image_tag }}"
+{% endif %}
+  imagePullPolicy: "{{ redis_operator_image_pull_policy }}"
+  watchNamespace: "{{ redis_operator_watch_namespace }}"
+  serviceDNSDomain: "{{ redis_operator_service_dns_domain }}"
+  webhook: {{ redis_operator_webhook | ansible.builtin.lower }}
+
+{% if redis_operator_pod_annotations != {} %}
+  podAnnotations: {{ redis_operator_pod_annotations | ansible.builtin.to_json }}
+{% endif %}
+{% if redis_operator_pod_labels != {} %}
+  podLabels: {{ redis_operator_pod_labels | ansible.builtin.to_json }}
+{% endif %}
+{% if redis_operator_extra_args | length > 0 %}
+  extraArgs: {{ redis_operator_extra_args | ansible.builtin.to_json }}
+{% endif %}
+{% if redis_operator_env | length > 0 %}
+  env: {{ redis_operator_env | ansible.builtin.to_json }}
+{% endif %}
+
+  pprof:
+    enabled: {{ redis_operator_pprof_enabled | ansible.builtin.lower }}
+
+  metrics:
+    enabled: {{ redis_operator_metrics_enabled | ansible.builtin.lower }}
+    bindAddress: "{{ redis_operator_metrics_bind_address }}"
+
+replicas: {{ redis_operator_replicas }}
+
+resources:
+  limits:
+    cpu: "{{ redis_operator_cpu_limit }}"
+    memory: "{{ redis_operator_memory_limit }}"
+  requests:
+    cpu: "{{ redis_operator_cpu_request }}"
+    memory: "{{ redis_operator_memory_request }}"
+
+priorityClassName: "{{ redis_operator_priority_class }}"
+
+nodeSelector: {{ redis_operator_node_selector | ansible.builtin.to_json }}
+tolerations: {{ redis_operator_tolerations | ansible.builtin.to_json }}
+affinity: {{ redis_operator_affinity | ansible.builtin.to_json }}
+
+podSecurityContext: {{ redis_operator_pod_security_context | ansible.builtin.to_json }}
+securityContext: {{ redis_operator_security_context | ansible.builtin.to_json }}
+
+certmanager:
+  enabled: {{ redis_operator_certmanager_enabled | ansible.builtin.lower }}
+
+issuer:
+  create: {{ redis_operator_issuer_create | ansible.builtin.lower }}
+  kind: "{{ redis_operator_issuer_kind }}"
+  type: "{{ redis_operator_issuer_type }}"
+  name: "{{ redis_operator_issuer_name }}"
+{% if redis_operator_issuer_email != "" %}
+  email: "{{ redis_operator_issuer_email }}"
+{% endif %}
+  server: "{{ redis_operator_issuer_server }}"
+  privateKeySecretName: "{{ redis_operator_issuer_private_key_secret_name }}"
+  solver:
+    enabled: {{ redis_operator_issuer_solver_enabled | ansible.builtin.lower }}
+    ingressClass: "{{ redis_operator_issuer_solver_ingress_class }}"
+
+featureGates: {{ redis_operator_feature_gates | ansible.builtin.to_json }}
+
+manager:
+  config: {{ redis_operator_manager_config | ansible.builtin.to_json }}

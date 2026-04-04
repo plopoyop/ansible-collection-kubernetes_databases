@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to install the Redis Operator on a Kubernetes cluster.
+# It installs the OpsTree Redis Operator via its helm chart.
+# @end
+galaxy_info:
+  description: Install Redis Operator
+  role_name: redis_operator
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - redis
+    - operator
+
+dependencies: []

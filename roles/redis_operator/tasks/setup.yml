@@ -1,0 +1,22 @@
+---
+- name: "Create Redis Operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ redis_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Add Redis Operator Helm repository"
+  kubernetes.core.helm_repository:
+    name: "{{ redis_operator_helm_repo_name }}"
+    repo_url: "{{ redis_operator_helm_repo_url }}"
+    state: "present"
+
+- name: "Install Redis Operator"
+  kubernetes.core.helm:
+    name: "{{ redis_operator_deployment_name }}"
+    chart_ref: "{{ redis_operator_helm_chart_ref }}"
+    chart_version: "{{ redis_operator_helm_version }}"
+    namespace: "{{ redis_operator_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'redis_operator_helm_values.yml.j2') | from_yaml }}"
+    state: "present"
