@@ -1,0 +1,22 @@
+---
+- name: "Uninstall Redis Operator helm package"
+  kubernetes.core.helm:
+    name: "{{ redis_operator_deployment_name }}"
+    namespace: "{{ redis_operator_namespace }}"
+    state: "absent"
+    chart_ref: "{{ redis_operator_helm_chart_ref }}"
+    chart_version: "{{ redis_operator_helm_version }}"
+    wait: true
+
+- name: "Remove Redis Operator helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ redis_operator_helm_repo_name }}"
+    repo_url: "{{ redis_operator_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove Redis Operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ redis_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

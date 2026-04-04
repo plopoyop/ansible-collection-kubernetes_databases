@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Install Redis instance (standalone)"
+      ansible.builtin.import_role:
+        name: "redis_instance"
+      vars:
+        redis_instance_mode: "standalone"

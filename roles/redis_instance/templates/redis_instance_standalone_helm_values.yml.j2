@@ -1,0 +1,114 @@
+---
+redisStandalone:
+{% if redis_instance_name != "" %}
+  name: "{{ redis_instance_name }}"
+{% endif %}
+  image: "{{ redis_instance_image }}"
+  tag: "{{ redis_instance_tag }}"
+  imagePullPolicy: "{{ redis_instance_image_pull_policy }}"
+{% if redis_instance_secret_name != "" %}
+  redisSecret:
+    secretName: "{{ redis_instance_secret_name }}"
+    secretKey: "{{ redis_instance_secret_key }}"
+{% endif %}
+  serviceType: "{{ redis_instance_service_type }}"
+{% if redis_instance_resources != {} %}
+  resources: {{ redis_instance_resources | ansible.builtin.to_json }}
+{% endif %}
+
+{% if redis_instance_labels != {} %}
+labels: {{ redis_instance_labels | ansible.builtin.to_json }}
+{% endif %}
+
+{% if redis_instance_annotations != {} %}
+annotations: {{ redis_instance_annotations | ansible.builtin.to_json }}
+{% endif %}
+
+externalConfig:
+  enabled: {{ redis_instance_external_config_enabled | ansible.builtin.lower }}
+{% if redis_instance_external_config_enabled and redis_instance_external_config_data != "" %}
+  data: |
+    {{ redis_instance_external_config_data | ansible.builtin.indent(4) }}
+{% endif %}
+
+externalService:
+  enabled: {{ redis_instance_external_service_enabled | ansible.builtin.lower }}
+{% if redis_instance_external_service_enabled %}
+  serviceType: "{{ redis_instance_external_service_type }}"
+  port: {{ redis_instance_external_service_port }}
+{% endif %}
+
+serviceMonitor:
+  enabled: {{ redis_instance_service_monitor_enabled | ansible.builtin.lower }}
+{% if redis_instance_service_monitor_enabled %}
+  interval: "{{ redis_instance_service_monitor_interval }}"
+  scrapeTimeout: "{{ redis_instance_service_monitor_scrape_timeout }}"
+{% endif %}
+
+redisExporter:
+  enabled: {{ redis_instance_exporter_enabled | ansible.builtin.lower }}
+{% if redis_instance_exporter_enabled %}
+  image: "{{ redis_instance_exporter_image }}"
+  tag: "{{ redis_instance_exporter_tag }}"
+{% if redis_instance_exporter_resources != {} %}
+  resources: {{ redis_instance_exporter_resources | ansible.builtin.to_json }}
+{% endif %}
+{% endif %}
+
+initContainer:
+  enabled: {{ redis_instance_init_container_enabled | ansible.builtin.lower }}
+
+{% if redis_instance_sidecars | length > 0 %}
+sidecars: {{ redis_instance_sidecars | ansible.builtin.to_json }}
+{% endif %}
+
+priorityClassName: "{{ redis_instance_priority_class }}"
+
+{% if redis_instance_node_selector != {} %}
+nodeSelector: {{ redis_instance_node_selector | ansible.builtin.to_json }}
+{% endif %}
+
+storageSpec:
+  volumeClaimTemplate:
+    spec:
+{% if redis_instance_storage_class != "" %}
+      storageClassName: "{{ redis_instance_storage_class }}"
+{% endif %}
+      accessModes: {{ redis_instance_storage_access_modes | ansible.builtin.to_json }}
+      resources:
+        requests:
+          storage: "{{ redis_instance_storage_size }}"
+
+podSecurityContext: {{ redis_instance_pod_security_context | ansible.builtin.to_json }}
+securityContext: {{ redis_instance_security_context | ansible.builtin.to_json }}
+
+{% if redis_instance_affinity != {} %}
+affinity: {{ redis_instance_affinity | ansible.builtin.to_json }}
+{% endif %}
+
+{% if redis_instance_tolerations | length > 0 %}
+tolerations: {{ redis_instance_tolerations | ansible.builtin.to_json }}
+{% endif %}
+
+{% if redis_instance_service_account_name != "" %}
+serviceAccountName: "{{ redis_instance_service_account_name }}"
+{% endif %}
+
+{% if redis_instance_tls_secret_name != "" %}
+TLS:
+  ca: ca.crt
+  cert: tls.crt
+  key: tls.key
+  secret:
+    secretName: "{{ redis_instance_tls_secret_name }}"
+{% endif %}
+
+{% if redis_instance_acl_secret_name != "" %}
+acl:
+  secret:
+    secretName: "{{ redis_instance_acl_secret_name }}"
+{% endif %}
+
+{% if redis_instance_env | length > 0 %}
+env: {{ redis_instance_env | ansible.builtin.to_json }}
+{% endif %}

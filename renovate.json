@@ -86,6 +86,29 @@
       "registryUrls": [
         "https://helm.mariadb.com/mariadb-operator"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "redis-operator"
+      ],
+      "registryUrls": [
+        "https://ot-container-kit.github.io/helm-charts/"
+      ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "redis",
+        "redis-replication",
+        "redis-cluster",
+        "redis-sentinel"
+      ],
+      "registryUrls": [
+        "https://ot-container-kit.github.io/helm-charts/"
+      ]
     }
   ],
   "customManagers": [
@@ -263,6 +286,131 @@
       ],
       "depNameTemplate": "mariadb-cluster",
       "autoReplaceStringTemplate": "MariaDB Instance  | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_operator/defaults/main.yml$/",
+        "/roles/redis_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_operator_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis-operator",
+      "autoReplaceStringTemplate": "redis_operator_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Operator\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis-operator",
+      "autoReplaceStringTemplate": "Redis Operator    | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_instance/defaults/main.yml$/",
+        "/roles/redis_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_instance_standalone_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis",
+      "autoReplaceStringTemplate": "redis_instance_standalone_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_instance/defaults/main.yml$/",
+        "/roles/redis_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_instance_replication_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis-replication",
+      "autoReplaceStringTemplate": "redis_instance_replication_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_instance/defaults/main.yml$/",
+        "/roles/redis_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_instance_cluster_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis-cluster",
+      "autoReplaceStringTemplate": "redis_instance_cluster_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/redis_instance/defaults/main.yml$/",
+        "/roles/redis_instance/README.md$/"
+      ],
+      "matchStrings": [
+        "redis_instance_sentinel_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "redis-sentinel",
+      "autoReplaceStringTemplate": "redis_instance_sentinel_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Standalone\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis",
+      "autoReplaceStringTemplate": "Redis Standalone  | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Replication\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis-replication",
+      "autoReplaceStringTemplate": "Redis Replication | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Cluster\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis-cluster",
+      "autoReplaceStringTemplate": "Redis Cluster     | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "Redis Sentinel\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "redis-sentinel",
+      "autoReplaceStringTemplate": "Redis Sentinel    | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

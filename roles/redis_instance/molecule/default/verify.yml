@@ -1,0 +1,30 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'redis' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "redis"
+      register: namespace_redis
+
+    - name: "Assert that 'redis' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_redis['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'redis' helm release info."
+      kubernetes.core.helm_info:
+        name: "redis"
+        release_namespace: "redis"
+      register: redis_release
+
+    - name: "Assert that 'redis' helm release is deployed"
+      ansible.builtin.assert:
+        that: redis_release['status'] is defined

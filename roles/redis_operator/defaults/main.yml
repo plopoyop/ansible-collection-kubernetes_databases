@@ -1,0 +1,244 @@
+---
+# @var redis_operator_enabled
+# @var redis_operator_enabled:type: boolean
+# @var redis_operator_enabled:description: >
+# Should Redis Operator helm chart be installed
+redis_operator_enabled: true
+
+# @var redis_operator_namespace
+# @var redis_operator_namespace:type: string
+# @var redis_operator_namespace:description: >
+# K8s namespace to install the redis operator chart
+redis_operator_namespace: "redis-operator"
+
+# @var redis_operator_helm_version
+# @var redis_operator_helm_version:type: string
+# @var redis_operator_helm_version:description: >
+# Helm chart version to install
+redis_operator_helm_version: "0.24.0"
+
+# @var redis_operator_deployment_name
+# @var redis_operator_deployment_name:type: string
+# @var redis_operator_deployment_name:description: >
+# Deployment name for redis operator chart
+redis_operator_deployment_name: "redis-operator"
+
+# @var redis_operator_replicas
+# @var redis_operator_replicas:type: int
+# @var redis_operator_replicas:description: >
+# Number of replicas for redis operator
+redis_operator_replicas: 1
+
+# @var redis_operator_watch_namespace
+# @var redis_operator_watch_namespace:type: string
+# @var redis_operator_watch_namespace:description: >
+# Namespace to watch (empty = all namespaces)
+redis_operator_watch_namespace: ""
+
+# @var redis_operator_image_name
+# @var redis_operator_image_name:type: string
+# @var redis_operator_image_name:description: >
+# Image repository for the redis operator
+redis_operator_image_name: "quay.io/opstree/redis-operator"
+
+# @var redis_operator_image_tag
+# @var redis_operator_image_tag:type: string
+# @var redis_operator_image_tag:description: >
+# Image tag (defaults to chart appVersion if empty)
+redis_operator_image_tag: ""
+
+# @var redis_operator_image_pull_policy
+# @var redis_operator_image_pull_policy:type: string
+# @var redis_operator_image_pull_policy:description: >
+# Image pull policy
+redis_operator_image_pull_policy: "Always"
+
+# @var redis_operator_webhook
+# @var redis_operator_webhook:type: boolean
+# @var redis_operator_webhook:description: >
+# Enable webhook server for masterSlaveAntiAffinity feature
+redis_operator_webhook: false
+
+# @var redis_operator_certmanager_enabled
+# @var redis_operator_certmanager_enabled:type: boolean
+# @var redis_operator_certmanager_enabled:description: >
+# Use cert-manager for certificate management (only effective when webhook=true)
+redis_operator_certmanager_enabled: false
+
+# @var redis_operator_metrics_enabled
+# @var redis_operator_metrics_enabled:type: boolean
+# @var redis_operator_metrics_enabled:description: >
+# Enable metrics server
+redis_operator_metrics_enabled: true
+
+# @var redis_operator_metrics_bind_address
+# @var redis_operator_metrics_bind_address:type: string
+# @var redis_operator_metrics_bind_address:description: >
+# Address the metrics endpoint binds to
+redis_operator_metrics_bind_address: ":8080"
+
+# @var redis_operator_pprof_enabled
+# @var redis_operator_pprof_enabled:type: boolean
+# @var redis_operator_pprof_enabled:description: >
+# Enable pprof server for performance profiling
+redis_operator_pprof_enabled: false
+
+# @var redis_operator_extra_args
+# @var redis_operator_extra_args:type: list
+# @var redis_operator_extra_args:description: >
+# Additional arguments for redis-operator container
+redis_operator_extra_args: []
+
+# @var redis_operator_env
+# @var redis_operator_env:type: list
+# @var redis_operator_env:description: >
+# Additional environment variables
+redis_operator_env: []
+
+# @var redis_operator_cpu_limit
+# @var redis_operator_cpu_limit:type: string
+# @var redis_operator_cpu_limit:description: >
+# CPU limit for operator pod
+redis_operator_cpu_limit: "500m"
+
+# @var redis_operator_memory_limit
+# @var redis_operator_memory_limit:type: string
+# @var redis_operator_memory_limit:description: >
+# Memory limit for operator pod
+redis_operator_memory_limit: "500Mi"
+
+# @var redis_operator_cpu_request
+# @var redis_operator_cpu_request:type: string
+# @var redis_operator_cpu_request:description: >
+# CPU request for operator pod
+redis_operator_cpu_request: "500m"
+
+# @var redis_operator_memory_request
+# @var redis_operator_memory_request:type: string
+# @var redis_operator_memory_request:description: >
+# Memory request for operator pod
+redis_operator_memory_request: "500Mi"
+
+# @var redis_operator_priority_class
+# @var redis_operator_priority_class:type: string
+# @var redis_operator_priority_class:description: >
+# PriorityClass configuration for operator
+redis_operator_priority_class: ""
+
+# @var redis_operator_node_selector
+# @var redis_operator_node_selector:type: dict
+# @var redis_operator_node_selector:description: >
+# Node selector for the operator pod
+redis_operator_node_selector: {}
+
+# @var redis_operator_tolerations
+# @var redis_operator_tolerations:type: list
+# @var redis_operator_tolerations:description: >
+# Tolerations for the operator pod
+redis_operator_tolerations: []
+
+# @var redis_operator_affinity
+# @var redis_operator_affinity:type: dict
+# @var redis_operator_affinity:description: >
+# Affinity for the operator pod
+redis_operator_affinity: {}
+
+# @var redis_operator_pod_security_context
+# @var redis_operator_pod_security_context:type: dict
+# @var redis_operator_pod_security_context:description: >
+# Security context for the operator pod
+redis_operator_pod_security_context: {}
+
+# @var redis_operator_security_context
+# @var redis_operator_security_context:type: dict
+# @var redis_operator_security_context:description: >
+# Security context for the operator container
+redis_operator_security_context: {}
+
+# @var redis_operator_pod_annotations
+# @var redis_operator_pod_annotations:type: dict
+# @var redis_operator_pod_annotations:description: >
+# Additional pod annotations
+redis_operator_pod_annotations: {}
+
+# @var redis_operator_pod_labels
+# @var redis_operator_pod_labels:type: dict
+# @var redis_operator_pod_labels:description: >
+# Additional pod labels
+redis_operator_pod_labels: {}
+
+# @var redis_operator_service_dns_domain
+# @var redis_operator_service_dns_domain:type: string
+# @var redis_operator_service_dns_domain:description: >
+# DNS domain suffix for Kubernetes service discovery
+redis_operator_service_dns_domain: "cluster.local"
+
+# Issuer configuration (only effective when webhook=true)
+# @var redis_operator_issuer_create
+# @var redis_operator_issuer_create:type: boolean
+# @var redis_operator_issuer_create:description: >
+# Whether to create the issuer
+redis_operator_issuer_create: true
+
+# @var redis_operator_issuer_kind
+# @var redis_operator_issuer_kind:type: string
+# @var redis_operator_issuer_kind:description: >
+# Kind of issuer (Issuer or ClusterIssuer)
+redis_operator_issuer_kind: "Issuer"
+
+# @var redis_operator_issuer_type
+# @var redis_operator_issuer_type:type: string
+# @var redis_operator_issuer_type:description: >
+# Type of issuer (selfSigned or acme)
+redis_operator_issuer_type: "selfSigned"
+
+# @var redis_operator_issuer_name
+# @var redis_operator_issuer_name:type: string
+# @var redis_operator_issuer_name:description: >
+# Name of the issuer
+redis_operator_issuer_name: "redis-operator-issuer"
+
+# @var redis_operator_issuer_email
+# @var redis_operator_issuer_email:type: string
+# @var redis_operator_issuer_email:description: >
+# Email for the ACME issuer
+redis_operator_issuer_email: ""
+
+# @var redis_operator_issuer_server
+# @var redis_operator_issuer_server:type: string
+# @var redis_operator_issuer_server:description: >
+# ACME server URL
+redis_operator_issuer_server: "https://acme-v02.api.letsencrypt.org/directory"
+
+# @var redis_operator_issuer_private_key_secret_name
+# @var redis_operator_issuer_private_key_secret_name:type: string
+# @var redis_operator_issuer_private_key_secret_name:description: >
+# Secret name for the ACME private key
+redis_operator_issuer_private_key_secret_name: "letsencrypt-prod"
+
+# @var redis_operator_issuer_solver_enabled
+# @var redis_operator_issuer_solver_enabled:type: boolean
+# @var redis_operator_issuer_solver_enabled:description: >
+# Enable HTTP01 solver for ACME
+redis_operator_issuer_solver_enabled: true
+
+# @var redis_operator_issuer_solver_ingress_class
+# @var redis_operator_issuer_solver_ingress_class:type: string
+# @var redis_operator_issuer_solver_ingress_class:description: >
+# Ingress class for the HTTP01 solver
+redis_operator_issuer_solver_ingress_class: "nginx"
+
+# @var redis_operator_feature_gates
+# @var redis_operator_feature_gates:type: dict
+# @var redis_operator_feature_gates:description: >
+# Feature gates for alpha/experimental features
+redis_operator_feature_gates:
+  GenerateConfigInInitContainer: false
+
+# @var redis_operator_manager_config
+# @var redis_operator_manager_config:type: dict
+# @var redis_operator_manager_config:description: >
+# Config values for the operator manager
+redis_operator_manager_config:
+  kubeClientTimeout: "60s"
+  kubeClientQPS: 0.0
