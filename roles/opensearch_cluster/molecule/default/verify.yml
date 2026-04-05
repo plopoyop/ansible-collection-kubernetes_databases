@@ -1,0 +1,30 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'opensearch' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "opensearch"
+      register: namespace_opensearch
+
+    - name: "Assert that 'opensearch' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_opensearch['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'opensearch-cluster' helm release info."
+      kubernetes.core.helm_info:
+        name: "opensearch-cluster"
+        release_namespace: "opensearch"
+      register: opensearch_release
+
+    - name: "Assert that 'opensearch-cluster' helm release is deployed"
+      ansible.builtin.assert:
+        that: opensearch_release['status'] is defined

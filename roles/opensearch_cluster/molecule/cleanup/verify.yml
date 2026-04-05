@@ -1,0 +1,22 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for cleanup to complete."
+      ansible.builtin.pause:
+        seconds: 60
+
+    - name: "Check if 'opensearch' namespace exists."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "opensearch"
+      register: namespace_opensearch
+      failed_when: false
+      changed_when: false
+
+    - name: Assert that 'opensearch' namespace does not exist
+      ansible.builtin.assert:
+        that: namespace_opensearch['resources'] | length == 0

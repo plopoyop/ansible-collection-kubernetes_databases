@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    opensearch_operator_webhook_enabled: false
+    opensearch_operator_certmanager_enabled: false
+  tasks:
+    - name: "Install OpenSearch operator"
+      ansible.builtin.import_role:
+        name: "opensearch_operator"

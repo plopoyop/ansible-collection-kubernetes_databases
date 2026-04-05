@@ -1,0 +1,19 @@
+---
+# @meta description: >
+# Role to deploy OpenSearch instances on a Kubernetes cluster.
+# It deploys OpenSearch clusters via the opensearch-cluster helm chart using the OpenSearch Operator.
+# @end
+galaxy_info:
+  description: Deploy OpenSearch instances
+  role_name: opensearch_cluster
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - opensearch
+
+dependencies: []

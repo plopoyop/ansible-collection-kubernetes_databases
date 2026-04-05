@@ -1,0 +1,22 @@
+---
+- name: "Create OpenSearch Operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ opensearch_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Add OpenSearch Operator Helm repository"
+  kubernetes.core.helm_repository:
+    name: "{{ opensearch_operator_helm_repo_name }}"
+    repo_url: "{{ opensearch_operator_helm_repo_url }}"
+    state: "present"
+
+- name: "Install OpenSearch Operator"
+  kubernetes.core.helm:
+    name: "{{ opensearch_operator_deployment_name }}"
+    chart_ref: "{{ opensearch_operator_helm_chart_ref }}"
+    chart_version: "{{ opensearch_operator_helm_version }}"
+    namespace: "{{ opensearch_operator_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'opensearch_operator_helm_values.yml.j2') | from_yaml }}"
+    state: "present"

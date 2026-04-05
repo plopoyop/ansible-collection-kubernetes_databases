@@ -1,0 +1,8 @@
+---
+- name: "Setup OpenSearch Operator"
+  ansible.builtin.include_tasks: setup.yml
+  when: opensearch_operator_enabled
+
+- name: "Cleanup OpenSearch Operator"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not opensearch_operator_enabled

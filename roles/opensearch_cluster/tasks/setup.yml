@@ -1,0 +1,44 @@
+---
+- name: "Add OpenSearch Helm repository"
+  kubernetes.core.helm_repository:
+    name: "{{ opensearch_cluster_helm_repo_name }}"
+    repo_url: "{{ opensearch_cluster_helm_repo_url }}"
+    state: "present"
+
+- name: "Init opensearch_cluster"
+  ansible.builtin.set_fact:
+    opensearch_cluster: "{{ opensearch_default_cluster }}"
+  when: not opensearch_cluster is defined or opensearch_cluster.updated
+
+- name: "Call updating opensearch_cluster task"
+  ansible.builtin.include_tasks: update_instance_values.yml
+  loop: "{{ opensearch_cluster_values_override | dict2items }}"
+  loop_control:
+    loop_var: value_to_update
+
+- name: "Validate minimum replicas per node pool"
+  ansible.builtin.assert:
+    that:
+      - item.replicas | int >= 3
+    fail_msg: "Node pool '{{ item.component }}' has {{ item.replicas }} replicas. OpenSearch operator requires at least 3 replicas per node pool."
+  loop: "{{ opensearch_cluster.node_pools }}"
+  loop_control:
+    label: "{{ item.component }}"
+
+- name: "Create OpenSearch instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ opensearch_cluster_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "present"
+
+- name: "Create OpenSearch instance from helm chart"
+  kubernetes.core.helm:
+    name: "{{ opensearch_cluster_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ opensearch_cluster_helm_chart_ref }}"
+    chart_version: "{{ opensearch_cluster_helm_version }}"
+    namespace: "{{ opensearch_cluster_namespace }}"
+    values: "{{ lookup('ansible.builtin.template', 'opensearch_cluster_helm_values.yml.j2') | from_yaml }}"
+    state: "{{ opensearch_cluster_state | default('present') }}"
+    force: "{{ opensearch_cluster_force_install | default(false) }}"

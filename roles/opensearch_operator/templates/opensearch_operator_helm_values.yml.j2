@@ -1,0 +1,74 @@
+---
+installCRDs: {{ opensearch_operator_install_crds | ansible.builtin.lower }}
+
+manager:
+  image:
+    repository: "{{ opensearch_operator_image_repository }}"
+{% if opensearch_operator_image_tag != "" %}
+    tag: "{{ opensearch_operator_image_tag }}"
+{% endif %}
+    pullPolicy: "{{ opensearch_operator_image_pull_policy }}"
+
+  securityContext: {{ opensearch_operator_manager_security_context | ansible.builtin.to_json }}
+
+  resources:
+    limits:
+      cpu: "{{ opensearch_operator_cpu_limit }}"
+      memory: "{{ opensearch_operator_memory_limit }}"
+    requests:
+      cpu: "{{ opensearch_operator_cpu_request }}"
+      memory: "{{ opensearch_operator_memory_request }}"
+
+  parallelRecoveryEnabled: {{ opensearch_operator_parallel_recovery_enabled | ansible.builtin.lower }}
+  pprofEndpointsEnabled: {{ opensearch_operator_pprof_enabled | ansible.builtin.lower }}
+
+  dnsBase: "{{ opensearch_operator_dns_base }}"
+  loglevel: "{{ opensearch_operator_log_level }}"
+
+{% if opensearch_operator_watch_namespace != "" %}
+  watchNamespace: "{{ opensearch_operator_watch_namespace }}"
+{% endif %}
+
+  metricsBindAddress: "{{ opensearch_operator_metrics_bind_address }}"
+
+{% if opensearch_operator_extra_env | length > 0 %}
+  extraEnv: {{ opensearch_operator_extra_env | ansible.builtin.to_json }}
+{% endif %}
+
+securityContext: {{ opensearch_operator_security_context | ansible.builtin.to_json }}
+
+{% if opensearch_operator_pod_annotations != {} %}
+podAnnotations: {{ opensearch_operator_pod_annotations | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_operator_pod_labels != {} %}
+podLabels: {{ opensearch_operator_pod_labels | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_operator_node_selector != {} %}
+nodeSelector: {{ opensearch_operator_node_selector | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_operator_tolerations | length > 0 %}
+tolerations: {{ opensearch_operator_tolerations | ansible.builtin.to_json }}
+{% endif %}
+
+priorityClassName: "{{ opensearch_operator_priority_class }}"
+
+serviceAccount:
+  create: {{ opensearch_operator_service_account_create | ansible.builtin.lower }}
+{% if opensearch_operator_service_account_name != "" %}
+  name: "{{ opensearch_operator_service_account_name }}"
+{% endif %}
+
+useRoleBindings: {{ opensearch_operator_use_role_bindings | ansible.builtin.lower }}
+
+webhook:
+  enabled: {{ opensearch_operator_webhook_enabled | ansible.builtin.lower }}
+  port: {{ opensearch_operator_webhook_port }}
+  failurePolicy: "{{ opensearch_operator_webhook_failure_policy }}"
+{% if opensearch_operator_webhook_secret_name != "" %}
+  secretName: "{{ opensearch_operator_webhook_secret_name }}"
+{% endif %}
+  certManager:
+    enabled: {{ opensearch_operator_certmanager_enabled | ansible.builtin.lower }}

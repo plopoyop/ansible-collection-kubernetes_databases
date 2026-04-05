@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    opensearch_operator_enabled: false
+  tasks:
+    - name: "Remove OpenSearch operator"
+      ansible.builtin.import_role:
+        name: "opensearch_operator"

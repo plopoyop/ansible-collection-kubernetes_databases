@@ -1,0 +1,211 @@
+---
+# @var opensearch_operator_enabled
+# @var opensearch_operator_enabled:type: boolean
+# @var opensearch_operator_enabled:description: >
+# Should OpenSearch Operator helm chart be installed
+opensearch_operator_enabled: true
+
+# @var opensearch_operator_namespace
+# @var opensearch_operator_namespace:type: string
+# @var opensearch_operator_namespace:description: >
+# K8s namespace to install the OpenSearch operator chart
+opensearch_operator_namespace: "opensearch-operator"
+
+# @var opensearch_operator_helm_version
+# @var opensearch_operator_helm_version:type: string
+# @var opensearch_operator_helm_version:description: >
+# Helm chart version to install
+opensearch_operator_helm_version: "3.0.2"
+
+# @var opensearch_operator_deployment_name
+# @var opensearch_operator_deployment_name:type: string
+# @var opensearch_operator_deployment_name:description: >
+# Deployment name for OpenSearch operator chart
+opensearch_operator_deployment_name: "opensearch-operator"
+
+# Image configuration
+# @var opensearch_operator_image_repository
+# @var opensearch_operator_image_repository:type: string
+# @var opensearch_operator_image_repository:description: >
+# Image repository for the operator
+opensearch_operator_image_repository: "opensearchproject/opensearch-operator"
+
+# @var opensearch_operator_image_tag
+# @var opensearch_operator_image_tag:type: string
+# @var opensearch_operator_image_tag:description: >
+# Image tag (defaults to appVersion if empty)
+opensearch_operator_image_tag: ""
+
+# @var opensearch_operator_image_pull_policy
+# @var opensearch_operator_image_pull_policy:type: string
+# @var opensearch_operator_image_pull_policy:description: >
+# Image pull policy
+opensearch_operator_image_pull_policy: "Always"
+
+# @var opensearch_operator_install_crds
+# @var opensearch_operator_install_crds:type: boolean
+# @var opensearch_operator_install_crds:description: >
+# Install CRDs with Helm
+opensearch_operator_install_crds: true
+
+# @var opensearch_operator_watch_namespace
+# @var opensearch_operator_watch_namespace:type: string
+# @var opensearch_operator_watch_namespace:description: >
+# Namespace to watch (empty = all namespaces, comma-separated for multiple)
+opensearch_operator_watch_namespace: ""
+
+# @var opensearch_operator_log_level
+# @var opensearch_operator_log_level:type: string
+# @var opensearch_operator_log_level:description: >
+# Log level (debug, info, warn, error)
+opensearch_operator_log_level: "info"
+
+# @var opensearch_operator_dns_base
+# @var opensearch_operator_dns_base:type: string
+# @var opensearch_operator_dns_base:description: >
+# DNS domain suffix for Kubernetes service discovery
+opensearch_operator_dns_base: "cluster.local"
+
+# @var opensearch_operator_parallel_recovery_enabled
+# @var opensearch_operator_parallel_recovery_enabled:type: boolean
+# @var opensearch_operator_parallel_recovery_enabled:description: >
+# Enable experimental parallel recovery
+opensearch_operator_parallel_recovery_enabled: true
+
+# @var opensearch_operator_pprof_enabled
+# @var opensearch_operator_pprof_enabled:type: boolean
+# @var opensearch_operator_pprof_enabled:description: >
+# Enable pprof endpoints on port 6060 (debugging only)
+opensearch_operator_pprof_enabled: false
+
+# @var opensearch_operator_metrics_bind_address
+# @var opensearch_operator_metrics_bind_address:type: string
+# @var opensearch_operator_metrics_bind_address:description: >
+# Address the metrics endpoint binds to
+opensearch_operator_metrics_bind_address: "127.0.0.1:8080"
+
+# @var opensearch_operator_extra_env
+# @var opensearch_operator_extra_env:type: list
+# @var opensearch_operator_extra_env:description: >
+# Additional environment variables for the manager
+opensearch_operator_extra_env: []
+
+# Resources
+# @var opensearch_operator_cpu_limit
+# @var opensearch_operator_cpu_limit:type: string
+# @var opensearch_operator_cpu_limit:description: >
+# CPU limit for operator pod
+opensearch_operator_cpu_limit: "1000m"
+
+# @var opensearch_operator_memory_limit
+# @var opensearch_operator_memory_limit:type: string
+# @var opensearch_operator_memory_limit:description: >
+# Memory limit for operator pod
+opensearch_operator_memory_limit: "500Mi"
+
+# @var opensearch_operator_cpu_request
+# @var opensearch_operator_cpu_request:type: string
+# @var opensearch_operator_cpu_request:description: >
+# CPU request for operator pod
+opensearch_operator_cpu_request: "200m"
+
+# @var opensearch_operator_memory_request
+# @var opensearch_operator_memory_request:type: string
+# @var opensearch_operator_memory_request:description: >
+# Memory request for operator pod
+opensearch_operator_memory_request: "350Mi"
+
+# Webhook configuration
+# @var opensearch_operator_webhook_enabled
+# @var opensearch_operator_webhook_enabled:type: boolean
+# @var opensearch_operator_webhook_enabled:description: >
+# Enable validation webhooks
+opensearch_operator_webhook_enabled: true
+
+# @var opensearch_operator_webhook_port
+# @var opensearch_operator_webhook_port:type: int
+# @var opensearch_operator_webhook_port:description: >
+# Port exposed by the webhook server
+opensearch_operator_webhook_port: 9443
+
+# @var opensearch_operator_webhook_failure_policy
+# @var opensearch_operator_webhook_failure_policy:type: string
+# @var opensearch_operator_webhook_failure_policy:description: >
+# Failure policy for webhooks (Fail or Ignore)
+opensearch_operator_webhook_failure_policy: "Fail"
+
+# @var opensearch_operator_webhook_secret_name
+# @var opensearch_operator_webhook_secret_name:type: string
+# @var opensearch_operator_webhook_secret_name:description: >
+# Secret name for webhook TLS certificates (when cert-manager is disabled)
+opensearch_operator_webhook_secret_name: ""
+
+# @var opensearch_operator_certmanager_enabled
+# @var opensearch_operator_certmanager_enabled:type: boolean
+# @var opensearch_operator_certmanager_enabled:description: >
+# Enable cert-manager for automatic webhook certificate management
+opensearch_operator_certmanager_enabled: true
+
+# RBAC
+# @var opensearch_operator_use_role_bindings
+# @var opensearch_operator_use_role_bindings:type: boolean
+# @var opensearch_operator_use_role_bindings:description: >
+# Use namespace-scoped RoleBindings instead of ClusterRoleBindings
+opensearch_operator_use_role_bindings: false
+
+# @var opensearch_operator_service_account_create
+# @var opensearch_operator_service_account_create:type: boolean
+# @var opensearch_operator_service_account_create:description: >
+# Create a service account
+opensearch_operator_service_account_create: true
+
+# @var opensearch_operator_service_account_name
+# @var opensearch_operator_service_account_name:type: string
+# @var opensearch_operator_service_account_name:description: >
+# Service account name (generated if empty)
+opensearch_operator_service_account_name: ""
+
+# Scheduling
+# @var opensearch_operator_node_selector
+# @var opensearch_operator_node_selector:type: dict
+# @var opensearch_operator_node_selector:description: >
+# Node selector for the operator pod
+opensearch_operator_node_selector: {}
+
+# @var opensearch_operator_tolerations
+# @var opensearch_operator_tolerations:type: list
+# @var opensearch_operator_tolerations:description: >
+# Tolerations for the operator pod
+opensearch_operator_tolerations: []
+
+# @var opensearch_operator_priority_class
+# @var opensearch_operator_priority_class:type: string
+# @var opensearch_operator_priority_class:description: >
+# PriorityClass for the operator pod
+opensearch_operator_priority_class: ""
+
+# @var opensearch_operator_pod_annotations
+# @var opensearch_operator_pod_annotations:type: dict
+# @var opensearch_operator_pod_annotations:description: >
+# Additional pod annotations
+opensearch_operator_pod_annotations: {}
+
+# @var opensearch_operator_pod_labels
+# @var opensearch_operator_pod_labels:type: dict
+# @var opensearch_operator_pod_labels:description: >
+# Additional pod labels
+opensearch_operator_pod_labels: {}
+
+# @var opensearch_operator_security_context
+# @var opensearch_operator_security_context:type: dict
+# @var opensearch_operator_security_context:description: >
+# Pod security context
+opensearch_operator_security_context:
+  runAsNonRoot: true
+
+# @var opensearch_operator_manager_security_context
+# @var opensearch_operator_manager_security_context:type: dict
+# @var opensearch_operator_manager_security_context:description: >
+# Manager container security context
+opensearch_operator_manager_security_context:
+  allowPrivilegeEscalation: false

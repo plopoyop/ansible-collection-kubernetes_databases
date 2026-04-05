@@ -1,0 +1,134 @@
+---
+# @var opensearch_cluster_enabled
+# @var opensearch_cluster_enabled:type: boolean
+# @var opensearch_cluster_enabled:description: >
+# Should OpenSearch instance helm chart be installed
+opensearch_cluster_enabled: true
+
+# @var opensearch_cluster_helm_version
+# @var opensearch_cluster_helm_version:type: string
+# @var opensearch_cluster_helm_version:description: >
+# OpenSearch cluster helm chart version
+opensearch_cluster_helm_version: "3.2.2"
+
+# @var opensearch_cluster_name
+# @var opensearch_cluster_name:type: string
+# @var opensearch_cluster_name:description: >
+# OpenSearch instance helm release name
+opensearch_cluster_name: "opensearch-cluster"
+
+# @var opensearch_cluster_namespace
+# @var opensearch_cluster_namespace:type: string
+# @var opensearch_cluster_namespace:description: >
+# K8s namespace to deploy OpenSearch instance
+opensearch_cluster_namespace: "opensearch"
+
+# @var opensearch_default_cluster
+# @var opensearch_default_cluster:type: dict
+# @var opensearch_default_cluster:description: >
+# Default values for helm chart deployment
+opensearch_default_cluster:
+  name: "{{ opensearch_cluster_name }}"
+  namespace: "{{ opensearch_cluster_namespace }}"
+
+  # General cluster configuration
+  version: "2.19.0"
+  image: "docker.io/opensearchproject/opensearch"
+  image_pull_policy: "IfNotPresent"
+  http_port: 9200
+  set_vm_max_map_count: true
+  service_type: "ClusterIP"
+  additional_config: {}
+
+  # Node pools
+  node_pools:
+    - component: "masters"
+      disk_size: "30Gi"
+      replicas: 3
+      roles:
+        - "master"
+        - "data"
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "500m"
+        limits:
+          memory: "2Gi"
+          cpu: "500m"
+
+  # Dashboards
+  dashboards_enabled: true
+  dashboards_version: "2.19.0"
+  dashboards_image: "docker.io/opensearchproject/opensearch-dashboards"
+  dashboards_replicas: 1
+  dashboards_resources: {}
+  dashboards_service_type: "ClusterIP"
+
+  # TLS
+  tls_http_generate: true
+  tls_transport_generate: true
+  tls_transport_per_node: true
+
+  # Security
+  admin_credentials_secret: {}
+  security_config_secret: {}
+
+  # Monitoring
+  monitoring_enabled: false
+
+  # Smart scaler
+  smart_scaler: true
+
+  # Init helper
+  init_helper_image: "docker.io/busybox"
+  init_helper_version: "1.36"
+
+  # Ingress
+  opensearch_ingress_enabled: false
+  dashboards_ingress_enabled: false
+
+  # CRD resources
+  roles: []
+  users: []
+  users_role_binding: []
+  tenants: []
+  action_groups: []
+  component_templates: []
+  index_templates: []
+  ism_policies: []
+
+# @var opensearch_cluster_values_override
+# @var opensearch_cluster_values_override:type: dict
+# @var opensearch_cluster_values_override:description: >
+# Overrides for default values
+# @var opensearch_cluster_values_override:example: >
+#  opensearch_cluster_values_override:
+#    version: "2.16.0"
+#    dashboards_version: "2.16.0"
+#    dashboards_enabled: false
+#    node_pools:
+#      - component: "masters"
+#        disk_size: "50Gi"
+#        replicas: 3
+#        roles:
+#          - "master"
+#        resources:
+#          requests:
+#            memory: "4Gi"
+#            cpu: "1000m"
+#          limits:
+#            memory: "4Gi"
+#            cpu: "1000m"
+#      - component: "data"
+#        disk_size: "100Gi"
+#        replicas: 3
+#        roles:
+#          - "data"
+#        resources:
+#          requests:
+#            memory: "8Gi"
+#            cpu: "2000m"
+#          limits:
+#            memory: "8Gi"
+#            cpu: "2000m"
+opensearch_cluster_values_override: {}
