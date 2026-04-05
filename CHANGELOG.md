@@ -1,8 +1,8 @@
 # Changelog
 
-## [2.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/2.1.0) (2026-04-04)
+## [3.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.0.0) (2026-04-05)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/2.0.0...2.1.0)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/2.0.0...3.0.0)
 
 ## 🚀 New Features
 
