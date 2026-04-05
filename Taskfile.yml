@@ -7,6 +7,7 @@ vars:
     - "mariadb_operator"
     - "mongodb_operator"
     - "mongodb_instance"
+    - "opensearch_cluster"
     - "opensearch_operator"
     - "postgres_operator"
     - "postgres_instance"

@@ -1,0 +1,8 @@
+---
+- name: "Setup OpenSearch instance"
+  ansible.builtin.include_tasks: setup.yml
+  when: opensearch_cluster_enabled
+
+- name: "Cleanup OpenSearch instance"
+  ansible.builtin.include_tasks: cleanup.yml
+  when: not opensearch_cluster_enabled

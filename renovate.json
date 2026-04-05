@@ -119,6 +119,16 @@
       "registryUrls": [
         "https://opensearch-project.github.io/opensearch-k8s-operator/"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "opensearch-cluster"
+      ],
+      "registryUrls": [
+        "https://opensearch-project.github.io/opensearch-k8s-operator/"
+      ]
     }
   ],
   "customManagers": [
@@ -446,6 +456,31 @@
       ],
       "depNameTemplate": "opensearch-operator",
       "autoReplaceStringTemplate": "OpenSearch Operator | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/opensearch_cluster/defaults/main.yml$/",
+        "/roles/opensearch_cluster/README.md$/"
+      ],
+      "matchStrings": [
+        "opensearch_cluster_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "opensearch-cluster",
+      "autoReplaceStringTemplate": "opensearch_cluster_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "OpenSearch Cluster\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "opensearch-cluster",
+      "autoReplaceStringTemplate": "OpenSearch Cluster  | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

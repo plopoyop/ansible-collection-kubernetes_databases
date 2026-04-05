@@ -1,0 +1,19 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: "Install OpenSearch instance"
+      ansible.builtin.import_role:
+        name: "opensearch_cluster"
+      vars:
+        opensearch_cluster_values_override:
+          node_pools:
+            - component: "masters"
+              disk_size: "5Gi"
+              replicas: 3
+              roles:
+                - "cluster_manager"
+                - "data"
+              resources: {}

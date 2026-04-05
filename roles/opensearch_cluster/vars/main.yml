@@ -1,0 +1,4 @@
+---
+opensearch_cluster_helm_repo_name: "opensearch-operator"
+opensearch_cluster_helm_repo_url: "https://opensearch-project.github.io/opensearch-k8s-operator/"
+opensearch_cluster_helm_chart_ref: "{{ opensearch_cluster_helm_repo_name }}/opensearch-cluster"

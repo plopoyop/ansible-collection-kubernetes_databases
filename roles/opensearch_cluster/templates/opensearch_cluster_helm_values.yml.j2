@@ -1,0 +1,123 @@
+---
+cluster:
+{% if opensearch_cluster.name != "" %}
+  name: "{{ opensearch_cluster.name }}"
+{% endif %}
+
+  general:
+    version: "{{ opensearch_cluster.version }}"
+    image: "{{ opensearch_cluster.image }}"
+    imagePullPolicy: "{{ opensearch_cluster.image_pull_policy }}"
+    httpPort: {{ opensearch_cluster.http_port }}
+    setVMMaxMapCount: {{ opensearch_cluster.set_vm_max_map_count | ansible.builtin.lower }}
+    serviceName: ""
+    drainDataNodes: true
+{% if opensearch_cluster.additional_config is defined and opensearch_cluster.additional_config != {} %}
+    additionalConfig: {{ opensearch_cluster.additional_config | ansible.builtin.to_json }}
+{% endif %}
+{% if opensearch_cluster.monitoring_enabled is defined and opensearch_cluster.monitoring_enabled %}
+    monitoring:
+      enable: true
+{% endif %}
+
+  confMgmt:
+    smartScaler: {{ opensearch_cluster.smart_scaler | ansible.builtin.lower }}
+
+  dashboards:
+    enable: {{ opensearch_cluster.dashboards_enabled | ansible.builtin.lower }}
+{% if opensearch_cluster.dashboards_enabled %}
+    version: "{{ opensearch_cluster.dashboards_version }}"
+    image: "{{ opensearch_cluster.dashboards_image }}"
+    replicas: {{ opensearch_cluster.dashboards_replicas }}
+{% if opensearch_cluster.dashboards_resources != {} %}
+    resources: {{ opensearch_cluster.dashboards_resources | ansible.builtin.to_json }}
+{% endif %}
+    service:
+      type: "{{ opensearch_cluster.dashboards_service_type }}"
+{% endif %}
+
+  initHelper:
+    image: "{{ opensearch_cluster.init_helper_image }}"
+    version: "{{ opensearch_cluster.init_helper_version }}"
+
+  nodePools:
+{% for pool in opensearch_cluster.node_pools %}
+    - component: "{{ pool.component }}"
+      diskSize: "{{ pool.disk_size }}"
+      replicas: {{ pool.replicas }}
+      roles: {{ pool.roles | ansible.builtin.to_json }}
+{% if pool.resources is defined %}
+      resources: {{ pool.resources | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.annotations is defined and pool.annotations != {} %}
+      annotations: {{ pool.annotations | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.additional_config is defined and pool.additional_config != {} %}
+      additionalConfig: {{ pool.additional_config | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.node_selector is defined and pool.node_selector != {} %}
+      nodeSelector: {{ pool.node_selector | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.tolerations is defined and pool.tolerations | length > 0 %}
+      tolerations: {{ pool.tolerations | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.affinity is defined and pool.affinity != {} %}
+      affinity: {{ pool.affinity | ansible.builtin.to_json }}
+{% endif %}
+{% if pool.jvm is defined and pool.jvm != "" %}
+      jvm: "{{ pool.jvm }}"
+{% endif %}
+{% endfor %}
+
+  security:
+{% if opensearch_cluster.admin_credentials_secret != {} %}
+    config:
+      adminCredentialsSecret: {{ opensearch_cluster.admin_credentials_secret | ansible.builtin.to_json }}
+{% if opensearch_cluster.security_config_secret != {} %}
+      securityConfigSecret: {{ opensearch_cluster.security_config_secret | ansible.builtin.to_json }}
+{% endif %}
+{% endif %}
+    tls:
+      http:
+        generate: {{ opensearch_cluster.tls_http_generate | ansible.builtin.lower }}
+      transport:
+        generate: {{ opensearch_cluster.tls_transport_generate | ansible.builtin.lower }}
+        perNode: {{ opensearch_cluster.tls_transport_per_node | ansible.builtin.lower }}
+
+  ingress:
+    opensearch:
+      enabled: {{ opensearch_cluster.opensearch_ingress_enabled | ansible.builtin.lower }}
+    dashboards:
+      enabled: {{ opensearch_cluster.dashboards_ingress_enabled | ansible.builtin.lower }}
+
+{% if opensearch_cluster.roles | length > 0 %}
+roles: {{ opensearch_cluster.roles | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.users | length > 0 %}
+users: {{ opensearch_cluster.users | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.users_role_binding | length > 0 %}
+usersRoleBinding: {{ opensearch_cluster.users_role_binding | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.tenants | length > 0 %}
+tenants: {{ opensearch_cluster.tenants | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.action_groups | length > 0 %}
+actionGroups: {{ opensearch_cluster.action_groups | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.component_templates | length > 0 %}
+componentTemplates: {{ opensearch_cluster.component_templates | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.index_templates | length > 0 %}
+indexTemplates: {{ opensearch_cluster.index_templates | ansible.builtin.to_json }}
+{% endif %}
+
+{% if opensearch_cluster.ism_policies | length > 0 %}
+ismPolicies: {{ opensearch_cluster.ism_policies | ansible.builtin.to_json }}
+{% endif %}

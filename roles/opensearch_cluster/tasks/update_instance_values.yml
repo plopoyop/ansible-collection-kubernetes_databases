@@ -1,0 +1,15 @@
+---
+- name: "Create updated value"
+  ansible.utils.update_fact:
+    updates:
+      - path: opensearch_cluster["{{ value_to_update.key }}"]
+        value: "{{ value_to_update.value }}"
+      - path: opensearch_cluster["updated"]
+        value: true
+  register: opensearch_updated_instance
+  changed_when: false
+
+- name: "Update instance"
+  ansible.builtin.set_fact:
+    opensearch_cluster: "{{ opensearch_updated_instance.opensearch_cluster }}"
+  changed_when: false

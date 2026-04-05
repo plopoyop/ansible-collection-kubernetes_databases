@@ -1,0 +1,23 @@
+---
+- name: "Uninstall OpenSearch instance helm package"
+  kubernetes.core.helm:
+    name: "{{ opensearch_cluster_name }}"
+    update_repo_cache: true
+    chart_ref: "{{ opensearch_cluster_helm_chart_ref }}"
+    chart_version: "{{ opensearch_cluster_helm_version }}"
+    namespace: "{{ opensearch_cluster_namespace }}"
+    state: "absent"
+    wait: true
+
+- name: "Remove OpenSearch instance helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ opensearch_cluster_helm_repo_name }}"
+    repo_url: "{{ opensearch_cluster_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove OpenSearch instance namespace"
+  kubernetes.core.k8s:
+    name: "{{ opensearch_cluster_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

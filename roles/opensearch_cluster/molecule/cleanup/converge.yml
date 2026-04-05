@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    opensearch_cluster_enabled: false
+  tasks:
+    - name: "Remove OpenSearch instance"
+      ansible.builtin.import_role:
+        name: "opensearch_cluster"
