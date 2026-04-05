@@ -8,6 +8,10 @@
 
 - Add redis roles [\#21](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/21) ([plopoyop](https://github.com/plopoyop))
 
+## 🐛 Bug Fixes
+
+- Change old devenv by devbox ignore [\#23](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/23) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - feat\(helm\): update chart mongodb-kubernetes \(1.7.0 → 1.8.0\) [\#20](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/20) ([plopoyop](https://github.com/plopoyop))
