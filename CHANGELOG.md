@@ -11,6 +11,7 @@
 
 ## 🐛 Bug Fixes
 
+- Add missing README in redis roles [\#24](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/24) ([plopoyop](https://github.com/plopoyop))
 - Change old devenv by devbox ignore [\#23](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/23) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
