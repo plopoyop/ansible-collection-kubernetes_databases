@@ -6,6 +6,7 @@
 
 ## 🚀 New Features
 
+- Add Opensearch roles [\#22](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/22) ([plopoyop](https://github.com/plopoyop))
 - Add redis roles [\#21](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/21) ([plopoyop](https://github.com/plopoyop))
 
 ## 🐛 Bug Fixes
