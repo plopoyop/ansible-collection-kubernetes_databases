@@ -1,0 +1,37 @@
+---
+- name: Verify
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  tasks:
+    - name: "Pause for job to complete."
+      ansible.builtin.pause:
+        seconds: 120
+
+    - name: "Get 'opensearch-operator' namespace info."
+      kubernetes.core.k8s_info:
+        kind: Namespace
+        name: "opensearch-operator"
+      register: namespace_opensearch
+
+    - name: "Assert that 'opensearch-operator' namespace is active"
+      ansible.builtin.assert:
+        that: namespace_opensearch['resources'][0]['status']['phase'] == "Active"
+
+    - name: "Get 'opensearch-operator' Deployment info."
+      kubernetes.core.k8s_info:
+        kind: "Deployment"
+        name: "opensearch-operator"
+        namespace: "opensearch-operator"
+      register: operator_deployment
+
+
+    - name: Debug
+      ansible.builtin.debug:
+        var: operator_deployment['resources']
+
+
+    - name: "Assert that 'opensearch-operator' is deployed"
+      ansible.builtin.assert:
+        that: operator_deployment['resources'] | length > 0

@@ -109,6 +109,16 @@
       "registryUrls": [
         "https://ot-container-kit.github.io/helm-charts/"
       ]
+    },{
+      "matchDatasources": [
+        "helm"
+      ],
+      "matchPackageNames": [
+        "opensearch-operator"
+      ],
+      "registryUrls": [
+        "https://opensearch-project.github.io/opensearch-k8s-operator/"
+      ]
     }
   ],
   "customManagers": [
@@ -411,6 +421,31 @@
       ],
       "depNameTemplate": "redis-sentinel",
       "autoReplaceStringTemplate": "Redis Sentinel    | v{{newValue}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/roles/opensearch_operator/defaults/main.yml$/",
+        "/roles/opensearch_operator/README.md$/"
+      ],
+      "matchStrings": [
+        "opensearch_operator_helm_version:\\s*(?<quote>\")?(?<currentValue>[0-9\\.]+)\"?"
+      ],
+      "depNameTemplate": "opensearch-operator",
+      "autoReplaceStringTemplate": "opensearch_operator_helm_version: {{#if quote}}\"{{newValue}}\"{{else}}{{newValue}}{{/if}}",
+      "datasourceTemplate": "helm"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^README.md$/"
+      ],
+      "matchStrings": [
+        "OpenSearch Operator\\s*\\|\\s*v?(?<currentValue>[0-9\\.]+)"
+      ],
+      "depNameTemplate": "opensearch-operator",
+      "autoReplaceStringTemplate": "OpenSearch Operator | v{{newValue}}",
       "datasourceTemplate": "helm"
     }
   ]

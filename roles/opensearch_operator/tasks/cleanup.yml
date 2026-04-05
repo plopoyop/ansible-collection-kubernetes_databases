@@ -1,0 +1,22 @@
+---
+- name: "Uninstall OpenSearch Operator helm package"
+  kubernetes.core.helm:
+    name: "{{ opensearch_operator_deployment_name }}"
+    namespace: "{{ opensearch_operator_namespace }}"
+    state: "absent"
+    chart_ref: "{{ opensearch_operator_helm_chart_ref }}"
+    chart_version: "{{ opensearch_operator_helm_version }}"
+    wait: true
+
+- name: "Remove OpenSearch Operator helm repo"
+  kubernetes.core.helm_repository:
+    name: "{{ opensearch_operator_helm_repo_name }}"
+    repo_url: "{{ opensearch_operator_helm_repo_url }}"
+    state: "absent"
+
+- name: "Remove OpenSearch Operator namespace"
+  kubernetes.core.k8s:
+    name: "{{ opensearch_operator_namespace }}"
+    api_version: "v1"
+    kind: "Namespace"
+    state: "absent"

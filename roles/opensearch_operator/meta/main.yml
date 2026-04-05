@@ -1,0 +1,20 @@
+---
+# @meta description: >
+# Role to install the OpenSearch Operator on a Kubernetes cluster.
+# It installs the OpenSearch Operator via its helm chart.
+# @end
+galaxy_info:
+  description: Install OpenSearch Operator
+  role_name: opensearch_operator
+  author: Clément Hubert
+
+  license: MLP2
+
+  min_ansible_version: "2.1"
+
+  galaxy_tags:
+    - kubernetes
+    - opensearch
+    - operator
+
+dependencies: []
