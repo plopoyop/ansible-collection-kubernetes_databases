@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.0.0...3.0.1)
 
+## 🐛 Bug Fixes
+
+- Fix ansible lint pre commit [\#29](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/29) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - fix\(ci\): update renovatebot/github-action action \(v46.1.8 → v46.1.9\) [\#27](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/27) ([plopoyop](https://github.com/plopoyop))
