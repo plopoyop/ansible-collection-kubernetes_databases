@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\)!: Update python313Packages.molecule \(25.12.0 → 26.4.0\) [\#40](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/40) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.3.9 → 0.3.10\) [\#38](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/38) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update kubernetes-helm \(3.20.1 → 3.20.2\) [\#37](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/37) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update kubectl \(1.35.3 → 1.35.4\) [\#36](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/36) ([plopoyop](https://github.com/plopoyop))
