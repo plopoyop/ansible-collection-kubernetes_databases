@@ -9,7 +9,7 @@ opensearch_cluster_enabled: true
 # @var opensearch_cluster_helm_version:type: string
 # @var opensearch_cluster_helm_version:description: >
 # OpenSearch cluster helm chart version
-opensearch_cluster_helm_version: "3.2.2"
+opensearch_cluster_helm_version: 3.3.0
 
 # @var opensearch_cluster_name
 # @var opensearch_cluster_name:type: string
