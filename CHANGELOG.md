@@ -1,13 +1,14 @@
 # Changelog
 
-## [3.0.2](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.0.2) (2026-05-02)
+## [3.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.0) (2026-05-02)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.0.1...3.0.2)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.0.1...3.1.0)
 
 ## ⚙️ Dependencies
 
 - fix\(ci\): update renovatebot/github-action action \(v46.1.11 → v46.1.12\) [\#39](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/39) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.10 → v46.1.11\) [\#35](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/35) ([plopoyop](https://github.com/plopoyop))
+- feat\(helm\): update chart opensearch-cluster \(3.2.2 → 3.3.0\) [\#34](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/34) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart mongodb-instance \(0.2.3 → 0.2.4\) [\#33](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/33) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.9 → v46.1.10\) [\#32](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/32) ([plopoyop](https://github.com/plopoyop))
 
