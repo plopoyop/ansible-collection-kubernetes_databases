@@ -16,7 +16,6 @@ It installs the operator CRDs and operator via their helm charts.
   - [mariadb_operator_cluster_name](#mariadb_operator_cluster_name)
   - [mariadb_operator_crds_deployment_name](#mariadb_operator_crds_deployment_name)
   - [mariadb_operator_crds_enabled](#mariadb_operator_crds_enabled)
-  - [mariadb_operator_crds_helm_chart_ref](#mariadb_operator_crds_helm_chart_ref)
   - [mariadb_operator_crds_helm_chart_version](#mariadb_operator_crds_helm_chart_version)
   - [mariadb_operator_current_namespace_only](#mariadb_operator_current_namespace_only)
   - [mariadb_operator_deployment_name](#mariadb_operator_deployment_name)
@@ -24,10 +23,7 @@ It installs the operator CRDs and operator via their helm charts.
   - [mariadb_operator_extra_envs](#mariadb_operator_extra_envs)
   - [mariadb_operator_ha_enabled](#mariadb_operator_ha_enabled)
   - [mariadb_operator_ha_replicas](#mariadb_operator_ha_replicas)
-  - [mariadb_operator_helm_chart_ref](#mariadb_operator_helm_chart_ref)
   - [mariadb_operator_helm_chart_version](#mariadb_operator_helm_chart_version)
-  - [mariadb_operator_helm_repo_name](#mariadb_operator_helm_repo_name)
-  - [mariadb_operator_helm_repo_url](#mariadb_operator_helm_repo_url)
   - [mariadb_operator_log_level](#mariadb_operator_log_level)
   - [mariadb_operator_metrics_enabled](#mariadb_operator_metrics_enabled)
   - [mariadb_operator_namespace](#mariadb_operator_namespace)
@@ -51,7 +47,7 @@ It installs the operator CRDs and operator via their helm charts.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -174,14 +170,6 @@ Should MariaDB Operator CRDs helm chart be installed
 mariadb_operator_crds_enabled: true
 ```
 
-### mariadb_operator_crds_helm_chart_ref
-
-#### Default value
-
-```YAML
-mariadb_operator_crds_helm_chart_ref: '{{ mariadb_operator_helm_repo_name }}/mariadb-operator-crds'
-```
-
 ### mariadb_operator_crds_helm_chart_version
 
 Helm chart version to install for the CRDs
@@ -266,14 +254,6 @@ Number of replicas for HA mode
 mariadb_operator_ha_replicas: 3
 ```
 
-### mariadb_operator_helm_chart_ref
-
-#### Default value
-
-```YAML
-mariadb_operator_helm_chart_ref: '{{ mariadb_operator_helm_repo_name }}/mariadb-operator'
-```
-
 ### mariadb_operator_helm_chart_version
 
 Helm chart version to install for the operator
@@ -284,22 +264,6 @@ Helm chart version to install for the operator
 
 ```YAML
 mariadb_operator_helm_chart_version: 26.3.0
-```
-
-### mariadb_operator_helm_repo_name
-
-#### Default value
-
-```YAML
-mariadb_operator_helm_repo_name: mariadb-operator
-```
-
-### mariadb_operator_helm_repo_url
-
-#### Default value
-
-```YAML
-mariadb_operator_helm_repo_url: https://helm.mariadb.com/mariadb-operator
 ```
 
 ### mariadb_operator_log_level
@@ -507,7 +471,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

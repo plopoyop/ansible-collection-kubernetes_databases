@@ -8,9 +8,6 @@ It deploys PostgreSQL instances using the Zalando Postgres Operator CRDs via a h
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [postgres_default_instance](#postgres_default_instance)
-  - [postgres_instance_crd_helm_chart_ref](#postgres_instance_crd_helm_chart_ref)
-  - [postgres_instance_crd_helm_repo_name](#postgres_instance_crd_helm_repo_name)
-  - [postgres_instance_crd_helm_repo_url](#postgres_instance_crd_helm_repo_url)
   - [postgres_instance_crd_helm_version](#postgres_instance_crd_helm_version)
   - [postgres_instance_enabled](#postgres_instance_enabled)
   - [postgres_instance_name](#postgres_instance_name)
@@ -27,7 +24,7 @@ It deploys PostgreSQL instances using the Zalando Postgres Operator CRDs via a h
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -104,30 +101,6 @@ postgres_default_instance:
   nodeAffinity: {}
   env: []
   postgresTeams: []
-```
-
-### postgres_instance_crd_helm_chart_ref
-
-#### Default value
-
-```YAML
-postgres_instance_crd_helm_chart_ref: '{{ postgres_instance_crd_helm_repo_name }}/postgresql-instance'
-```
-
-### postgres_instance_crd_helm_repo_name
-
-#### Default value
-
-```YAML
-postgres_instance_crd_helm_repo_name: plopoyop
-```
-
-### postgres_instance_crd_helm_repo_url
-
-#### Default value
-
-```YAML
-postgres_instance_crd_helm_repo_url: https://plopoyop.github.io/charts
 ```
 
 ### postgres_instance_crd_helm_version
@@ -247,7 +220,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

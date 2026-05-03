@@ -8,9 +8,6 @@ It deploys OpenSearch clusters via the opensearch-cluster helm chart using the O
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [opensearch_cluster_enabled](#opensearch_cluster_enabled)
-  - [opensearch_cluster_helm_chart_ref](#opensearch_cluster_helm_chart_ref)
-  - [opensearch_cluster_helm_repo_name](#opensearch_cluster_helm_repo_name)
-  - [opensearch_cluster_helm_repo_url](#opensearch_cluster_helm_repo_url)
   - [opensearch_cluster_helm_version](#opensearch_cluster_helm_version)
   - [opensearch_cluster_name](#opensearch_cluster_name)
   - [opensearch_cluster_namespace](#opensearch_cluster_namespace)
@@ -24,7 +21,7 @@ It deploys OpenSearch clusters via the opensearch-cluster helm chart using the O
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -38,31 +35,6 @@ Should OpenSearch instance helm chart be installed
 
 ```YAML
 opensearch_cluster_enabled: true
-```
-
-### opensearch_cluster_helm_chart_ref
-
-#### Default value
-
-```YAML
-opensearch_cluster_helm_chart_ref: '{{ opensearch_cluster_helm_repo_name }}/opensearch-cluster'
-```
-
-### opensearch_cluster_helm_repo_name
-
-#### Default value
-
-```YAML
-opensearch_cluster_helm_repo_name: opensearch-operator
-```
-
-### opensearch_cluster_helm_repo_url
-
-#### Default value
-
-```YAML
-opensearch_cluster_helm_repo_url: 
-  https://opensearch-project.github.io/opensearch-k8s-operator/
 ```
 
 ### opensearch_cluster_helm_version
@@ -213,7 +185,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 
