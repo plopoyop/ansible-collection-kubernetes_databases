@@ -18,7 +18,7 @@
     chart_ref: "{{ postgres_operator_helm_chart_ref }}"
     chart_version: "{{ postgres_operator_helm_chart_version }}"
     namespace: "{{ postgres_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'postgres_operator_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'postgres_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
 
 - name: "Add Postgres Operator UI Helm repository"
@@ -34,6 +34,6 @@
     chart_ref: "{{ postgres_operator_ui_helm_chart_ref }}"
     chart_version: "{{ postgres_operator_ui_helm_chart_version }}"
     namespace: "{{ postgres_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'postgres_operator_ui_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'postgres_operator_ui_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
   when: postgres_operator_ui_enabled

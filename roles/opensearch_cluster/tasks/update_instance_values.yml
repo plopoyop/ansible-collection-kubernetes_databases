@@ -2,7 +2,7 @@
 - name: "Update opensearch_cluster with overridden key"
   ansible.builtin.set_fact:
     opensearch_cluster: >-
-      {{ opensearch_cluster | combine({
+      {{ opensearch_cluster | ansible.builtin.combine({
            value_to_update.key: value_to_update.value,
            'updated': true,
          }) }}

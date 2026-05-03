@@ -12,7 +12,7 @@
 
 - name: "Call updating postgres_instance task"
   ansible.builtin.include_tasks: update_instance_values.yml
-  loop: "{{ postgres_instance_values_override | dict2items }}"
+  loop: "{{ postgres_instance_values_override | ansible.builtin.dict2items }}"
   loop_control:
     loop_var: value_to_update
 
@@ -30,6 +30,6 @@
     chart_ref: "{{ postgres_instance_crd_helm_chart_ref }}"
     chart_version: "{{ postgres_instance_crd_helm_version }}"
     namespace: "{{ postgres_instance_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'postgres_instance_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'postgres_instance_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "{{ postgres_instance_state | default('present') }}"
     force: "{{ postgres_instance_force_install | default(false) }}"

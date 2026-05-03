@@ -2,7 +2,7 @@
 - name: "Update mariadb_instance with overridden key"
   ansible.builtin.set_fact:
     mariadb_instance: >-
-      {{ mariadb_instance | combine({
+      {{ mariadb_instance | ansible.builtin.combine({
            value_to_update.key: value_to_update.value,
            'updated': true,
          }) }}

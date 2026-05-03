@@ -18,5 +18,5 @@
     chart_ref: "{{ opensearch_operator_helm_chart_ref }}"
     chart_version: "{{ opensearch_operator_helm_version }}"
     namespace: "{{ opensearch_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'opensearch_operator_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'opensearch_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"

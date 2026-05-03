@@ -63,5 +63,5 @@ extraEnv: {{ mariadb_operator_extra_envs | ansible.builtin.to_json }}
 {% endif %}
 
 {% for key, value in mariadb_operator_additional_helm_values.items() %}
-{{ key }}: {{ value | to_yaml }}
+{{ key }}: {{ value | ansible.builtin.to_yaml }}
 {% endfor %}

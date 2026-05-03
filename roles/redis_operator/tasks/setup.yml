@@ -18,5 +18,5 @@
     chart_ref: "{{ redis_operator_helm_chart_ref }}"
     chart_version: "{{ redis_operator_helm_version }}"
     namespace: "{{ redis_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'redis_operator_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'redis_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"

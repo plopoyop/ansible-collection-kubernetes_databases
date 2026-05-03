@@ -12,7 +12,7 @@
 
 - name: "Call updating opensearch_cluster task"
   ansible.builtin.include_tasks: update_instance_values.yml
-  loop: "{{ opensearch_cluster_values_override | dict2items }}"
+  loop: "{{ opensearch_cluster_values_override | ansible.builtin.dict2items }}"
   loop_control:
     loop_var: value_to_update
 
@@ -39,6 +39,6 @@
     chart_ref: "{{ opensearch_cluster_helm_chart_ref }}"
     chart_version: "{{ opensearch_cluster_helm_version }}"
     namespace: "{{ opensearch_cluster_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'opensearch_cluster_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'opensearch_cluster_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "{{ opensearch_cluster_state | default('present') }}"
     force: "{{ opensearch_cluster_force_install | default(false) }}"

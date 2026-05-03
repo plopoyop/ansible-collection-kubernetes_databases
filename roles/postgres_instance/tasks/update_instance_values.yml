@@ -2,7 +2,7 @@
 - name: "Update postgres_instance with overridden key"
   ansible.builtin.set_fact:
     postgres_instance: >-
-      {{ postgres_instance | combine({
+      {{ postgres_instance | ansible.builtin.combine({
            value_to_update.key: value_to_update.value,
            'updated': true,
          }) }}
