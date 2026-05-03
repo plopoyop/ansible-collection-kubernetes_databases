@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.0) (2026-05-02)
+## [3.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.0) (2026-05-03)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.0.1...3.1.0)
+
+## 🐛 Bug Fixes
+
+- Fix deprecation warnings and multiple CS fixes [\#41](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/41) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
