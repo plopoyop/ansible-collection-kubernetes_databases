@@ -5,26 +5,34 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'opensearch' namespace info."
+    - name: "Wait for 'opensearch' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "opensearch"
       register: namespace_opensearch
+      until:
+        - namespace_opensearch.resources | length > 0
+        - namespace_opensearch.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'opensearch' namespace is active"
+    - name: "Assert that 'opensearch' namespace is active."
       ansible.builtin.assert:
-        that: namespace_opensearch['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_opensearch.resources | length > 0
+          - namespace_opensearch.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'opensearch' is not active."
 
-    - name: "Get 'opensearch-cluster' helm release info."
+    - name: "Wait for 'opensearch-cluster' helm release to be deployed."
       kubernetes.core.helm_info:
         name: "opensearch-cluster"
         release_namespace: "opensearch"
       register: opensearch_release
+      until: opensearch_release.status is defined
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'opensearch-cluster' helm release is deployed"
+    - name: "Assert that 'opensearch-cluster' helm release is deployed."
       ansible.builtin.assert:
-        that: opensearch_release['status'] is defined
+        that: opensearch_release.status is defined
+        fail_msg: "Helm release 'opensearch-cluster' is not deployed."

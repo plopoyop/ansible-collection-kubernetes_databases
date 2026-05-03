@@ -18,5 +18,5 @@
     chart_ref: "{{ mongodb_operator_helm_chart_ref }}"
     chart_version: "{{ mongodb_operator_helm_version }}"
     namespace: "{{ mongodb_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'mongodb_operator_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'mongodb_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"

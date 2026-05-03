@@ -27,5 +27,5 @@ priorityClassName: "{{ postgres_operator_priority_class }}"
 extraEnvs: {{ postgres_operator_extra_envs }}
 
 {% for key, value in postgres_operator_additional_helm_values.items() %}
-{{ key }}: {{ value | to_yaml }}
+{{ key }}: {{ value | ansible.builtin.to_yaml }}
 {% endfor %}

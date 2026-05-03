@@ -16,9 +16,6 @@ It installs the OpsTree Redis Operator via its helm chart.
   - [redis_operator_env](#redis_operator_env)
   - [redis_operator_extra_args](#redis_operator_extra_args)
   - [redis_operator_feature_gates](#redis_operator_feature_gates)
-  - [redis_operator_helm_chart_ref](#redis_operator_helm_chart_ref)
-  - [redis_operator_helm_repo_name](#redis_operator_helm_repo_name)
-  - [redis_operator_helm_repo_url](#redis_operator_helm_repo_url)
   - [redis_operator_helm_version](#redis_operator_helm_version)
   - [redis_operator_image_name](#redis_operator_image_name)
   - [redis_operator_image_pull_policy](#redis_operator_image_pull_policy)
@@ -58,7 +55,7 @@ It installs the OpsTree Redis Operator via its helm chart.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -169,30 +166,6 @@ Feature gates for alpha/experimental features
 ```YAML
 redis_operator_feature_gates:
   GenerateConfigInInitContainer: false
-```
-
-### redis_operator_helm_chart_ref
-
-#### Default value
-
-```YAML
-redis_operator_helm_chart_ref: '{{ redis_operator_helm_repo_name }}/redis-operator'
-```
-
-### redis_operator_helm_repo_name
-
-#### Default value
-
-```YAML
-redis_operator_helm_repo_name: ot-helm
-```
-
-### redis_operator_helm_repo_url
-
-#### Default value
-
-```YAML
-redis_operator_helm_repo_url: https://ot-container-kit.github.io/helm-charts/
 ```
 
 ### redis_operator_helm_version
@@ -575,7 +548,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

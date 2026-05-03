@@ -5,26 +5,34 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'mariadb' namespace info."
+    - name: "Wait for 'mariadb' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "mariadb"
       register: namespace_mariadb
+      until:
+        - namespace_mariadb.resources | length > 0
+        - namespace_mariadb.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'mariadb' namespace is active"
+    - name: "Assert that 'mariadb' namespace is active."
       ansible.builtin.assert:
-        that: namespace_mariadb['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_mariadb.resources | length > 0
+          - namespace_mariadb.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'mariadb' is not active."
 
-    - name: "Get 'mariadb-database' helm release info."
+    - name: "Wait for 'mariadb-database' helm release to be deployed."
       kubernetes.core.helm_info:
         name: "mariadb-database"
         release_namespace: "mariadb"
       register: mariadb_release
+      until: mariadb_release.status is defined
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'mariadb-database' helm release is deployed"
+    - name: "Assert that 'mariadb-database' helm release is deployed."
       ansible.builtin.assert:
-        that: mariadb_release['status'] is defined
+        that: mariadb_release.status is defined
+        fail_msg: "Helm release 'mariadb-database' is not deployed."

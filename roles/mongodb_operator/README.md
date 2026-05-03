@@ -12,9 +12,6 @@ It install community operator via its helm chart and deploy mongodb replicatset.
   - [mongodb_operator_deployment_name](#mongodb_operator_deployment_name)
   - [mongodb_operator_enabled](#mongodb_operator_enabled)
   - [mongodb_operator_extra_envs](#mongodb_operator_extra_envs)
-  - [mongodb_operator_helm_chart_ref](#mongodb_operator_helm_chart_ref)
-  - [mongodb_operator_helm_repo_name](#mongodb_operator_helm_repo_name)
-  - [mongodb_operator_helm_repo_url](#mongodb_operator_helm_repo_url)
   - [mongodb_operator_helm_version](#mongodb_operator_helm_version)
   - [mongodb_operator_memory_limit](#mongodb_operator_memory_limit)
   - [mongodb_operator_memory_request](#mongodb_operator_memory_request)
@@ -32,7 +29,7 @@ It install community operator via its helm chart and deploy mongodb replicatset.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -102,30 +99,6 @@ mongodb_operator_extra_envs: []
  mongodb_operator_extra_envs:
   - name: CLUSTER_DOMAIN
     value: my-cluster.domain
-```
-
-### mongodb_operator_helm_chart_ref
-
-#### Default value
-
-```YAML
-mongodb_operator_helm_chart_ref: '{{ mongodb_operator_helm_repo_name }}/mongodb-kubernetes'
-```
-
-### mongodb_operator_helm_repo_name
-
-#### Default value
-
-```YAML
-mongodb_operator_helm_repo_name: mongodb
-```
-
-### mongodb_operator_helm_repo_url
-
-#### Default value
-
-```YAML
-mongodb_operator_helm_repo_url: https://mongodb.github.io/helm-charts
 ```
 
 ### mongodb_operator_helm_version
@@ -245,7 +218,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

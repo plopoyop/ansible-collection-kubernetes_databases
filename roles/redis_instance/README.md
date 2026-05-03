@@ -11,7 +11,6 @@ using the OpsTree Redis Operator helm charts.
   - [redis_instance_acl_secret_name](#redis_instance_acl_secret_name)
   - [redis_instance_affinity](#redis_instance_affinity)
   - [redis_instance_annotations](#redis_instance_annotations)
-  - [redis_instance_chart_map](#redis_instance_chart_map)
   - [redis_instance_cluster_follower_replicas](#redis_instance_cluster_follower_replicas)
   - [redis_instance_cluster_helm_version](#redis_instance_cluster_helm_version)
   - [redis_instance_cluster_leader_replicas](#redis_instance_cluster_leader_replicas)
@@ -29,8 +28,6 @@ using the OpsTree Redis Operator helm charts.
   - [redis_instance_external_service_enabled](#redis_instance_external_service_enabled)
   - [redis_instance_external_service_port](#redis_instance_external_service_port)
   - [redis_instance_external_service_type](#redis_instance_external_service_type)
-  - [redis_instance_helm_repo_name](#redis_instance_helm_repo_name)
-  - [redis_instance_helm_repo_url](#redis_instance_helm_repo_url)
   - [redis_instance_image](#redis_instance_image)
   - [redis_instance_image_pull_policy](#redis_instance_image_pull_policy)
   - [redis_instance_init_container_enabled](#redis_instance_init_container_enabled)
@@ -76,7 +73,7 @@ using the OpsTree Redis Operator helm charts.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -114,30 +111,6 @@ Additional annotations
 
 ```YAML
 redis_instance_annotations: {}
-```
-
-### redis_instance_chart_map
-
-#### Default value
-
-```YAML
-redis_instance_chart_map:
-  standalone:
-    chart_ref: '{{ redis_instance_helm_repo_name }}/redis'
-    chart_version: '{{ redis_instance_standalone_helm_version }}'
-    template: redis_instance_standalone_helm_values.yml.j2
-  replication:
-    chart_ref: '{{ redis_instance_helm_repo_name }}/redis-replication'
-    chart_version: '{{ redis_instance_replication_helm_version }}'
-    template: redis_instance_replication_helm_values.yml.j2
-  cluster:
-    chart_ref: '{{ redis_instance_helm_repo_name }}/redis-cluster'
-    chart_version: '{{ redis_instance_cluster_helm_version }}'
-    template: redis_instance_cluster_helm_values.yml.j2
-  sentinel:
-    chart_ref: '{{ redis_instance_helm_repo_name }}/redis-sentinel'
-    chart_version: '{{ redis_instance_sentinel_helm_version }}'
-    template: redis_instance_sentinel_helm_values.yml.j2
 ```
 
 ### redis_instance_cluster_follower_replicas
@@ -342,22 +315,6 @@ Service type for external service
 
 ```YAML
 redis_instance_external_service_type: NodePort
-```
-
-### redis_instance_helm_repo_name
-
-#### Default value
-
-```YAML
-redis_instance_helm_repo_name: ot-helm
-```
-
-### redis_instance_helm_repo_url
-
-#### Default value
-
-```YAML
-redis_instance_helm_repo_url: https://ot-container-kit.github.io/helm-charts/
 ```
 
 ### redis_instance_image
@@ -813,7 +770,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

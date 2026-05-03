@@ -8,9 +8,6 @@ It deploys MariaDB cluster instances via the mariadb-cluster helm chart using th
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [mariadb_default_instance](#mariadb_default_instance)
-  - [mariadb_instance_crd_helm_chart_ref](#mariadb_instance_crd_helm_chart_ref)
-  - [mariadb_instance_crd_helm_repo_name](#mariadb_instance_crd_helm_repo_name)
-  - [mariadb_instance_crd_helm_repo_url](#mariadb_instance_crd_helm_repo_url)
   - [mariadb_instance_crd_helm_version](#mariadb_instance_crd_helm_version)
   - [mariadb_instance_enabled](#mariadb_instance_enabled)
   - [mariadb_instance_name](#mariadb_instance_name)
@@ -24,7 +21,7 @@ It deploys MariaDB cluster instances via the mariadb-cluster helm chart using th
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -51,30 +48,6 @@ mariadb_default_instance:
   grants: []
   backups: []
   physical_backups: []
-```
-
-### mariadb_instance_crd_helm_chart_ref
-
-#### Default value
-
-```YAML
-mariadb_instance_crd_helm_chart_ref: '{{ mariadb_instance_crd_helm_repo_name }}/mariadb-cluster'
-```
-
-### mariadb_instance_crd_helm_repo_name
-
-#### Default value
-
-```YAML
-mariadb_instance_crd_helm_repo_name: mariadb-operator
-```
-
-### mariadb_instance_crd_helm_repo_url
-
-#### Default value
-
-```YAML
-mariadb_instance_crd_helm_repo_url: https://helm.mariadb.com/mariadb-operator
 ```
 
 ### mariadb_instance_crd_helm_version
@@ -171,7 +144,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

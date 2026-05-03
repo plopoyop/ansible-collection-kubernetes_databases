@@ -1,15 +1,9 @@
 ---
-- name: "Create updated value"
-  ansible.utils.update_fact:
-    updates:
-      - path: mariadb_instance["{{ value_to_update.key }}"]
-        value: "{{ value_to_update.value }}"
-      - path: mariadb_instance["updated"]
-        value: true
-  register: mariadb_updated_instance
-  changed_when: false
-
-- name: "Update instance"
+- name: "Update mariadb_instance with overridden key"
   ansible.builtin.set_fact:
-    mariadb_instance: "{{ mariadb_updated_instance.mariadb_instance }}"
+    mariadb_instance: >-
+      {{ mariadb_instance | ansible.builtin.combine({
+           value_to_update.key: value_to_update.value,
+           'updated': true,
+         }) }}
   changed_when: false

@@ -5,18 +5,17 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 30
-
-    - name: "Check if 'postgres-instance' namespace exists."
+    - name: "Wait for 'postgres-instance' namespace to be removed."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "postgres-instance"
       register: namespace_postgres
-      failed_when: false
+      until: namespace_postgres.resources | length == 0
+      retries: 30
+      delay: 5
       changed_when: false
 
-    - name: Assert that 'postgres-instance' namespace does not exist
+    - name: "Assert that 'postgres-instance' namespace is removed."
       ansible.builtin.assert:
-        that: namespace_postgres['resources'] | length == 0
+        that: namespace_postgres.resources | length == 0
+        fail_msg: "Namespace 'postgres-instance' is not removed."

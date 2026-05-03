@@ -37,7 +37,7 @@
     chart_ref: "{{ mariadb_operator_helm_chart_ref }}"
     chart_version: "{{ mariadb_operator_helm_chart_version }}"
     namespace: "{{ mariadb_operator_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', 'mariadb_operator_helm_values.yml.j2') | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', 'mariadb_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
   when: mariadb_operator_enabled
 

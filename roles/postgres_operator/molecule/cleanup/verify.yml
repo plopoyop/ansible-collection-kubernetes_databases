@@ -5,18 +5,17 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 30
-
-    - name: "Check if 'postgres-operator' namespace exists."
+    - name: "Wait for 'postgres-operator' namespace to be removed."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "postgres-operator"
       register: namespace_postgres_operator
-      failed_when: false
+      until: namespace_postgres_operator.resources | length == 0
+      retries: 30
+      delay: 5
       changed_when: false
 
-    - name: Assert that 'postgres-operator' namespace does not exist
+    - name: "Assert that 'postgres-operator' namespace is removed."
       ansible.builtin.assert:
-        that: namespace_postgres_operator['resources'] | length == 0
+        that: namespace_postgres_operator.resources | length == 0
+        fail_msg: "Namespace 'postgres-operator' is not removed."

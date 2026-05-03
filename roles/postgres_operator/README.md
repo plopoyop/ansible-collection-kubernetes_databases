@@ -18,10 +18,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
   - [postgres_operator_enable_pvc_deletion](#postgres_operator_enable_pvc_deletion)
   - [postgres_operator_enabled](#postgres_operator_enabled)
   - [postgres_operator_extra_envs](#postgres_operator_extra_envs)
-  - [postgres_operator_helm_chart_ref](#postgres_operator_helm_chart_ref)
   - [postgres_operator_helm_chart_version](#postgres_operator_helm_chart_version)
-  - [postgres_operator_helm_repo_name](#postgres_operator_helm_repo_name)
-  - [postgres_operator_helm_repo_url](#postgres_operator_helm_repo_url)
   - [postgres_operator_memory_limit](#postgres_operator_memory_limit)
   - [postgres_operator_memory_request](#postgres_operator_memory_request)
   - [postgres_operator_namespace](#postgres_operator_namespace)
@@ -33,10 +30,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
   - [postgres_operator_ui_deployment_name](#postgres_operator_ui_deployment_name)
   - [postgres_operator_ui_enabled](#postgres_operator_ui_enabled)
   - [postgres_operator_ui_extra_envs](#postgres_operator_ui_extra_envs)
-  - [postgres_operator_ui_helm_chart_ref](#postgres_operator_ui_helm_chart_ref)
   - [postgres_operator_ui_helm_chart_version](#postgres_operator_ui_helm_chart_version)
-  - [postgres_operator_ui_helm_repo_name](#postgres_operator_ui_helm_repo_name)
-  - [postgres_operator_ui_helm_repo_url](#postgres_operator_ui_helm_repo_url)
   - [postgres_operator_ui_ingress_annotations](#postgres_operator_ui_ingress_annotations)
   - [postgres_operator_ui_ingress_class_name](#postgres_operator_ui_ingress_class_name)
   - [postgres_operator_ui_ingress_enabled](#postgres_operator_ui_ingress_enabled)
@@ -57,7 +51,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -203,14 +197,6 @@ postgres_operator_extra_envs: []
     value: my-value
 ```
 
-### postgres_operator_helm_chart_ref
-
-#### Default value
-
-```YAML
-postgres_operator_helm_chart_ref: '{{ postgres_operator_helm_repo_name }}/postgres-operator'
-```
-
 ### postgres_operator_helm_chart_version
 
 Helm chart version to install
@@ -221,23 +207,6 @@ Helm chart version to install
 
 ```YAML
 postgres_operator_helm_chart_version: 1.15.1
-```
-
-### postgres_operator_helm_repo_name
-
-#### Default value
-
-```YAML
-postgres_operator_helm_repo_name: postgres-operator-charts
-```
-
-### postgres_operator_helm_repo_url
-
-#### Default value
-
-```YAML
-postgres_operator_helm_repo_url: 
-  https://opensource.zalando.com/postgres-operator/charts/postgres-operator
 ```
 
 ### postgres_operator_memory_limit
@@ -379,14 +348,6 @@ Additional environment variables for the operator UI pod
 postgres_operator_ui_extra_envs: []
 ```
 
-### postgres_operator_ui_helm_chart_ref
-
-#### Default value
-
-```YAML
-postgres_operator_ui_helm_chart_ref: '{{ postgres_operator_ui_helm_repo_name }}/postgres-operator-ui'
-```
-
 ### postgres_operator_ui_helm_chart_version
 
 Helm chart version to install for the operator UI
@@ -397,23 +358,6 @@ Helm chart version to install for the operator UI
 
 ```YAML
 postgres_operator_ui_helm_chart_version: 1.15.1
-```
-
-### postgres_operator_ui_helm_repo_name
-
-#### Default value
-
-```YAML
-postgres_operator_ui_helm_repo_name: postgres-operator-ui-charts
-```
-
-### postgres_operator_ui_helm_repo_url
-
-#### Default value
-
-```YAML
-postgres_operator_ui_helm_repo_url: 
-  https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui
 ```
 
 ### postgres_operator_ui_ingress_annotations
@@ -575,7 +519,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

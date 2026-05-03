@@ -34,5 +34,5 @@ ingress:
 extraEnvs: {{ postgres_operator_ui_extra_envs }}
 
 {% for key, value in postgres_operator_ui_additional_helm_values.items() %}
-{{ key }}: {{ value | to_yaml }}
+{{ key }}: {{ value | ansible.builtin.to_yaml }}
 {% endfor %}

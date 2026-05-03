@@ -25,6 +25,6 @@
     chart_ref: "{{ redis_instance_chart_map[redis_instance_mode].chart_ref }}"
     chart_version: "{{ redis_instance_chart_map[redis_instance_mode].chart_version }}"
     namespace: "{{ redis_instance_namespace }}"
-    values: "{{ lookup('ansible.builtin.template', redis_instance_chart_map[redis_instance_mode].template) | from_yaml }}"
+    values: "{{ lookup('ansible.builtin.template', redis_instance_chart_map[redis_instance_mode].template) | ansible.builtin.from_yaml }}"
     state: "{{ redis_instance_state | default('present') }}"
     force: "{{ redis_instance_force_install | default(false) }}"

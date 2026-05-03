@@ -14,9 +14,6 @@ It installs the OpenSearch Operator via its helm chart.
   - [opensearch_operator_dns_base](#opensearch_operator_dns_base)
   - [opensearch_operator_enabled](#opensearch_operator_enabled)
   - [opensearch_operator_extra_env](#opensearch_operator_extra_env)
-  - [opensearch_operator_helm_chart_ref](#opensearch_operator_helm_chart_ref)
-  - [opensearch_operator_helm_repo_name](#opensearch_operator_helm_repo_name)
-  - [opensearch_operator_helm_repo_url](#opensearch_operator_helm_repo_url)
   - [opensearch_operator_helm_version](#opensearch_operator_helm_version)
   - [opensearch_operator_image_pull_policy](#opensearch_operator_image_pull_policy)
   - [opensearch_operator_image_repository](#opensearch_operator_image_repository)
@@ -52,7 +49,7 @@ It installs the OpenSearch Operator via its helm chart.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
@@ -138,31 +135,6 @@ Additional environment variables for the manager
 
 ```YAML
 opensearch_operator_extra_env: []
-```
-
-### opensearch_operator_helm_chart_ref
-
-#### Default value
-
-```YAML
-opensearch_operator_helm_chart_ref: '{{ opensearch_operator_helm_repo_name }}/opensearch-operator'
-```
-
-### opensearch_operator_helm_repo_name
-
-#### Default value
-
-```YAML
-opensearch_operator_helm_repo_name: opensearch-operator
-```
-
-### opensearch_operator_helm_repo_url
-
-#### Default value
-
-```YAML
-opensearch_operator_helm_repo_url: 
-  https://opensearch-project.github.io/opensearch-k8s-operator/
 ```
 
 ### opensearch_operator_helm_version
@@ -497,7 +469,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 

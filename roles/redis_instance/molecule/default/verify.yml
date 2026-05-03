@@ -5,26 +5,34 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'redis' namespace info."
+    - name: "Wait for 'redis' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "redis"
       register: namespace_redis
+      until:
+        - namespace_redis.resources | length > 0
+        - namespace_redis.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'redis' namespace is active"
+    - name: "Assert that 'redis' namespace is active."
       ansible.builtin.assert:
-        that: namespace_redis['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_redis.resources | length > 0
+          - namespace_redis.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'redis' is not active."
 
-    - name: "Get 'redis' helm release info."
+    - name: "Wait for 'redis' helm release to be deployed."
       kubernetes.core.helm_info:
         name: "redis"
         release_namespace: "redis"
       register: redis_release
+      until: redis_release.status is defined
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'redis' helm release is deployed"
+    - name: "Assert that 'redis' helm release is deployed."
       ansible.builtin.assert:
-        that: redis_release['status'] is defined
+        that: redis_release.status is defined
+        fail_msg: "Helm release 'redis' is not deployed."

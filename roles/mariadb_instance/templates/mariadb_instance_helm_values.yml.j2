@@ -16,21 +16,21 @@ mariadb:
     enabled: {{ mariadb_instance.galera_enabled | lower }}
 
 {% if mariadb_instance.databases | length > 0 %}
-databases: {{ mariadb_instance.databases | to_json }}
+databases: {{ mariadb_instance.databases | ansible.builtin.to_json }}
 {% endif %}
 
 {% if mariadb_instance.users | length > 0 %}
-users: {{ mariadb_instance.users | to_json }}
+users: {{ mariadb_instance.users | ansible.builtin.to_json }}
 {% endif %}
 
 {% if mariadb_instance.grants | length > 0 %}
-grants: {{ mariadb_instance.grants | to_json }}
+grants: {{ mariadb_instance.grants | ansible.builtin.to_json }}
 {% endif %}
 
 {% if mariadb_instance.backups | length > 0 %}
-backups: {{ mariadb_instance.backups | to_json }}
+backups: {{ mariadb_instance.backups | ansible.builtin.to_json }}
 {% endif %}
 
 {% if mariadb_instance.physical_backups | length > 0 %}
-physicalBackups: {{ mariadb_instance.physical_backups | to_json }}
+physicalBackups: {{ mariadb_instance.physical_backups | ansible.builtin.to_json }}
 {% endif %}
