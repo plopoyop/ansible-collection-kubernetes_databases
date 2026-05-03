@@ -8,9 +8,6 @@ It install community operator via its helm chart and deploy mongodb replicatset.
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [mongodb_default_instance](#mongodb_default_instance)
-  - [mongodb_instance_crd_helm_chart_ref](#mongodb_instance_crd_helm_chart_ref)
-  - [mongodb_instance_crd_helm_repo_name](#mongodb_instance_crd_helm_repo_name)
-  - [mongodb_instance_crd_helm_repo_url](#mongodb_instance_crd_helm_repo_url)
   - [mongodb_instance_crd_helm_version](#mongodb_instance_crd_helm_version)
   - [mongodb_instance_enabled](#mongodb_instance_enabled)
   - [mongodb_instance_members](#mongodb_instance_members)
@@ -26,13 +23,13 @@ It install community operator via its helm chart and deploy mongodb replicatset.
 
 ## Requirements
 
-- Minimum Ansible version: `2.1`
+- Minimum Ansible version: `2.12`
 
 ## Default Variables
 
 ### mongodb_default_instance
 
-Overrides for default values
+default values for helm chart deployement
 
 **_Type:_** dict<br />
 
@@ -43,8 +40,7 @@ mongodb_default_instance:
   name: '{{ mongodb_instance_name }}'
   namespace: '{{ mongodb_instance_namespace }}'
   version: '{{ mongodb_instance_version }}'
-  feature_compatibility_version: "{{ (mongodb_instance_version | ansible.builtin.split('.'))[0]
-    }}.{{ (mongodb_instance_version | ansible.builtin.split('.'))[1] }}"
+  feature_compatibility_version: "{{ (mongodb_instance_version | ansible.builtin.split('.'))[0] }}.{{ (mongodb_instance_version | ansible.builtin.split('.'))[1] }}"
   members: '{{ mongodb_instance_members }}'
   persistent: true
   create_service_account: false
@@ -66,35 +62,11 @@ mongodb_default_instance:
   metrics_password: ''
 ```
 
-### mongodb_instance_crd_helm_chart_ref
-
-#### Default value
-
-```YAML
-mongodb_instance_crd_helm_chart_ref: '{{ mongodb_instance_crd_helm_repo_name }}/mongodb-instance'
-```
-
-### mongodb_instance_crd_helm_repo_name
-
-#### Default value
-
-```YAML
-mongodb_instance_crd_helm_repo_name: plopoyop
-```
-
-### mongodb_instance_crd_helm_repo_url
-
-#### Default value
-
-```YAML
-mongodb_instance_crd_helm_repo_url: https://plopoyop.github.io/charts
-```
-
 ### mongodb_instance_crd_helm_version
 
 mongodb instance helm chart version
 
-**_Type:_** dict<br />
+**_Type:_** string<br />
 
 #### Default value
 
@@ -118,7 +90,7 @@ mongodb_instance_enabled: true
 
 number of replicatset members
 
-**_Type:_** dict<br />
+**_Type:_** integer<br />
 
 #### Default value
 
@@ -130,7 +102,7 @@ mongodb_instance_members: 3
 
 mongodb instance name
 
-**_Type:_** dict<br />
+**_Type:_** string<br />
 
 #### Default value
 
@@ -142,7 +114,7 @@ mongodb_instance_name: mongodb-database
 
 K8s namespace to install deploy mongodb instance
 
-**_Type:_** dict<br />
+**_Type:_** string<br />
 
 #### Default value
 
@@ -151,6 +123,8 @@ mongodb_instance_namespace: mongodb
 ```
 
 ### mongodb_instance_values_override
+
+Overrides for default values
 
 **_Type:_** dict<br />
 
@@ -177,7 +151,7 @@ mongodb_instance_values_override: {}
 
 mongodb version
 
-**_Type:_** dict<br />
+**_Type:_** string<br />
 
 #### Default value
 
@@ -191,7 +165,7 @@ None.
 
 ## License
 
-MLP2
+MPL-2.0
 
 ## Author
 
