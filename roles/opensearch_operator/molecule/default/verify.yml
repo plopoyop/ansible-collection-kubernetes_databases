@@ -5,33 +5,35 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'opensearch-operator' namespace info."
+    - name: "Wait for 'opensearch-operator' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "opensearch-operator"
       register: namespace_opensearch
+      until:
+        - namespace_opensearch.resources | length > 0
+        - namespace_opensearch.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'opensearch-operator' namespace is active"
+    - name: "Assert that 'opensearch-operator' namespace is active."
       ansible.builtin.assert:
-        that: namespace_opensearch['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_opensearch.resources | length > 0
+          - namespace_opensearch.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'opensearch-operator' is not active."
 
-    - name: "Get 'opensearch-operator' Deployment info."
+    - name: "Wait for 'opensearch-operator' deployment to be deployed."
       kubernetes.core.k8s_info:
         kind: "Deployment"
         name: "opensearch-operator"
         namespace: "opensearch-operator"
       register: operator_deployment
+      until: operator_deployment.resources | length > 0
+      retries: 30
+      delay: 5
 
-
-    - name: Debug
-      ansible.builtin.debug:
-        var: operator_deployment['resources']
-
-
-    - name: "Assert that 'opensearch-operator' is deployed"
+    - name: "Assert that 'opensearch-operator' deployment is deployed."
       ansible.builtin.assert:
-        that: operator_deployment['resources'] | length > 0
+        that: operator_deployment.resources | length > 0
+        fail_msg: "Deployment 'opensearch-operator' is not deployed."

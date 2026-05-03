@@ -5,27 +5,39 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'mariadb-operator' namespace info."
+    - name: "Wait for 'mariadb-operator' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "mariadb-operator"
       register: namespace_mariadb_operator
+      until:
+        - namespace_mariadb_operator.resources | length > 0
+        - namespace_mariadb_operator.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'mariadb-operator' namespace is active"
+    - name: "Assert that 'mariadb-operator' namespace is active."
       ansible.builtin.assert:
-        that: namespace_mariadb_operator['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_mariadb_operator.resources | length > 0
+          - namespace_mariadb_operator.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'mariadb-operator' is not active."
 
-    - name: "Get 'mariadb-operator' deployment info."
+    - name: "Wait for 'mariadb-operator' deployment to be available."
       kubernetes.core.k8s_info:
         kind: "Deployment"
         name: "mariadb-operator"
         namespace: "mariadb-operator"
       register: operator_deployment
+      until:
+        - operator_deployment.resources | length > 0
+        - operator_deployment.resources[0].status.availableReplicas | default(0) == 1
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'mariadb-operator' is deployed"
+    - name: "Assert that 'mariadb-operator' deployment is available."
       ansible.builtin.assert:
-        that: operator_deployment['resources'][0]['status']['availableReplicas'] == 1
+        that:
+          - operator_deployment.resources | length > 0
+          - operator_deployment.resources[0].status.availableReplicas | default(0) == 1
+        fail_msg: "Deployment 'mariadb-operator' is not available."

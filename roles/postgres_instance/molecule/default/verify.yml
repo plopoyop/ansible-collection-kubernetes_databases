@@ -5,27 +5,35 @@
   gather_facts: true
 
   tasks:
-    - name: "Pause for job to complete."
-      ansible.builtin.pause:
-        seconds: 120
-
-    - name: "Get 'postgres' namespace info."
+    - name: "Wait for 'postgres' namespace to be active."
       kubernetes.core.k8s_info:
         kind: Namespace
         name: "postgres"
       register: namespace_postgres
+      until:
+        - namespace_postgres.resources | length > 0
+        - namespace_postgres.resources[0].status.phase == "Active"
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'postgres' namespace is active"
+    - name: "Assert that 'postgres' namespace is active."
       ansible.builtin.assert:
-        that: namespace_postgres['resources'][0]['status']['phase'] == "Active"
+        that:
+          - namespace_postgres.resources | length > 0
+          - namespace_postgres.resources[0].status.phase == "Active"
+        fail_msg: "Namespace 'postgres' is not active."
 
-    - name: "Get 'postgres-database' postgresql resource info."
+    - name: "Wait for 'postgres-database' StatefulSet to be deployed."
       kubernetes.core.k8s_info:
         kind: "StatefulSet"
         name: "postgres-database"
         namespace: "postgres"
       register: stateful_set
+      until: stateful_set.resources | length > 0
+      retries: 30
+      delay: 5
 
-    - name: "Assert that 'postgres-database' statefulset is deployed"
+    - name: "Assert that 'postgres-database' StatefulSet is deployed."
       ansible.builtin.assert:
-        that: stateful_set['resources'] | length > 0
+        that: stateful_set.resources | length > 0
+        fail_msg: "StatefulSet 'postgres-database' is not deployed."
