@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.1) (2026-05-06)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.1.0...3.1.1)
+
+## 🐛 Bug Fixes
+
+- Update ansible min version [\#42](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/42) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.0) (2026-05-03)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.0.1...3.1.0)
