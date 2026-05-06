@@ -24,7 +24,7 @@ It deploys PostgreSQL instances using the Zalando Postgres Operator CRDs via a h
 
 ## Requirements
 
-- Minimum Ansible version: `2.12`
+- Minimum Ansible version: `2.17`
 
 ## Default Variables
 

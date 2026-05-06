@@ -51,7 +51,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
 
 ## Requirements
 
-- Minimum Ansible version: `2.12`
+- Minimum Ansible version: `2.17`
 
 ## Default Variables
 

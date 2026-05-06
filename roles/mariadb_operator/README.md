@@ -47,7 +47,7 @@ It installs the operator CRDs and operator via their helm charts.
 
 ## Requirements
 
-- Minimum Ansible version: `2.12`
+- Minimum Ansible version: `2.17`
 
 ## Default Variables
 
