@@ -55,7 +55,7 @@ It installs the OpsTree Redis Operator via its helm chart.
 
 ## Requirements
 
-- Minimum Ansible version: `2.12`
+- Minimum Ansible version: `2.17`
 
 ## Default Variables
 
