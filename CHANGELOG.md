@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.1.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.1.1) (2026-05-07)
+## [3.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.0) (2026-05-08)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.1.0...3.1.1)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.1.0...3.2.0)
+
+## 🚀 New Features
+
+- Add tags on tasks [\#45](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/45) ([plopoyop](https://github.com/plopoyop))
 
 ## 🐛 Bug Fixes
 
