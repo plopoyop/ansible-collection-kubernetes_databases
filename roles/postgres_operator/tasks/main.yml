@@ -1,8 +1,14 @@
 ---
-- name: "Setup Postgres Operator"
-  ansible.builtin.include_tasks: setup.yml
+- name: "Include setup when enabled"
+  ansible.builtin.include_tasks: "setup.yml"
   when: postgres_operator_enabled
+  tags:
+    - "postgres_operator"
+    - "install"
 
-- name: "Cleanup Postgres Operator"
-  ansible.builtin.include_tasks: cleanup.yml
+- name: "Include cleanup when disabled"
+  ansible.builtin.include_tasks: "cleanup.yml"
   when: not postgres_operator_enabled
+  tags:
+    - "postgres_operator"
+    - "uninstall"

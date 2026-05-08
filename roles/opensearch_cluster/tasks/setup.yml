@@ -4,6 +4,8 @@
     name: "{{ opensearch_cluster_helm_repo_name }}"
     repo_url: "{{ opensearch_cluster_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Init opensearch_cluster"
   ansible.builtin.set_fact:
@@ -31,6 +33,8 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Create OpenSearch instance from helm chart"
   kubernetes.core.helm:
@@ -42,3 +46,5 @@
     values: "{{ lookup('ansible.builtin.template', 'opensearch_cluster_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "{{ opensearch_cluster_state | default('present') }}"
     force: "{{ opensearch_cluster_force_install | default(false) }}"
+  tags:
+    - "helm_chart"

@@ -1,8 +1,14 @@
 ---
-- name: "Setup Redis instance"
-  ansible.builtin.include_tasks: setup.yml
+- name: "Include setup when enabled"
+  ansible.builtin.include_tasks: "setup.yml"
   when: redis_instance_enabled
+  tags:
+    - "redis_instance"
+    - "install"
 
-- name: "Cleanup Redis instance"
-  ansible.builtin.include_tasks: cleanup.yml
+- name: "Include cleanup when disabled"
+  ansible.builtin.include_tasks: "cleanup.yml"
   when: not redis_instance_enabled
+  tags:
+    - "redis_instance"
+    - "uninstall"

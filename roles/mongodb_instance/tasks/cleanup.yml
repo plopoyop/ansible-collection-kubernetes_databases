@@ -8,12 +8,16 @@
     namespace: "{{ mongodb_instance_namespace }}"
     state: "absent"
     wait: true
+  tags:
+    - "helm_chart"
 
 - name: "Remove MongoDb Instance helm repo"
   kubernetes.core.helm_repository:
     name: "{{ mongodb_instance_crd_helm_repo_name }}"
     repo_url: "{{ mongodb_instance_crd_helm_repo_url }}"
     state: "absent"
+  tags:
+    - "helm_repository"
 
 - name: "Remove MongoDb Instance namespace"
   kubernetes.core.k8s:
@@ -21,3 +25,5 @@
     api_version: "v1"
     kind: "Namespace"
     state: "absent"
+  tags:
+    - "namespace"

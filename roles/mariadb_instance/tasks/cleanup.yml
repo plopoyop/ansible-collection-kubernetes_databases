@@ -8,12 +8,16 @@
     namespace: "{{ mariadb_instance_namespace }}"
     state: "absent"
     wait: true
+  tags:
+    - "helm_chart"
 
 - name: "Remove MariaDB Instance helm repo"
   kubernetes.core.helm_repository:
     name: "{{ mariadb_instance_crd_helm_repo_name }}"
     repo_url: "{{ mariadb_instance_crd_helm_repo_url }}"
     state: "absent"
+  tags:
+    - "helm_repository"
 
 - name: "Remove MariaDB Instance namespace"
   kubernetes.core.k8s:
@@ -21,3 +25,5 @@
     api_version: "v1"
     kind: "Namespace"
     state: "absent"
+  tags:
+    - "namespace"

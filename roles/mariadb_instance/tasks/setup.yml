@@ -4,6 +4,8 @@
     name: "{{ mariadb_instance_crd_helm_repo_name }}"
     repo_url: "{{ mariadb_instance_crd_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Init mariadb_instance"
   ansible.builtin.set_fact:
@@ -22,6 +24,8 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Create MariaDB instance from helm chart"
   kubernetes.core.helm:
@@ -33,3 +37,5 @@
     values: "{{ lookup('ansible.builtin.template', 'mariadb_instance_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "{{ mariadb_instance_state | default('present') }}"
     force: "{{ mariadb_instance_force_install | default(false) }}"
+  tags:
+    - "helm_chart"

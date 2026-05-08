@@ -7,12 +7,16 @@
     chart_ref: "{{ opensearch_operator_helm_chart_ref }}"
     chart_version: "{{ opensearch_operator_helm_version }}"
     wait: true
+  tags:
+    - "helm_chart"
 
 - name: "Remove OpenSearch Operator helm repo"
   kubernetes.core.helm_repository:
     name: "{{ opensearch_operator_helm_repo_name }}"
     repo_url: "{{ opensearch_operator_helm_repo_url }}"
     state: "absent"
+  tags:
+    - "helm_repository"
 
 - name: "Remove OpenSearch Operator namespace"
   kubernetes.core.k8s:
@@ -20,3 +24,5 @@
     api_version: "v1"
     kind: "Namespace"
     state: "absent"
+  tags:
+    - "namespace"

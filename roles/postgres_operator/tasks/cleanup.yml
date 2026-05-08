@@ -8,6 +8,8 @@
     chart_version: "{{ postgres_operator_ui_helm_chart_version }}"
     wait: true
   when: postgres_operator_ui_enabled
+  tags:
+    - "helm_chart"
 
 - name: "Remove Postgres Operator UI helm repo"
   kubernetes.core.helm_repository:
@@ -15,6 +17,8 @@
     repo_url: "{{ postgres_operator_ui_helm_repo_url }}"
     state: "absent"
   when: postgres_operator_ui_enabled
+  tags:
+    - "helm_repository"
 
 - name: "Uninstall Postgres Operator helm package"
   kubernetes.core.helm:
@@ -24,12 +28,16 @@
     chart_ref: "{{ postgres_operator_helm_chart_ref }}"
     chart_version: "{{ postgres_operator_helm_chart_version }}"
     wait: true
+  tags:
+    - "helm_chart"
 
 - name: "Remove Postgres Operator helm repo"
   kubernetes.core.helm_repository:
     name: "{{ postgres_operator_helm_repo_name }}"
     repo_url: "{{ postgres_operator_helm_repo_url }}"
     state: "absent"
+  tags:
+    - "helm_repository"
 
 - name: "Remove Postgres Operator namespace"
   kubernetes.core.k8s:
@@ -37,3 +45,5 @@
     api_version: "v1"
     kind: "Namespace"
     state: "absent"
+  tags:
+    - "namespace"

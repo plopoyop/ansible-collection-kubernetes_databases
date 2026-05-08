@@ -10,6 +10,8 @@
     name: "{{ redis_instance_helm_repo_name }}"
     repo_url: "{{ redis_instance_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Create Redis instance namespace"
   kubernetes.core.k8s:
@@ -17,6 +19,8 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Install Redis instance from helm chart"
   kubernetes.core.helm:
@@ -28,3 +32,5 @@
     values: "{{ lookup('ansible.builtin.template', redis_instance_chart_map[redis_instance_mode].template) | ansible.builtin.from_yaml }}"
     state: "{{ redis_instance_state | default('present') }}"
     force: "{{ redis_instance_force_install | default(false) }}"
+  tags:
+    - "helm_chart"

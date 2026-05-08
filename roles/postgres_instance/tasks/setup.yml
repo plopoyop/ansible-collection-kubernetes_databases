@@ -4,6 +4,8 @@
     name: "{{ postgres_instance_crd_helm_repo_name }}"
     repo_url: "{{ postgres_instance_crd_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Init postgres_instance"
   ansible.builtin.set_fact:
@@ -22,6 +24,8 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Create PostgreSQL instance from helm chart"
   kubernetes.core.helm:
@@ -33,3 +37,5 @@
     values: "{{ lookup('ansible.builtin.template', 'postgres_instance_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "{{ postgres_instance_state | default('present') }}"
     force: "{{ postgres_instance_force_install | default(false) }}"
+  tags:
+    - "helm_chart"
