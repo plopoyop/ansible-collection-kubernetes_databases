@@ -5,12 +5,16 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Add OpenSearch Operator Helm repository"
   kubernetes.core.helm_repository:
     name: "{{ opensearch_operator_helm_repo_name }}"
     repo_url: "{{ opensearch_operator_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Install OpenSearch Operator"
   kubernetes.core.helm:
@@ -20,3 +24,5 @@
     namespace: "{{ opensearch_operator_namespace }}"
     values: "{{ lookup('ansible.builtin.template', 'opensearch_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
+  tags:
+    - "helm_chart"

@@ -8,12 +8,16 @@
     namespace: "{{ opensearch_cluster_namespace }}"
     state: "absent"
     wait: true
+  tags:
+    - "helm_chart"
 
 - name: "Remove OpenSearch instance helm repo"
   kubernetes.core.helm_repository:
     name: "{{ opensearch_cluster_helm_repo_name }}"
     repo_url: "{{ opensearch_cluster_helm_repo_url }}"
     state: "absent"
+  tags:
+    - "helm_repository"
 
 - name: "Remove OpenSearch instance namespace"
   kubernetes.core.k8s:
@@ -21,3 +25,5 @@
     api_version: "v1"
     kind: "Namespace"
     state: "absent"
+  tags:
+    - "namespace"

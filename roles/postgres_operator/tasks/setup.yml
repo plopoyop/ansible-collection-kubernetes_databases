@@ -5,12 +5,16 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Add Postgres Operator Helm repository"
   kubernetes.core.helm_repository:
     name: "{{ postgres_operator_helm_repo_name }}"
     repo_url: "{{ postgres_operator_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Install Postgres Operator"
   kubernetes.core.helm:
@@ -20,6 +24,8 @@
     namespace: "{{ postgres_operator_namespace }}"
     values: "{{ lookup('ansible.builtin.template', 'postgres_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
+  tags:
+    - "helm_chart"
 
 - name: "Add Postgres Operator UI Helm repository"
   kubernetes.core.helm_repository:
@@ -27,6 +33,8 @@
     repo_url: "{{ postgres_operator_ui_helm_repo_url }}"
     state: "present"
   when: postgres_operator_ui_enabled
+  tags:
+    - "helm_repository"
 
 - name: "Install Postgres Operator UI"
   kubernetes.core.helm:
@@ -37,3 +45,5 @@
     values: "{{ lookup('ansible.builtin.template', 'postgres_operator_ui_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
   when: postgres_operator_ui_enabled
+  tags:
+    - "helm_chart"

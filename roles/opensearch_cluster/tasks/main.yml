@@ -1,8 +1,14 @@
 ---
-- name: "Setup OpenSearch instance"
-  ansible.builtin.include_tasks: setup.yml
+- name: "Include setup when enabled"
+  ansible.builtin.include_tasks: "setup.yml"
   when: opensearch_cluster_enabled
+  tags:
+    - "opensearch_cluster"
+    - "install"
 
-- name: "Cleanup OpenSearch instance"
-  ansible.builtin.include_tasks: cleanup.yml
+- name: "Include cleanup when disabled"
+  ansible.builtin.include_tasks: "cleanup.yml"
   when: not opensearch_cluster_enabled
+  tags:
+    - "opensearch_cluster"
+    - "uninstall"

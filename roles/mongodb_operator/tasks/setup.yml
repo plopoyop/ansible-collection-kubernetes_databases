@@ -5,12 +5,16 @@
     api_version: "v1"
     kind: "Namespace"
     state: "present"
+  tags:
+    - "namespace"
 
 - name: "Add MongoDB Helm repository"
   kubernetes.core.helm_repository:
     name: "{{ mongodb_operator_helm_repo_name }}"
     repo_url: "{{ mongodb_operator_helm_repo_url }}"
     state: "present"
+  tags:
+    - "helm_repository"
 
 - name: "Install MongoDB Operator"
   kubernetes.core.helm:
@@ -20,3 +24,5 @@
     namespace: "{{ mongodb_operator_namespace }}"
     values: "{{ lookup('ansible.builtin.template', 'mongodb_operator_helm_values.yml.j2') | ansible.builtin.from_yaml }}"
     state: "present"
+  tags:
+    - "helm_chart"
