@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.0) (2026-05-14)
+## [3.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.0) (2026-05-18)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.1.0...3.2.0)
 
@@ -19,6 +19,8 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update kubectl \(1.36.0 → 1.36.1\) [\#49](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/49) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update ansible-doctor \(8.3.0 → 8.3.1\) [\#48](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/48) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.3.10 → 0.3.11\) [\#46](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/46) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update kubectl \(1.35.4 → 1.36.0\) [\#44](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/44) ([plopoyop](https://github.com/plopoyop))
 
