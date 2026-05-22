@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.0) (2026-05-18)
+## [3.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.0) (2026-05-22)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.1.0...3.2.0)
 
@@ -11,6 +11,10 @@
 ## 🐛 Bug Fixes
 
 - Update ansible min version [\#42](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/42) ([plopoyop](https://github.com/plopoyop))
+
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart mongodb-kubernetes \(1.8.0 → 1.8.1\) [\#50](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/50) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
