@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.2.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.2.1) (2026-06-04)
+## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-08)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.2.1)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.3.0)
+
+## ⛵ Helm Charts
+
+- feat\(helm\): update chart mariadb-cluster \(26.3.0 → 26.6.0\) [\#54](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/54) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
 
