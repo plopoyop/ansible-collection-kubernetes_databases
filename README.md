@@ -33,7 +33,7 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 
 | Role Name       | Helm Chart Version | Role Tag              | README Link                                 |
 | ---------       | ------------------ | --------------------- | ------------------------------------        |
-| MariaDB Instance  | v26.3.0           | `mariadb_instance`    | [View README](roles/mariadb_instance/README.md)  |
+| MariaDB Instance  | v26.6.0           | `mariadb_instance`    | [View README](roles/mariadb_instance/README.md)  |
 | MariaDB Operator  | v26.3.0           | `mariadb_operator`    | [View README](roles/mariadb_operator/README.md)  |
 | MongoDb for Kubernetes | v1.8.1            | `mongodb_operator`    | [View README](roles/mongodb_operator/README.md) |
 | MongoDb Instance | v0.2.4            | `mongodb_instance`    | [View README](roles/mongodb_instance/README.md) |
