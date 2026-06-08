@@ -7,6 +7,7 @@
 ## ⛵ Helm Charts
 
 - feat\(helm\): update chart mariadb-operator-crds \(26.3.0 → 26.6.0\) [\#56](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/56) ([plopoyop](https://github.com/plopoyop))
+- feat\(helm\): update chart mariadb-operator \(26.3.0 → 26.6.0\) [\#55](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/55) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-cluster \(26.3.0 → 26.6.0\) [\#54](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/54) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
