@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-08)
+## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-11)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.3.0)
 
@@ -9,6 +9,10 @@
 - feat\(helm\): update chart mariadb-operator-crds \(26.3.0 → 26.6.0\) [\#56](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/56) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-operator \(26.3.0 → 26.6.0\) [\#55](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/55) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-cluster \(26.3.0 → 26.6.0\) [\#54](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/54) ([plopoyop](https://github.com/plopoyop))
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.1.14 → v46.1.15\) [\#57](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/57) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
 
