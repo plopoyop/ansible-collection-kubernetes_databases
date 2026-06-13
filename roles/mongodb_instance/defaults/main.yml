@@ -35,6 +35,12 @@ mongodb_instance_version: "8.0.6"
 # number of replicatset members
 mongodb_instance_members: 3
 
+# @var mongodb_instance_admin_password
+# @var mongodb_instance_admin_password:type: string
+# @var mongodb_instance_admin_password:description: >
+# password for the MongoDB admin user
+mongodb_instance_admin_password: ""
+
 # @var mongodb_default_instance
 # @var mongodb_default_instance:type: dict
 # @var mongodb_default_instance:description: >
