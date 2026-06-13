@@ -8,6 +8,7 @@ It install community operator via its helm chart and deploy mongodb replicatset.
 - [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [mongodb_default_instance](#mongodb_default_instance)
+  - [mongodb_instance_admin_password](#mongodb_instance_admin_password)
   - [mongodb_instance_crd_helm_version](#mongodb_instance_crd_helm_version)
   - [mongodb_instance_enabled](#mongodb_instance_enabled)
   - [mongodb_instance_members](#mongodb_instance_members)
@@ -15,6 +16,7 @@ It install community operator via its helm chart and deploy mongodb replicatset.
   - [mongodb_instance_namespace](#mongodb_instance_namespace)
   - [mongodb_instance_values_override](#mongodb_instance_values_override)
   - [mongodb_instance_version](#mongodb_instance_version)
+- [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author](#author)
@@ -60,6 +62,18 @@ mongodb_default_instance:
   metrics_enabled: false
   metrics_username: prometheus
   metrics_password: ''
+```
+
+### mongodb_instance_admin_password
+
+password for the MongoDB admin user
+
+**_Type:_** string<br />
+
+#### Default value
+
+```YAML
+mongodb_instance_admin_password: ''
 ```
 
 ### mongodb_instance_crd_helm_version
@@ -158,6 +172,20 @@ mongodb version
 ```YAML
 mongodb_instance_version: 8.0.6
 ```
+
+## Discovered Tags
+
+**_helm_chart_**
+
+**_helm_repository_**
+
+**_install_**
+
+**_mongodb_instance_**
+
+**_namespace_**
+
+**_uninstall_**
 
 ## Dependencies
 
