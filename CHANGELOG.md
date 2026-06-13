@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-11)
+## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-13)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.3.0)
+
+## 🐛 Bug Fixes
+
+- Add missing admin password variable in MongoDB instance role [\#58](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/58) ([plopoyop](https://github.com/plopoyop))
 
 ## ⛵ Helm Charts
 
