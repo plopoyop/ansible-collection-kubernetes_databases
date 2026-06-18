@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-17)
+## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-06-18)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.3.0)
 
@@ -10,6 +10,7 @@
 
 ## ⛵ Helm Charts
 
+- fix\(helm\): update chart redis-sentinel \(0.16.12 → 0.16.13\) [\#61](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/61) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-operator-crds \(26.3.0 → 26.6.0\) [\#56](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/56) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-operator \(26.3.0 → 26.6.0\) [\#55](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/55) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mariadb-cluster \(26.3.0 → 26.6.0\) [\#54](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/54) ([plopoyop](https://github.com/plopoyop))
