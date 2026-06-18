@@ -46,7 +46,7 @@ redis_instance_cluster_helm_version: "0.17.4"
 # @var redis_instance_sentinel_helm_version:type: string
 # @var redis_instance_sentinel_helm_version:description: >
 # Helm chart version for sentinel mode
-redis_instance_sentinel_helm_version: "0.16.12"
+redis_instance_sentinel_helm_version: 0.16.13
 
 # Common configuration (shared across all modes)
 # @var redis_instance_image
