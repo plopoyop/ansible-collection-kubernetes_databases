@@ -556,7 +556,7 @@ Helm chart version for sentinel mode
 #### Default value
 
 ```YAML
-redis_instance_sentinel_helm_version: 0.16.12
+redis_instance_sentinel_helm_version: 0.16.13
 ```
 
 ### redis_instance_sentinel_master_group_name
