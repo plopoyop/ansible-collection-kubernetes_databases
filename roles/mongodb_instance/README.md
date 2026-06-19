@@ -85,7 +85,7 @@ mongodb instance helm chart version
 #### Default value
 
 ```YAML
-mongodb_instance_crd_helm_version: 0.2.4
+mongodb_instance_crd_helm_version: 0.2.5
 ```
 
 ### mongodb_instance_enabled
