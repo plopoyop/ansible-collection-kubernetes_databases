@@ -15,7 +15,7 @@ redis_operator_namespace: "redis-operator"
 # @var redis_operator_helm_version:type: string
 # @var redis_operator_helm_version:description: >
 # Helm chart version to install
-redis_operator_helm_version: "0.24.0"
+redis_operator_helm_version: 0.25.0
 
 # @var redis_operator_deployment_name
 # @var redis_operator_deployment_name:type: string

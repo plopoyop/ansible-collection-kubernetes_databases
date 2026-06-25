@@ -177,7 +177,7 @@ Helm chart version to install
 #### Default value
 
 ```YAML
-redis_operator_helm_version: 0.24.0
+redis_operator_helm_version: 0.25.0
 ```
 
 ### redis_operator_image_name
