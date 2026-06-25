@@ -13,7 +13,7 @@ tags:
   - infrastructure
   - database
 dependencies:
-  kubernetes.core: '>=5.1.0'
-repository: 'https://github.com/plopoyop/ansible-collection-kubernetes_databases'
-issues: 'https://github.com/plopoyop/ansible-collection-kubernetes_databases/issues'
+  kubernetes.core: ">=6.4.0"
+repository: "https://github.com/plopoyop/ansible-collection-kubernetes_databases"
+issues: "https://github.com/plopoyop/ansible-collection-kubernetes_databases/issues"
 build_ignore: []
