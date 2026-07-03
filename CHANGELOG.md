@@ -10,6 +10,7 @@
 
 ## ⛵ Helm Charts
 
+- feat\(helm\): update chart mongodb-kubernetes \(1.8.1 → 1.9.0\) [\#72](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/72) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart mongodb-instance \(0.2.5 → 0.4.0\) [\#71](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/71) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\): update chart redis-operator \(0.24.0 → 0.25.0\) [\#64](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/64) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart mongodb-instance \(0.2.4 → 0.2.5\) [\#62](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/62) ([plopoyop](https://github.com/plopoyop))
