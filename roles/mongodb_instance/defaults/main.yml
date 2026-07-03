@@ -9,7 +9,7 @@ mongodb_instance_enabled: true
 # @var mongodb_instance_crd_helm_version:type: string
 # @var mongodb_instance_crd_helm_version:description: >
 # mongodb instance helm chart version
-mongodb_instance_crd_helm_version: 0.2.5
+mongodb_instance_crd_helm_version: 0.4.0
 
 # @var mongodb_instance_name
 # @var mongodb_instance_name:type: string
