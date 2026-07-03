@@ -35,7 +35,7 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 | ---------       | ------------------ | --------------------- | ------------------------------------        |
 | MariaDB Instance  | v26.6.0           | `mariadb_instance`    | [View README](roles/mariadb_instance/README.md)  |
 | MariaDB Operator  | v26.6.0           | `mariadb_operator`    | [View README](roles/mariadb_operator/README.md)  |
-| MongoDb for Kubernetes | v1.8.1            | `mongodb_operator`    | [View README](roles/mongodb_operator/README.md) |
+| MongoDb for Kubernetes | v1.9.0            | `mongodb_operator`    | [View README](roles/mongodb_operator/README.md) |
 | MongoDb Instance | v0.4.0            | `mongodb_instance`    | [View README](roles/mongodb_instance/README.md) |
 | OpenSearch Cluster  | v3.3.0          | `opensearch_cluster`  | [View README](roles/opensearch_cluster/README.md)  |
 | OpenSearch Operator | v3.0.2          | `opensearch_operator` | [View README](roles/opensearch_operator/README.md) |
