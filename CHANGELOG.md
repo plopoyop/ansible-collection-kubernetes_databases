@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-07-03)
+## [3.3.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.0) (2026-07-09)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.2.0...3.3.0)
 
@@ -21,6 +21,7 @@
 
 ## ⚙️ Dependencies
 
+- fix\(ci\): update renovatebot/github-action action \(v46.1.17 → v46.1.18\) [\#74](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/74) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.16 → v46.1.17\) [\#70](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/70) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.1.15 → v46.1.16\) [\#65](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/65) ([plopoyop](https://github.com/plopoyop))
 - feat\(ci\)!: Update actions/checkout action \(v6.0.3 → v7.0.0\) [\#63](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/63) ([plopoyop](https://github.com/plopoyop))
@@ -28,6 +29,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update python313packages.molecule \(26.4.0 → 26.6.0\) [\#75](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/75) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\)!: Update python313Packages.ansible \(13.7.0 → 14.0.0\) [\#69](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/69) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update ansible-doctor \(8.3.2 → 8.3.3\) [\#68](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/68) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update kubectl \(1.36.1 → 1.36.2\) [\#67](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/67) ([plopoyop](https://github.com/plopoyop))
