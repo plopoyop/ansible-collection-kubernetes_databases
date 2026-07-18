@@ -1,13 +1,23 @@
 ---
 - name: "Include setup when enabled"
-  ansible.builtin.include_tasks: "setup.yml"
+  ansible.builtin.include_tasks:
+    file: "setup.yml"
+    apply:
+      tags:
+        - "redis_operator"
+        - "install"
   when: redis_operator_enabled
   tags:
     - "redis_operator"
     - "install"
 
 - name: "Include cleanup when disabled"
-  ansible.builtin.include_tasks: "cleanup.yml"
+  ansible.builtin.include_tasks:
+    file: "cleanup.yml"
+    apply:
+      tags:
+        - "redis_operator"
+        - "uninstall"
   when: not redis_operator_enabled
   tags:
     - "redis_operator"
