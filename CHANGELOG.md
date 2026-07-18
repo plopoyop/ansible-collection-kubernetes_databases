@@ -6,6 +6,7 @@
 
 ## 🐛 Bug Fixes
 
+- Fix tag propagation to imported tasks [\#79](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/79) ([plopoyop](https://github.com/plopoyop))
 - Add missing admin password variable in MongoDB instance role [\#58](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/58) ([plopoyop](https://github.com/plopoyop))
 
 ## ⛵ Helm Charts
