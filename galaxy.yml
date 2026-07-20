@@ -1,6 +1,6 @@
 namespace: plopoyop
 name: kubernetes_databases
-version: 3.2.0
+version: 3.3.0
 readme: README.md
 authors:
   - Clément Hubert <clement@plopoyop.me>
