@@ -13,10 +13,11 @@
   when: not opensearch_cluster is defined or opensearch_cluster.updated
 
 - name: "Call updating opensearch_cluster task"
-  ansible.builtin.include_tasks: update_instance_values.yml
+  ansible.builtin.include_tasks: "update_instance_values.yml"
   loop: "{{ opensearch_cluster_values_override | ansible.builtin.dict2items }}"
   loop_control:
     loop_var: value_to_update
+  tags: ["always"]
 
 - name: "Validate minimum replicas per node pool"
   ansible.builtin.assert:
