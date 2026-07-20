@@ -7,9 +7,7 @@
         - "redis_instance"
         - "install"
   when: redis_instance_enabled
-  tags:
-    - "redis_instance"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "redis_instance"
         - "uninstall"
   when: not redis_instance_enabled
-  tags:
-    - "redis_instance"
-    - "uninstall"
+  tags: ["always"]

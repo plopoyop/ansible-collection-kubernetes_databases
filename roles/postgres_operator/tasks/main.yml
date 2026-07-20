@@ -7,9 +7,7 @@
         - "postgres_operator"
         - "install"
   when: postgres_operator_enabled
-  tags:
-    - "postgres_operator"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "postgres_operator"
         - "uninstall"
   when: not postgres_operator_enabled
-  tags:
-    - "postgres_operator"
-    - "uninstall"
+  tags: ["always"]

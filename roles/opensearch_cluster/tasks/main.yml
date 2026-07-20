@@ -7,9 +7,7 @@
         - "opensearch_cluster"
         - "install"
   when: opensearch_cluster_enabled
-  tags:
-    - "opensearch_cluster"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "opensearch_cluster"
         - "uninstall"
   when: not opensearch_cluster_enabled
-  tags:
-    - "opensearch_cluster"
-    - "uninstall"
+  tags: ["always"]

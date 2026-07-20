@@ -7,9 +7,7 @@
         - "opensearch_operator"
         - "install"
   when: opensearch_operator_enabled
-  tags:
-    - "opensearch_operator"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "opensearch_operator"
         - "uninstall"
   when: not opensearch_operator_enabled
-  tags:
-    - "opensearch_operator"
-    - "uninstall"
+  tags: ["always"]

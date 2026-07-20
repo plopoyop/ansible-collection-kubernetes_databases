@@ -13,10 +13,11 @@
   when: not mariadb_instance is defined or mariadb_instance.updated
 
 - name: "Call updating mariadb_instance task"
-  ansible.builtin.include_tasks: update_instance_values.yml
+  ansible.builtin.include_tasks: "update_instance_values.yml"
   loop: "{{ mariadb_instance_values_override | ansible.builtin.dict2items }}"
   loop_control:
     loop_var: value_to_update
+  tags: ["always"]
 
 - name: "Create MariaDB instance namespace"
   kubernetes.core.k8s:
