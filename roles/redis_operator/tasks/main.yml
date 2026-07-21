@@ -7,9 +7,7 @@
         - "redis_operator"
         - "install"
   when: redis_operator_enabled
-  tags:
-    - "redis_operator"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "redis_operator"
         - "uninstall"
   when: not redis_operator_enabled
-  tags:
-    - "redis_operator"
-    - "uninstall"
+  tags: ["always"]

@@ -7,9 +7,7 @@
         - "mariadb_instance"
         - "install"
   when: mariadb_instance_enabled
-  tags:
-    - "mariadb_instance"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "mariadb_instance"
         - "uninstall"
   when: not mariadb_instance_enabled
-  tags:
-    - "mariadb_instance"
-    - "uninstall"
+  tags: ["always"]

@@ -7,9 +7,7 @@
         - "postgres_instance"
         - "install"
   when: postgres_instance_enabled
-  tags:
-    - "postgres_instance"
-    - "install"
+  tags: ["always"]
 
 - name: "Include cleanup when disabled"
   ansible.builtin.include_tasks:
@@ -19,6 +17,4 @@
         - "postgres_instance"
         - "uninstall"
   when: not postgres_instance_enabled
-  tags:
-    - "postgres_instance"
-    - "uninstall"
+  tags: ["always"]
