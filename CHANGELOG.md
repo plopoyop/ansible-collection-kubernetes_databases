@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.3) (2026-07-23)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.3.2...3.3.3)
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.1.19 → v46.1.20\) [\#82](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/82) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.3.2](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.2) (2026-07-21)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.3.1...3.3.2)
