@@ -9,6 +9,7 @@ It install community operator via its helm chart and deploy mongodb replicatset.
 - [Default Variables](#default-variables)
   - [mongodb_operator_cpu_limit](#mongodb_operator_cpu_limit)
   - [mongodb_operator_cpu_request](#mongodb_operator_cpu_request)
+  - [mongodb_operator_crds_upgrade_enabled](#mongodb_operator_crds_upgrade_enabled)
   - [mongodb_operator_deployment_name](#mongodb_operator_deployment_name)
   - [mongodb_operator_enabled](#mongodb_operator_enabled)
   - [mongodb_operator_extra_envs](#mongodb_operator_extra_envs)
@@ -21,6 +22,7 @@ It install community operator via its helm chart and deploy mongodb replicatset.
   - [mongodb_operator_replicas](#mongodb_operator_replicas)
   - [mongodb_operator_security_context](#mongodb_operator_security_context)
   - [mongodb_operator_watch_namespace](#mongodb_operator_watch_namespace)
+- [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author](#author)
@@ -55,6 +57,22 @@ CPU request for operator pod
 
 ```YAML
 mongodb_operator_cpu_request: 500m
+```
+
+### mongodb_operator_crds_upgrade_enabled
+
+Apply operator CRDs (server-side, force conflicts) before helm upgrade.
+Helm does not update CRDs automatically (HIP-0011), so we render the
+target chart with `helm_template --include-crds` and apply only the
+CustomResourceDefinition resources. Skipped on first install since
+`helm install` already applies CRDs from the chart's `crds/` directory.
+
+**_Type:_** boolean<br />
+
+#### Default value
+
+```YAML
+mongodb_operator_crds_upgrade_enabled: true
 ```
 
 ### mongodb_operator_deployment_name
@@ -211,6 +229,18 @@ To configure the Operator to watch resources in another namespace
 ```YAML
 mongodb_operator_watch_namespace: '*'
 ```
+
+## Discovered Tags
+
+**_always_**
+
+**_crds_**
+
+**_helm_chart_**
+
+**_helm_repository_**
+
+**_namespace_**
 
 ## Dependencies
 

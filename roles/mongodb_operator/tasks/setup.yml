@@ -16,6 +16,20 @@
   tags:
     - "helm_repository"
 
+- name: "Get currently installed MongoDB operator release"
+  kubernetes.core.helm_info:
+    name: "{{ mongodb_operator_deployment_name }}"
+    release_namespace: "{{ mongodb_operator_namespace }}"
+  register: "mongodb_operator_current_release"
+
+- name: "Upgrade CRDs for existing release before helm upgrade"
+  ansible.builtin.include_tasks: "upgrade_crds.yml"
+  when:
+    - "mongodb_operator_crds_upgrade_enabled"
+    - "mongodb_operator_current_release.status.chart is defined"
+  tags:
+    - "crds"
+
 - name: "Install MongoDB Operator"
   kubernetes.core.helm:
     name: "{{ mongodb_operator_deployment_name }}"
