@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.3.3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.3.3) (2026-07-23)
+## [3.4.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.4.0) (2026-07-24)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.3.2...3.3.3)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.3.2...3.4.0)
+
+## 🚀 New Features
+
+- feat\(mongodb-operator\): Add tasks to upgrade CRDs [\#83](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/83) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
