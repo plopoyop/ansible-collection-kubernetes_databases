@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.4.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.4.1) (2026-07-26)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.4.0...3.4.1)
+
+**Merged pull requests:**
+
+- feat\(deps\): update kind \(0.31.0 → 0.32.0\) [\#85](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/85) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update git \(2.54.0 → 2.55.0\) [\#84](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/84) ([plopoyop](https://github.com/plopoyop))
+
 ## [3.4.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.4.0) (2026-07-24)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.3.2...3.4.0)
