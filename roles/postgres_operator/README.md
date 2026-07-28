@@ -206,7 +206,7 @@ Helm chart version to install
 #### Default value
 
 ```YAML
-postgres_operator_helm_chart_version: 1.15.1
+postgres_operator_helm_chart_version: 2.0.0
 ```
 
 ### postgres_operator_memory_limit
