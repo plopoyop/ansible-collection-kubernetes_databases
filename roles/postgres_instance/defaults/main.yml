@@ -9,7 +9,7 @@ postgres_instance_enabled: true
 # @var postgres_instance_crd_helm_version:type: string
 # @var postgres_instance_crd_helm_version:description: >
 # PostgreSQL instance helm chart version
-postgres_instance_crd_helm_version: "0.1.0"
+postgres_instance_crd_helm_version: "0.2.0"
 
 # @var postgres_instance_name
 # @var postgres_instance_name:type: string
@@ -52,16 +52,22 @@ postgres_default_instance:
   numberOfInstances: "{{ postgres_instance_number_of_instances }}"
   version: "{{ postgres_instance_version }}"
 
+  # "admin" and "cron_admin" are listed in the operator's protected_role_names,
+  # so they cannot be declared here: the operator refuses to create them and the
+  # databases they own are skipped.
   users:
-    admin:
+    app_admin:
       - superuser
       - createdb
 
   databases:
-    app: admin
+    app: app_admin
 
   preparedDatabases: {}
 
+  # Since operator v2 passwords default to scram-sha-256 encryption. Add
+  # `password_encryption: md5` here if a client or driver cannot handle it.
+  # ref: https://github.com/zalando/postgres-operator/blob/v2.0.0/docs/migrate.md
   postgresql:
     parameters: {}
 

@@ -1,0 +1,30 @@
+---
+- name: "Render Postgres Operator chart with CRDs"
+  kubernetes.core.helm_template:
+    chart_ref: "{{ postgres_operator_helm_chart_ref }}"
+    chart_version: "{{ postgres_operator_helm_chart_version }}"
+    release_name: "{{ postgres_operator_deployment_name }}"
+    release_namespace: "{{ postgres_operator_namespace }}"
+    include_crds: true
+    update_repo_cache: true
+  register: "postgres_operator_chart_render"
+  check_mode: false
+  changed_when: false
+
+- name: "Apply Postgres Operator CRDs (server-side, force conflicts)"
+  kubernetes.core.k8s:
+    state: "present"
+    apply: true
+    server_side_apply:
+      field_manager: "ansible-postgres-operator-crds"
+      force_conflicts: true
+    definition: "{{ item }}"
+  loop: >-
+    {{ (postgres_operator_chart_render.stdout | default(''))
+       | ansible.builtin.from_yaml_all
+       | select
+       | selectattr('kind', 'equalto', 'CustomResourceDefinition')
+       | list }}
+  loop_control:
+    label: "{{ item.metadata.name }}"
+  when: "postgres_operator_chart_render is not skipped"

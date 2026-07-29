@@ -16,6 +16,20 @@
   tags:
     - "helm_repository"
 
+- name: "Get currently installed Postgres Operator release"
+  kubernetes.core.helm_info:
+    name: "{{ postgres_operator_deployment_name }}"
+    release_namespace: "{{ postgres_operator_namespace }}"
+  register: "postgres_operator_current_release"
+
+- name: "Upgrade CRDs for existing release before helm upgrade"
+  ansible.builtin.include_tasks: "upgrade_crds.yml"
+  when:
+    - "postgres_operator_crds_upgrade_enabled"
+    - "postgres_operator_current_release.status.chart is defined"
+  tags:
+    - "crds"
+
 - name: "Install Postgres Operator"
   kubernetes.core.helm:
     name: "{{ postgres_operator_deployment_name }}"

@@ -16,6 +16,7 @@ It deploys PostgreSQL instances using the Zalando Postgres Operator CRDs via a h
   - [postgres_instance_team_id](#postgres_instance_team_id)
   - [postgres_instance_values_override](#postgres_instance_values_override)
   - [postgres_instance_version](#postgres_instance_version)
+- [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author](#author)
@@ -44,11 +45,11 @@ postgres_default_instance:
   numberOfInstances: '{{ postgres_instance_number_of_instances }}'
   version: '{{ postgres_instance_version }}'
   users:
-    admin:
+    app_admin:
       - superuser
       - createdb
   databases:
-    app: admin
+    app: app_admin
   preparedDatabases: {}
   postgresql:
     parameters: {}
@@ -213,6 +214,16 @@ PostgreSQL version
 ```YAML
 postgres_instance_version: '17'
 ```
+
+## Discovered Tags
+
+**_always_**
+
+**_helm_chart_**
+
+**_helm_repository_**
+
+**_namespace_**
 
 ## Dependencies
 

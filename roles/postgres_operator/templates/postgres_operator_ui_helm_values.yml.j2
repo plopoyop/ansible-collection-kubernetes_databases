@@ -4,7 +4,7 @@ envs:
   operatorClusterNameLabel: "cluster-name"
   resourcesVisible: "{{ postgres_operator_ui_resources_visible }}"
   targetNamespace: "{{ postgres_operator_ui_target_namespace }}"
-  teams: {{ postgres_operator_ui_teams }}
+  teams: {{ postgres_operator_ui_teams | ansible.builtin.to_json }}
 
 resources:
   limits:
@@ -21,18 +21,18 @@ ingress:
   ingressClassName: "{{ postgres_operator_ui_ingress_class_name }}"
 {% endif %}
 {% if postgres_operator_ui_ingress_annotations is defined %}
-  annotations: {{ postgres_operator_ui_ingress_annotations }}
+  annotations: {{ postgres_operator_ui_ingress_annotations | ansible.builtin.to_json }}
 {% endif %}
 {% if postgres_operator_ui_ingress_hosts is defined %}
-  hosts: {{ postgres_operator_ui_ingress_hosts }}
+  hosts: {{ postgres_operator_ui_ingress_hosts | ansible.builtin.to_json }}
 {% endif %}
 {% if postgres_operator_ui_ingress_tls is defined %}
-  tls: {{ postgres_operator_ui_ingress_tls }}
+  tls: {{ postgres_operator_ui_ingress_tls | ansible.builtin.to_json }}
 {% endif %}
 {% endif %}
 
-extraEnvs: {{ postgres_operator_ui_extra_envs }}
+extraEnvs: {{ postgres_operator_ui_extra_envs | ansible.builtin.to_json }}
 
 {% for key, value in postgres_operator_ui_additional_helm_values.items() %}
-{{ key }}: {{ value | ansible.builtin.to_yaml }}
+{{ key }}: {{ value | ansible.builtin.to_json }}
 {% endfor %}

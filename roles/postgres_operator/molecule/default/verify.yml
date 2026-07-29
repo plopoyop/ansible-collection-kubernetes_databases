@@ -41,3 +41,61 @@
           - operator_deployment.resources | length > 0
           - operator_deployment.resources[0].status.availableReplicas | default(0) == 1
         fail_msg: "Deployment 'postgres-operator' is not available."
+
+    - name: "Wait for the operator CRDs to be registered."
+      kubernetes.core.k8s_info:
+        kind: "CustomResourceDefinition"
+        name: "{{ crd_name }}"
+      register: operator_crds
+      until: operator_crds.resources | length > 0
+      retries: 30
+      delay: 5
+      loop:
+        - "postgresqls.acid.zalan.do"
+        - "operatorconfigurations.acid.zalan.do"
+      loop_control:
+        loop_var: "crd_name"
+
+    - name: "Read the generated OperatorConfiguration."
+      kubernetes.core.k8s_info:
+        api_version: "acid.zalan.do/v1"
+        kind: "OperatorConfiguration"
+        name: "postgres-operator"
+        namespace: "postgres-operator"
+      register: operator_configuration
+      until: operator_configuration.resources | length > 0
+      retries: 30
+      delay: 5
+
+    - name: "Assert that the OperatorConfiguration carries the role default values."
+      vars:
+        operator_config: "{{ operator_configuration.resources[0].configuration }}"
+      ansible.builtin.assert:
+        that:
+          - operator_config.kubernetes_use_configmaps
+          - operator_config.enable_maintenance_windows
+          - operator_config.docker_image == "ghcr.io/zalando/spilo-18:4.1-p2"
+          - operator_config.major_version_upgrade.major_version_upgrade_mode == "manual"
+          - operator_config.major_version_upgrade.minimal_major_version == "14"
+          - operator_config.major_version_upgrade.target_major_version == "18"
+          - operator_config.kubernetes.watched_namespace == "*"
+        fail_msg: "OperatorConfiguration does not reflect the role variables."
+
+    - name: "Wait for 'postgres-operator-ui' deployment to be available."
+      kubernetes.core.k8s_info:
+        kind: "Deployment"
+        name: "postgres-operator-ui"
+        namespace: "postgres-operator"
+      register: operator_ui_deployment
+      until:
+        - operator_ui_deployment.resources | length > 0
+        - operator_ui_deployment.resources[0].status.availableReplicas | default(0) == 1
+      retries: 30
+      delay: 5
+
+    - name: "Assert that 'postgres-operator-ui' deployment is available."
+      ansible.builtin.assert:
+        that:
+          - operator_ui_deployment.resources | length > 0
+          - operator_ui_deployment.resources[0].status.availableReplicas | default(0) == 1
+        fail_msg: "Deployment 'postgres-operator-ui' is not available."
