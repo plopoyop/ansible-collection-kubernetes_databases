@@ -37,3 +37,43 @@
       ansible.builtin.assert:
         that: stateful_set.resources | length > 0
         fail_msg: "StatefulSet 'postgres-database' is not deployed."
+
+    - name: "Wait for the 'postgres-database' cluster to be running."
+      kubernetes.core.k8s_info:
+        api_version: "acid.zalan.do/v1"
+        kind: "postgresql"
+        name: "postgres-database"
+        namespace: "postgres"
+      register: postgresql_cluster
+      until:
+        - postgresql_cluster.resources | length > 0
+        - postgresql_cluster.resources[0].status.PostgresClusterStatus | default("") == "Running"
+      retries: 60
+      delay: 5
+
+    - name: "Assert that the 'postgres-database' cluster is running."
+      ansible.builtin.assert:
+        that:
+          - postgresql_cluster.resources | length > 0
+          - postgresql_cluster.resources[0].status.PostgresClusterStatus == "Running"
+        fail_msg: "PostgreSQL cluster 'postgres-database' did not reach the Running state."
+
+    - name: "Wait for every 'postgres-database' pod to be ready."
+      kubernetes.core.k8s_info:
+        kind: "StatefulSet"
+        name: "postgres-database"
+        namespace: "postgres"
+      register: stateful_set_ready
+      until:
+        - stateful_set_ready.resources | length > 0
+        - stateful_set_ready.resources[0].status.readyReplicas | default(0)
+          == stateful_set_ready.resources[0].spec.replicas
+      retries: 60
+      delay: 5
+
+    - name: "Assert that every 'postgres-database' pod is ready."
+      ansible.builtin.assert:
+        that:
+          - stateful_set_ready.resources[0].status.readyReplicas | default(0)
+            == stateful_set_ready.resources[0].spec.replicas
+        fail_msg: "Not all 'postgres-database' pods are ready."
