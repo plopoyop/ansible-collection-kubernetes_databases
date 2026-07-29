@@ -11,6 +11,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
   - [postgres_operator_cluster_domain](#postgres_operator_cluster_domain)
   - [postgres_operator_cpu_limit](#postgres_operator_cpu_limit)
   - [postgres_operator_cpu_request](#postgres_operator_cpu_request)
+  - [postgres_operator_crds_upgrade_enabled](#postgres_operator_crds_upgrade_enabled)
   - [postgres_operator_deployment_name](#postgres_operator_deployment_name)
   - [postgres_operator_docker_image](#postgres_operator_docker_image)
   - [postgres_operator_enable_crd_registration](#postgres_operator_enable_crd_registration)
@@ -111,6 +112,22 @@ CPU request for operator pod
 
 ```YAML
 postgres_operator_cpu_request: 100m
+```
+
+### postgres_operator_crds_upgrade_enabled
+
+Apply operator CRDs (server-side, force conflicts) before helm upgrade.
+Helm does not update CRDs automatically (HIP-0011), so we render the
+target chart with `helm_template --include-crds` and apply only the
+CustomResourceDefinition resources. Skipped on first install since
+`helm install` already applies CRDs from the chart's `crds/` directory.
+
+**_Type:_** boolean<br />
+
+#### Default value
+
+```YAML
+postgres_operator_crds_upgrade_enabled: true
 ```
 
 ### postgres_operator_deployment_name
@@ -610,6 +627,8 @@ postgres_operator_workers: 8
 ## Discovered Tags
 
 **_always_**
+
+**_crds_**
 
 **_helm_chart_**
 
