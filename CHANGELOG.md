@@ -1,8 +1,12 @@
 # Changelog
 
-## [3.4.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/3.4.1) (2026-07-26)
+## [4.0.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.0.0) (2026-07-29)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.4.0...3.4.1)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/3.4.0...4.0.0)
+
+## ⛵ Helm Charts
+
+- feat\(helm\)!: Update chart postgres-operator \(1.15.1 → 2.0.0\) [\#86](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/86) ([plopoyop](https://github.com/plopoyop))
 
 **Merged pull requests:**
 
