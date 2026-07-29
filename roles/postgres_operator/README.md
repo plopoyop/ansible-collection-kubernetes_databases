@@ -14,16 +14,23 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
   - [postgres_operator_deployment_name](#postgres_operator_deployment_name)
   - [postgres_operator_docker_image](#postgres_operator_docker_image)
   - [postgres_operator_enable_crd_registration](#postgres_operator_enable_crd_registration)
+  - [postgres_operator_enable_maintenance_windows](#postgres_operator_enable_maintenance_windows)
   - [postgres_operator_enable_pod_disruption_budget](#postgres_operator_enable_pod_disruption_budget)
   - [postgres_operator_enable_pvc_deletion](#postgres_operator_enable_pvc_deletion)
   - [postgres_operator_enabled](#postgres_operator_enabled)
   - [postgres_operator_extra_envs](#postgres_operator_extra_envs)
   - [postgres_operator_helm_chart_version](#postgres_operator_helm_chart_version)
+  - [postgres_operator_kubernetes_use_configmaps](#postgres_operator_kubernetes_use_configmaps)
+  - [postgres_operator_major_version_upgrade_mode](#postgres_operator_major_version_upgrade_mode)
+  - [postgres_operator_max_instances](#postgres_operator_max_instances)
   - [postgres_operator_memory_limit](#postgres_operator_memory_limit)
   - [postgres_operator_memory_request](#postgres_operator_memory_request)
+  - [postgres_operator_min_instances](#postgres_operator_min_instances)
+  - [postgres_operator_minimal_major_version](#postgres_operator_minimal_major_version)
   - [postgres_operator_namespace](#postgres_operator_namespace)
   - [postgres_operator_pod_security_context](#postgres_operator_pod_security_context)
   - [postgres_operator_priority_class](#postgres_operator_priority_class)
+  - [postgres_operator_target_major_version](#postgres_operator_target_major_version)
   - [postgres_operator_ui_additional_helm_values](#postgres_operator_ui_additional_helm_values)
   - [postgres_operator_ui_cpu_limit](#postgres_operator_ui_cpu_limit)
   - [postgres_operator_ui_cpu_request](#postgres_operator_ui_cpu_request)
@@ -43,6 +50,7 @@ It installs the operator via its helm chart to manage PostgreSQL clusters.
   - [postgres_operator_ui_teams](#postgres_operator_ui_teams)
   - [postgres_operator_watched_namespace](#postgres_operator_watched_namespace)
   - [postgres_operator_workers](#postgres_operator_workers)
+- [Discovered Tags](#discovered-tags)
 - [Dependencies](#dependencies)
 - [License](#license)
 - [Author](#author)
@@ -126,7 +134,7 @@ Spilo docker image used for PostgreSQL instances
 #### Default value
 
 ```YAML
-postgres_operator_docker_image: ghcr.io/zalando/spilo-18:4.1-p1
+postgres_operator_docker_image: ghcr.io/zalando/spilo-18:4.1-p2
 ```
 
 ### postgres_operator_enable_crd_registration
@@ -139,6 +147,19 @@ Enable automatic CRD registration by the operator
 
 ```YAML
 postgres_operator_enable_crd_registration: true
+```
+
+### postgres_operator_enable_maintenance_windows
+
+Enable the maintenance windows feature, so that operations on a cluster are only
+applied inside the windows declared in its manifest
+
+**_Type:_** boolean<br />
+
+#### Default value
+
+```YAML
+postgres_operator_enable_maintenance_windows: true
 ```
 
 ### postgres_operator_enable_pod_disruption_budget
@@ -209,6 +230,42 @@ Helm chart version to install
 postgres_operator_helm_chart_version: 2.0.0
 ```
 
+### postgres_operator_kubernetes_use_configmaps
+
+Use ConfigMaps instead of Endpoints as Patroni DCS to manage the HA leader
+
+**_Type:_** boolean<br />
+
+#### Default value
+
+```YAML
+postgres_operator_kubernetes_use_configmaps: true
+```
+
+### postgres_operator_major_version_upgrade_mode
+
+Major version upgrade policy: "off", "manual"
+
+**_Type:_** string<br />
+
+#### Default value
+
+```YAML
+postgres_operator_major_version_upgrade_mode: manual
+```
+
+### postgres_operator_max_instances
+
+Global maximum number of instances per PostgreSQL cluster. -1 means no limit
+
+**_Type:_** int<br />
+
+#### Default value
+
+```YAML
+postgres_operator_max_instances: -1
+```
+
 ### postgres_operator_memory_limit
 
 Memory limit for operator pod
@@ -231,6 +288,30 @@ Memory request for operator pod
 
 ```YAML
 postgres_operator_memory_request: 250Mi
+```
+
+### postgres_operator_min_instances
+
+Global minimum number of instances per PostgreSQL cluster.
+
+**_Type:_** int<br />
+
+#### Default value
+
+```YAML
+postgres_operator_min_instances: -1
+```
+
+### postgres_operator_minimal_major_version
+
+Lowest PostgreSQL major version that is not automatically upgraded.
+
+**_Type:_** string<br />
+
+#### Default value
+
+```YAML
+postgres_operator_minimal_major_version: '14'
 ```
 
 ### postgres_operator_namespace
@@ -272,6 +353,19 @@ ref: https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemp
 
 ```YAML
 postgres_operator_priority_class: ''
+```
+
+### postgres_operator_target_major_version
+
+PostgreSQL major version clusters are upgraded to automatically.
+Raised from 17 to 18 in operator v2
+
+**_Type:_** string<br />
+
+#### Default value
+
+```YAML
+postgres_operator_target_major_version: '18'
 ```
 
 ### postgres_operator_ui_additional_helm_values
@@ -357,7 +451,7 @@ Helm chart version to install for the operator UI
 #### Default value
 
 ```YAML
-postgres_operator_ui_helm_chart_version: 1.15.1
+postgres_operator_ui_helm_chart_version: 2.0.0
 ```
 
 ### postgres_operator_ui_ingress_annotations
@@ -512,6 +606,16 @@ Number of worker routines the operator uses to process events
 ```YAML
 postgres_operator_workers: 8
 ```
+
+## Discovered Tags
+
+**_always_**
+
+**_helm_chart_**
+
+**_helm_repository_**
+
+**_namespace_**
 
 ## Dependencies
 

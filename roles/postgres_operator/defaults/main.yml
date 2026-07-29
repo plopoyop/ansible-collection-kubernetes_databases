@@ -15,7 +15,7 @@ postgres_operator_namespace: "postgres-operator"
 # @var postgres_operator_helm_chart_version:type: string
 # @var postgres_operator_helm_chart_version:description: >
 # Helm chart version to install
-postgres_operator_helm_chart_version: 2.0.0
+postgres_operator_helm_chart_version: "2.0.0"
 
 # @var postgres_operator_deployment_name
 # @var postgres_operator_deployment_name:type: string
@@ -39,13 +39,57 @@ postgres_operator_workers: 8
 # @var postgres_operator_docker_image:type: string
 # @var postgres_operator_docker_image:description: >
 # Spilo docker image used for PostgreSQL instances
-postgres_operator_docker_image: "ghcr.io/zalando/spilo-18:4.1-p1"
+postgres_operator_docker_image: "ghcr.io/zalando/spilo-18:4.1-p2"
 
 # @var postgres_operator_enable_crd_registration
 # @var postgres_operator_enable_crd_registration:type: boolean
 # @var postgres_operator_enable_crd_registration:description: >
 # Enable automatic CRD registration by the operator
 postgres_operator_enable_crd_registration: true
+
+# @var postgres_operator_kubernetes_use_configmaps
+# @var postgres_operator_kubernetes_use_configmaps:type: boolean
+# @var postgres_operator_kubernetes_use_configmaps:description: >
+# Use ConfigMaps instead of Endpoints as Patroni DCS to manage the HA leader
+postgres_operator_kubernetes_use_configmaps: true
+
+# @var postgres_operator_enable_maintenance_windows
+# @var postgres_operator_enable_maintenance_windows:type: boolean
+# @var postgres_operator_enable_maintenance_windows:description: >
+# Enable the maintenance windows feature, so that operations on a cluster are only
+# applied inside the windows declared in its manifest
+postgres_operator_enable_maintenance_windows: true
+
+# @var postgres_operator_min_instances
+# @var postgres_operator_min_instances:type: int
+# @var postgres_operator_min_instances:description: >
+# Global minimum number of instances per PostgreSQL cluster.
+postgres_operator_min_instances: -1
+
+# @var postgres_operator_max_instances
+# @var postgres_operator_max_instances:type: int
+# @var postgres_operator_max_instances:description: >
+# Global maximum number of instances per PostgreSQL cluster. -1 means no limit
+postgres_operator_max_instances: -1
+
+# @var postgres_operator_major_version_upgrade_mode
+# @var postgres_operator_major_version_upgrade_mode:type: string
+# @var postgres_operator_major_version_upgrade_mode:description: >
+# Major version upgrade policy: "off", "manual"
+postgres_operator_major_version_upgrade_mode: "manual"
+
+# @var postgres_operator_minimal_major_version
+# @var postgres_operator_minimal_major_version:type: string
+# @var postgres_operator_minimal_major_version:description: >
+# Lowest PostgreSQL major version that is not automatically upgraded.
+postgres_operator_minimal_major_version: "14"
+
+# @var postgres_operator_target_major_version
+# @var postgres_operator_target_major_version:type: string
+# @var postgres_operator_target_major_version:description: >
+# PostgreSQL major version clusters are upgraded to automatically.
+# Raised from 17 to 18 in operator v2
+postgres_operator_target_major_version: "18"
 
 # @var postgres_operator_cluster_domain
 # @var postgres_operator_cluster_domain:type: string
@@ -136,7 +180,7 @@ postgres_operator_ui_enabled: false
 # @var postgres_operator_ui_helm_chart_version:type: string
 # @var postgres_operator_ui_helm_chart_version:description: >
 # Helm chart version to install for the operator UI
-postgres_operator_ui_helm_chart_version: "1.15.1"
+postgres_operator_ui_helm_chart_version: "2.0.0"
 
 # @var postgres_operator_ui_deployment_name
 # @var postgres_operator_ui_deployment_name:type: string

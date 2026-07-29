@@ -1,8 +1,17 @@
 ---
 configGeneral:
-  enable_crd_registration: {{ postgres_operator_enable_crd_registration | lower }}
   docker_image: "{{ postgres_operator_docker_image }}"
+  enable_crd_registration: {{ postgres_operator_enable_crd_registration | lower }}
+  enable_maintenance_windows: {{ postgres_operator_enable_maintenance_windows | lower }}
+  kubernetes_use_configmaps: {{ postgres_operator_kubernetes_use_configmaps | lower }}
+  max_instances: {{ postgres_operator_max_instances }}
+  min_instances: {{ postgres_operator_min_instances }}
   workers: {{ postgres_operator_workers }}
+
+configMajorVersionUpgrade:
+  major_version_upgrade_mode: "{{ postgres_operator_major_version_upgrade_mode }}"
+  minimal_major_version: "{{ postgres_operator_minimal_major_version }}"
+  target_major_version: "{{ postgres_operator_target_major_version }}"
 
 configKubernetes:
   cluster_domain: "{{ postgres_operator_cluster_domain }}"
@@ -12,20 +21,22 @@ configKubernetes:
 
 resources:
   limits:
+{% if postgres_operator_cpu_limit | length > 0 %}
     cpu: "{{ postgres_operator_cpu_limit }}"
+{% endif %}
     memory: "{{ postgres_operator_memory_limit }}"
   requests:
     cpu: "{{ postgres_operator_cpu_request }}"
     memory: "{{ postgres_operator_memory_request }}"
 
-securityContext: {{ postgres_operator_pod_security_context }}
+securityContext: {{ postgres_operator_pod_security_context | ansible.builtin.to_json }}
 
 {% if postgres_operator_priority_class | length > 0 %}
 priorityClassName: "{{ postgres_operator_priority_class }}"
 {% endif %}
 
-extraEnvs: {{ postgres_operator_extra_envs }}
+extraEnvs: {{ postgres_operator_extra_envs | ansible.builtin.to_json }}
 
 {% for key, value in postgres_operator_additional_helm_values.items() %}
-{{ key }}: {{ value | ansible.builtin.to_yaml }}
+{{ key }}: {{ value | ansible.builtin.to_json }}
 {% endfor %}
