@@ -113,7 +113,7 @@ PostgreSQL instance helm chart version
 #### Default value
 
 ```YAML
-postgres_instance_crd_helm_version: 0.1.0
+postgres_instance_crd_helm_version: 0.2.0
 ```
 
 ### postgres_instance_enabled

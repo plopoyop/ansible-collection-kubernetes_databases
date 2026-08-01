@@ -40,7 +40,7 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 | OpenSearch Cluster  | v3.3.0          | `opensearch_cluster`  | [View README](roles/opensearch_cluster/README.md)  |
 | OpenSearch Operator | v3.0.2          | `opensearch_operator` | [View README](roles/opensearch_operator/README.md) |
 | Postgres Operator | v2.0.1            | `postgres_operator`   | [View README](roles/postgres_operator/README.md) |
-| Postgres Instance | v0.1.0             | `postgres_instance`   | [View README](roles/postgres_instance/README.md) |
+| Postgres Instance | v0.2.0             | `postgres_instance`   | [View README](roles/postgres_instance/README.md) |
 | Redis Standalone  | v0.16.9            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
 | Redis Replication | v0.17.0            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
 | Redis Cluster     | v0.17.4            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
