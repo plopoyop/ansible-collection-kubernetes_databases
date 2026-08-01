@@ -8,6 +8,7 @@
 
 - feat\(helm\): update chart postgresql-instance \(0.1.0 → 0.2.0\) [\#91](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/91) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart postgres-operator \(2.0.0 → 2.0.1\) [\#90](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/90) ([plopoyop](https://github.com/plopoyop))
+- fix\(helm\): update chart postgres-operator-ui \(2.0.0 → 2.0.1\) [\#89](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/89) ([plopoyop](https://github.com/plopoyop))
 - feat\(helm\)!: Update chart postgres-operator \(1.15.1 → 2.0.0\) [\#86](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/86) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
