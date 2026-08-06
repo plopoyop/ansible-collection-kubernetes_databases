@@ -1,11 +1,16 @@
 # Changelog
 
-## [4.0.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.0.1) (2026-08-05)
+## [4.0.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.0.1) (2026-08-06)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.0.0...4.0.1)
 
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.2.0 → v46.2.1\) [\#96](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/96) ([plopoyop](https://github.com/plopoyop))
+
 **Merged pull requests:**
 
+- feat\(deps\): update python313packages.ansible \(14.1.0 → 14.2.0\) [\#97](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/97) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.4.4 → 0.4.10\) [\#95](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/95) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update kubectl \(1.36.2 → 1.36.3\) [\#94](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/94) ([plopoyop](https://github.com/plopoyop))
 
