@@ -370,51 +370,41 @@
         }
       }
     },
-    "kubernetes-helm@3.20.2": {
-      "last_modified": "2026-04-23T13:07:47Z",
-      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#kubernetes-helm",
+    "kubernetes-helm@4.2.3": {
+      "last_modified": "2026-08-01T16:34:20Z",
+      "resolved": "github:NixOS/nixpkgs/a5cbcfe954791221bfffe2307f7d1a1bf61a871e#kubernetes-helm",
       "source": "devbox-search",
-      "version": "3.20.2",
+      "version": "4.2.3",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/aa9sfjsr2w4g8xg6n9jznh18wvan4bwm-kubernetes-helm-3.20.2",
+              "path": "/nix/store/zxlrdn6fsss4s2i496np7kdrwy92261j-kubernetes-helm-4.2.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/aa9sfjsr2w4g8xg6n9jznh18wvan4bwm-kubernetes-helm-3.20.2"
+          "store_path": "/nix/store/zxlrdn6fsss4s2i496np7kdrwy92261j-kubernetes-helm-4.2.3"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/wl1mr80ci6hj5x6nscdxqcalw2ppjf2r-kubernetes-helm-3.20.2",
+              "path": "/nix/store/3m7a0rmsr6k5hs0xl2ym6kiv4iqgwypj-kubernetes-helm-4.2.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/wl1mr80ci6hj5x6nscdxqcalw2ppjf2r-kubernetes-helm-3.20.2"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/4b3hmzwr3ydsc9gh7rv665bgp4qf2n7z-kubernetes-helm-3.20.2",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/4b3hmzwr3ydsc9gh7rv665bgp4qf2n7z-kubernetes-helm-3.20.2"
+          "store_path": "/nix/store/3m7a0rmsr6k5hs0xl2ym6kiv4iqgwypj-kubernetes-helm-4.2.3"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/2qwwk0cxj9qx9c79hdhja4s4wmzikia5-kubernetes-helm-3.20.2",
+              "path": "/nix/store/wkb6xckn077grj4jqb6z6wgmwzj7g1xr-kubernetes-helm-4.2.3",
               "default": true
             }
           ],
-          "store_path": "/nix/store/2qwwk0cxj9qx9c79hdhja4s4wmzikia5-kubernetes-helm-3.20.2"
+          "store_path": "/nix/store/wkb6xckn077grj4jqb6z6wgmwzj7g1xr-kubernetes-helm-4.2.3"
         }
       }
     },
