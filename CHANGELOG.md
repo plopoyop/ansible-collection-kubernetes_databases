@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.1.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.1.1) (2026-08-12)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.1.0...4.1.1)
+
+**Merged pull requests:**
+
+- fix\(deps\): update prek \(0.4.10 → 0.4.12\) [\#99](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/99) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.1.0) (2026-08-08)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.0.0...4.1.0)
