@@ -15,7 +15,7 @@ postgres_operator_namespace: "postgres-operator"
 # @var postgres_operator_helm_chart_version:type: string
 # @var postgres_operator_helm_chart_version:description: >
 # Helm chart version to install
-postgres_operator_helm_chart_version: 2.0.1
+postgres_operator_helm_chart_version: 2.0.2
 
 # @var postgres_operator_crds_upgrade_enabled
 # @var postgres_operator_crds_upgrade_enabled:type: boolean

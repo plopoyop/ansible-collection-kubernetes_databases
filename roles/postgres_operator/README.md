@@ -244,7 +244,7 @@ Helm chart version to install
 #### Default value
 
 ```YAML
-postgres_operator_helm_chart_version: 2.0.1
+postgres_operator_helm_chart_version: 2.0.2
 ```
 
 ### postgres_operator_kubernetes_use_configmaps
