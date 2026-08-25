@@ -134,7 +134,7 @@ Helm chart version for cluster mode
 #### Default value
 
 ```YAML
-redis_instance_cluster_helm_version: 0.17.4
+redis_instance_cluster_helm_version: 0.17.5
 ```
 
 ### redis_instance_cluster_leader_replicas

@@ -43,7 +43,7 @@ ansible-galaxy collection install plopoyop.kubernetes_databases
 | Postgres Instance | v0.2.0             | `postgres_instance`   | [View README](roles/postgres_instance/README.md) |
 | Redis Standalone  | v0.16.10            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
 | Redis Replication | v0.17.0            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
-| Redis Cluster     | v0.17.4            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
+| Redis Cluster     | v0.17.5            | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
 | Redis Sentinel    | v0.16.13           | `redis_instance`      | [View README](roles/redis_instance/README.md)    |
 | Redis Operator    | v0.25.0            | `redis_operator`      | [View README](roles/redis_operator/README.md)    |
 
