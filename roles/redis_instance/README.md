@@ -688,7 +688,7 @@ Helm chart version for standalone mode
 #### Default value
 
 ```YAML
-redis_instance_standalone_helm_version: 0.16.9
+redis_instance_standalone_helm_version: 0.16.10
 ```
 
 ### redis_instance_storage_access_modes

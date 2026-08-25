@@ -28,7 +28,7 @@ redis_instance_mode: "standalone"
 # @var redis_instance_standalone_helm_version:type: string
 # @var redis_instance_standalone_helm_version:description: >
 # Helm chart version for standalone mode
-redis_instance_standalone_helm_version: "0.16.9"
+redis_instance_standalone_helm_version: 0.16.10
 
 # @var redis_instance_replication_helm_version
 # @var redis_instance_replication_helm_version:type: string
