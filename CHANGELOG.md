@@ -6,6 +6,7 @@
 
 ## ⛵ Helm Charts
 
+- fix\(helm\): update chart redis-cluster \(0.17.4 → 0.17.5\) [\#108](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/108) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart redis \(0.16.9 → 0.16.10\) [\#107](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/107) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart postgres-operator \(2.0.1 → 2.0.2\) [\#103](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/103) ([plopoyop](https://github.com/plopoyop))
 
