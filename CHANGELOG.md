@@ -6,6 +6,7 @@
 
 ## ⛵ Helm Charts
 
+- fix\(helm\): update chart redis-sentinel \(0.16.13 → 0.16.14\) [\#110](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/110) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart redis-replication \(0.17.0 → 0.17.1\) [\#109](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/109) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart redis-cluster \(0.17.4 → 0.17.5\) [\#108](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/108) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart redis \(0.16.9 → 0.16.10\) [\#107](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/107) ([plopoyop](https://github.com/plopoyop))
