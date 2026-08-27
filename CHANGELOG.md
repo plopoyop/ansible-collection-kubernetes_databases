@@ -25,6 +25,7 @@
 - feat\(deps\): update ansible-doctor \(8.3.3 → 8.4.0\) [\#102](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/102) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.4.12 → 0.4.13\) [\#101](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/101) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update prek \(0.4.10 → 0.4.12\) [\#99](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/99) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\)!: Update kubernetes-helm \(3.20.2 → 4.2.4\) [\#59](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/59) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.1.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.1.0) (2026-08-08)
 
