@@ -472,7 +472,7 @@ Helm chart version for replication mode
 #### Default value
 
 ```YAML
-redis_instance_replication_helm_version: 0.17.0
+redis_instance_replication_helm_version: 0.17.1
 ```
 
 ### redis_instance_resources
