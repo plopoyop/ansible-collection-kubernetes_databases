@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.2.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.2.1) (2026-08-28)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.2.0...4.2.1)
+
+**Merged pull requests:**
+
+- feat\(deps\): update python313packages.ansible \(14.2.0 → 14.3.1\) [\#114](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/114) ([plopoyop](https://github.com/plopoyop))
+- feat\(deps\): update go-task \(3.52.0 → 3.53.1\) [\#113](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/113) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.2.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.2.0) (2026-08-27)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.1.0...4.2.0)
