@@ -190,7 +190,7 @@ postgres_operator_ui_enabled: false
 # @var postgres_operator_ui_helm_chart_version:type: string
 # @var postgres_operator_ui_helm_chart_version:description: >
 # Helm chart version to install for the operator UI
-postgres_operator_ui_helm_chart_version: 2.0.1
+postgres_operator_ui_helm_chart_version: 2.0.2
 
 # @var postgres_operator_ui_deployment_name
 # @var postgres_operator_ui_deployment_name:type: string
