@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.4.0...4.4.1)
 
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart redis-cluster \(0.17.6 → 0.17.7\) [\#120](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/120) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - feat\(ci\): update renovatebot/github-action action \(v46.2.6 → v46.3.0\) [\#121](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/121) ([plopoyop](https://github.com/plopoyop))
