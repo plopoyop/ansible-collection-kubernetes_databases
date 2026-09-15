@@ -468,7 +468,7 @@ Helm chart version to install for the operator UI
 #### Default value
 
 ```YAML
-postgres_operator_ui_helm_chart_version: 2.0.1
+postgres_operator_ui_helm_chart_version: 2.0.2
 ```
 
 ### postgres_operator_ui_ingress_annotations
