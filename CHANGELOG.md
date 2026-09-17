@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.4.2](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.4.2) (2026-09-17)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.4.1...4.4.2)
+
+## ⚙️ Dependencies
+
+- fix\(ci\): update renovatebot/github-action action \(v46.3.0 → v46.3.1\) [\#122](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/122) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.4.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.4.1) (2026-09-14)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.4.0...4.4.1)
