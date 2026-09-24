@@ -46,7 +46,7 @@ OpenSearch cluster helm chart version
 #### Default value
 
 ```YAML
-opensearch_cluster_helm_version: 3.3.0
+opensearch_cluster_helm_version: 3.3.5
 ```
 
 ### opensearch_cluster_name
