@@ -59,7 +59,7 @@ mariadb instance helm chart version
 #### Default value
 
 ```YAML
-mariadb_instance_crd_helm_version: 26.10.0
+mariadb_instance_crd_helm_version: 26.10.1
 ```
 
 ### mariadb_instance_enabled
