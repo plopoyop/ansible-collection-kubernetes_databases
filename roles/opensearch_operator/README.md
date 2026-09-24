@@ -146,7 +146,7 @@ Helm chart version to install
 #### Default value
 
 ```YAML
-opensearch_operator_helm_version: 3.0.2
+opensearch_operator_helm_version: 3.0.12
 ```
 
 ### opensearch_operator_image_pull_policy

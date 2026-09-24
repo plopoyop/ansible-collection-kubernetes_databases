@@ -15,7 +15,7 @@ opensearch_operator_namespace: "opensearch-operator"
 # @var opensearch_operator_helm_version:type: string
 # @var opensearch_operator_helm_version:description: >
 # Helm chart version to install
-opensearch_operator_helm_version: "3.0.2"
+opensearch_operator_helm_version: 3.0.12
 
 # @var opensearch_operator_deployment_name
 # @var opensearch_operator_deployment_name:type: string
