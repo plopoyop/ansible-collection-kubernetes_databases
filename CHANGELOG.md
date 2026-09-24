@@ -6,6 +6,7 @@
 
 ## ⛵ Helm Charts
 
+- fix\(helm\): update chart mariadb-operator-crds \(26.10.0 → 26.10.1\) [\#129](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/129) ([plopoyop](https://github.com/plopoyop))
 - fix\(helm\): update chart postgres-operator-ui \(2.0.1 → 2.0.2\) [\#104](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/104) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
