@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.0...4.5.1)
 
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart postgres-operator-ui \(2.0.1 → 2.0.2\) [\#104](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/104) ([plopoyop](https://github.com/plopoyop))
+
 ## ⚙️ Dependencies
 
 - fix\(ci\): update renovatebot/github-action action \(v46.3.1 → v46.3.2\) [\#130](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/130) ([plopoyop](https://github.com/plopoyop))
