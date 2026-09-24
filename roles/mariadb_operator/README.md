@@ -179,7 +179,7 @@ Helm chart version to install for the CRDs
 #### Default value
 
 ```YAML
-mariadb_operator_crds_helm_chart_version: 26.10.0
+mariadb_operator_crds_helm_chart_version: 26.10.1
 ```
 
 ### mariadb_operator_current_namespace_only
