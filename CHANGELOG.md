@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.5.2](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.2) (2026-09-27)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.1...4.5.2)
+
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart opensearch-operator \(3.0.12 → 3.0.14\) [\#134](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/134) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.5.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.1) (2026-09-24)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.0...4.5.1)
