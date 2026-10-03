@@ -1,8 +1,12 @@
 # Changelog
 
-## [4.5.4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.4) (2026-10-01)
+## [4.5.4](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.4) (2026-10-03)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.3...4.5.4)
+
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart postgres-operator \(2.0.2 → 2.0.3\) [\#138](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/138) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
