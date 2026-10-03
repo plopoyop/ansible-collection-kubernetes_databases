@@ -10,6 +10,7 @@
 
 ## ⚙️ Dependencies
 
+- fix\(ci\): update renovatebot/github-action action \(v46.3.5 → v46.3.6\) [\#140](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/140) ([plopoyop](https://github.com/plopoyop))
 - fix\(ci\): update renovatebot/github-action action \(v46.3.4 → v46.3.5\) [\#137](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/137) ([plopoyop](https://github.com/plopoyop))
 
 ## [4.5.3](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.3) (2026-09-30)
