@@ -1,8 +1,12 @@
 # Changelog
 
-## [4.5.5](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.5.5) (2026-10-08)
+## [4.6.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.0) (2026-10-11)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.4...4.5.5)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.4...4.6.0)
+
+## ⛵ Helm Charts
+
+- feat\(helm\): update chart redis-operator \(0.26.1 → 0.27.0\) [\#143](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/143) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
