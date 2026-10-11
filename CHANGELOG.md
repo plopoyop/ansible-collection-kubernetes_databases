@@ -7,6 +7,7 @@
 ## ⛵ Helm Charts
 
 - feat\(helm\): update chart redis-operator \(0.26.1 → 0.27.0\) [\#143](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/143) ([plopoyop](https://github.com/plopoyop))
+- fix\(helm\): update chart redis-cluster \(0.17.7 → 0.17.8\) [\#142](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/142) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
