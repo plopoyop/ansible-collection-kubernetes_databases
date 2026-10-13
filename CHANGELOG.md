@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.6.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.1) (2026-10-13)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.6.0...4.6.1)
+
+**Merged pull requests:**
+
+- feat\(deps\): update kubectl \(1.36.3 → 1.37.1\) [\#145](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/145) ([plopoyop](https://github.com/plopoyop))
+- fix\(deps\): update ansible-doctor \(8.4.0 → 8.4.2\) [\#144](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/144) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.6.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.0) (2026-10-11)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.5.4...4.6.0)
