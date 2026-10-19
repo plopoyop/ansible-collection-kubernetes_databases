@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.6.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.1) (2026-10-18)
+## [4.6.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.1) (2026-10-19)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.6.0...4.6.1)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- fix\(deps\): update kubernetes-helm \(4.3.0 → 4.3.1\) [\#152](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/152) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.ansible \(14.3.1 → 14.4.0\) [\#150](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/150) ([plopoyop](https://github.com/plopoyop))
 - fix\(deps\): update ansible-doctor \(8.4.2 → 8.4.3\) [\#149](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/149) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update prek \(0.4.14 → 0.5.5\) [\#147](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/147) ([plopoyop](https://github.com/plopoyop))
