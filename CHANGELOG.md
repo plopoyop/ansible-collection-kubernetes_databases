@@ -1,8 +1,12 @@
 # Changelog
 
-## [4.6.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.6.1) (2026-10-19)
+## [4.7.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.7.0) (2026-10-19)
 
-[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.6.0...4.6.1)
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.6.0...4.7.0)
+
+## ⛵ Helm Charts
+
+- feat\(helm\): update chart mongodb-kubernetes \(1.13.0 → 1.14.0\) [\#151](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/151) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
