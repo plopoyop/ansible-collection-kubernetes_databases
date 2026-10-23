@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.7.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.7.1) (2026-10-22)
+## [4.7.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.7.1) (2026-10-23)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.7.0...4.7.1)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- feat\(deps\): update kind \(0.32.0 → 0.33.0\) [\#156](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/156) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update python313packages.molecule \(26.6.0 → 26.8.0\) [\#154](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/154) ([plopoyop](https://github.com/plopoyop))
 - feat\(deps\): update git \(2.55.0 → 2.56.0\) [\#153](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/153) ([plopoyop](https://github.com/plopoyop))
 
