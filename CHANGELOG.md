@@ -1,8 +1,12 @@
 # Changelog
 
-## [4.7.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.7.1) (2026-10-23)
+## [4.7.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.7.1) (2026-10-26)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.7.0...4.7.1)
+
+## ⛵ Helm Charts
+
+- fix\(helm\): update chart mariadb-operator \(26.10.1 → 26.10.2\) [\#158](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/158) ([plopoyop](https://github.com/plopoyop))
 
 ## ⚙️ Dependencies
 
