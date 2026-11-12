@@ -1,5 +1,14 @@
 # Changelog
 
+## [4.8.1](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.8.1) (2026-11-12)
+
+[Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.8.0...4.8.1)
+
+## ⚙️ Dependencies
+
+- feat\(ci\): update jetify-com/devbox-install-action action \(v0.15.0 → v0.16.0\) [\#167](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/167) ([plopoyop](https://github.com/plopoyop))
+- fix\(ci\): update renovatebot/github-action action \(v46.3.12 → v46.3.13\) [\#166](https://github.com/plopoyop/ansible-collection-kubernetes_databases/pull/166) ([plopoyop](https://github.com/plopoyop))
+
 ## [4.8.0](https://github.com/plopoyop/ansible-collection-kubernetes_databases/tree/4.8.0) (2026-11-06)
 
 [Full Changelog](https://github.com/plopoyop/ansible-collection-kubernetes_databases/compare/4.7.1...4.8.0)
